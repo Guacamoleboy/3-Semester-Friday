@@ -3,13 +3,33 @@
 /* INDEX                                                             */
 /*                                                                   */
 /*                                                                   */
+/* 0.1 - Root                                                        */
+/*                                                                   */
 /* 1.0 - Navbar Root                                                 */
 /* 1.1 ----- Announcement                                            */
 /* 1.2 ----- Navbar                                                  */
 /* 1.3 ----- Dropdown                                                */
 /* 1.4 ----- Buttons                                                 */
 /*                                                                   */
+/* 2.0 - Notification                                                */
+/*                                                                   */
+/* 3.0 - Login                                                       */
+/* 3.1 ----- Login Left                                              */
+/* 3.2 ----- Login Button                                            */
+/* 3.3 ----- Login Right                                             */
+/*                                                                   */
+/* 4.0 - Buttons                                                     */
+/* 4.1 ----- Return Button                                           */
+/*                                                                   */
+/* 5.0 - Dividers                                                    */
+/*                                                                   */
+/* 6.0 - Dev-Log                                                     */
+/*                                                                   */
 /* ################################################################# */
+
+
+/* ################################################################# */
+
 
 /* ################################################################# */
 /*                           0.1 ROOT                                */
@@ -288,6 +308,10 @@ body::-webkit-scrollbar {
     box-shadow: 10px 10px 2px rgba(80, 71, 180, 0.5);
 }
 
+/* ################################################################# */
+/*                        3.1 LOGIN LEFT                             */
+/* ################################################################# */
+
 .login-page-left {
     display: flex;
     align-items: center;
@@ -336,6 +360,10 @@ body::-webkit-scrollbar {
     box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
+/* ################################################################# */
+/*                        3.2 LOGIN BUTTON                           */
+/* ################################################################# */
+
 .button-wrapper-login {
     margin-top: 0.5rem;
     display: flex;           
@@ -360,6 +388,10 @@ body::-webkit-scrollbar {
     transform: translateY(-2px);
     box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.3);
 }
+
+/* ################################################################# */
+/*                        3.3 LOGIN RIGHT                            */
+/* ################################################################# */
 
 .login-page-right {
     display: flex;
@@ -407,4 +439,204 @@ body::-webkit-scrollbar {
     border: 2px solid rgba(255,255,255,0.5);
     background: rgba(99, 107, 241, 1);
     transform: translateY(-2px);
+}
+
+/* ################################################################# */
+/*                          5.0 DIVIDERS                             */
+/* ################################################################# */
+
+.section-divider {
+    border: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    margin: 2rem 0;
+}
+
+/* ################################################################# */
+/*                           6.0 DEV-LOG                             */
+/* ################################################################# */
+
+.dev-log-section {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    color: #FFF;
+}
+
+.dev-log-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+    linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.015) 2px,
+        transparent 1px
+    ),
+    linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.015) 2px,
+        transparent 1px
+    );
+    background-size: 3rem 3rem;
+    animation: grid-drift 10s linear infinite;
+}
+
+.dev-log-content-wrapper {
+    position: relative;
+    z-index: 1;
+    border-radius: 0.5rem;
+    background-color: #7a779b;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 6px 6px 1px rgba(0,0,0,0.3);
+    border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.dev-log-meta {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.dev-log-meta p:first-child {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: -1rem;
+}
+
+.dev-log-meta h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dev-log-meta h2::after {
+    content: "";
+    display: block;
+    width: 6rem;              
+    height: 3px;              
+    background-color: var(--mm-auth-text); 
+    margin: 1rem auto 0;   
+}
+
+.dev-log-meta p:last-child {
+    opacity: 0.7;
+    font-size: 1rem;
+}
+
+.dev-log-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dev-log-entry-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.dev-log-entry-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.dev-log-date {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.dev-log-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.dev-log-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.dev-log-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+    user-select: none;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.dev-log-badge.frontend {
+    background-color: rgb(27, 116, 199);
+}
+
+.dev-log-badge.backend {
+    background-color: rgb(168, 153, 20)
+}
+
+.dev-log-badge.setup {
+    background-color: rgb(207, 13, 13)
+}
+
+.dev-log-badge.components {
+    background-color: rgb(10, 155, 34)
+}
+
+.dev-log-entry-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.6;
+    max-width: 780px;
+}
+
+.dev-log-entry-body p {
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.dev-log-entry-body h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
+
+.dev-log-picture-text {
+    font-size: 0.7rem;
+    margin: 0;
+    opacity: 0.8 !important;
+}
+
+.dev-log-entry-body img {
+    width: 100%;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+    opacity: 0.95;
+}
+
+.dev-log-entry-body img {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dev-log-code {
+  font-family: "Fira Code", monospace;
+  background: #0e0e0e;
+  color: #c7f9cc;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(0, 255, 100, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5);
+}
+
+.dev-log-code::before {
+  content: "$ ";
+  color: #7cff9e;
+  opacity: 0.8;
 }

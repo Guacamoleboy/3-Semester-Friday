@@ -1,16 +1,9 @@
 "use client"
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import ClinicianDashboard from "@/components/clinician/ClinicianDashboard";
+import { useRequiredRole } from "@/hooks/auth/useRequiredRole";
 
 export default function ClinicianPage() {
-  const router = useRouter();
-  useEffect(() => {
-    const role = localStorage.getItem("userRole");
-    if (role !== "clinician") {
-      router.replace("/login");
-    }
-  }, [router]);
+  useRequiredRole("clinician");
   return <ClinicianDashboard />;
 }

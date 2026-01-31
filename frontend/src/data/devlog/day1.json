@@ -1,0 +1,93 @@
+{
+  "date": "31/01-2026",
+  "title": "Repository Setup, UI & Brainstorming for ideas",
+  "badges": ["Frontend", "Backend", "Setup", "Components"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Setup"
+    },
+    {
+      "type": "p",
+      "text": "Jeg har i dag startet med at sætte Repository op i Github via Gitbash. Dette inkluderer /frontend og /backend folders som er til hhv. Next.js og Java (REST-API)."
+    },
+    {
+      "type": "h3",
+      "text": "Idé overblik"
+    },
+    {
+      "type": "p",
+      "text": "Efter dette satte jeg mig til at brainstorme over idéer til en brugbar forretningsmodel som benytter sig af API kald. Jeg kom frem til MoodMap som er en digital løsning til læger, klienter og lægehuse. I dagens Danmark når du starter på Medicin, så får du udskrevet nogle recepter, og så ses man først med lægen efter 3 måneders tid til evaluering."
+    },
+    {
+      "type": "p",
+      "text": "Der er ingen data, feedback i perioden, kontakt med læge, regulering eller justering af medicin såfremt noget fejler osv. Dette har MoodMap til formål at ændre. MoodMap skal give lægen og brugeren direkte adgang til data enten via rå data, tekst eller graf for at vise om Medicinen gør hvad den skal."
+    },
+    {
+      "type": "p",
+      "text": "Dette giver både brugeren og lægen mulighed for at se hvad der sker og hvad brugeren oplever direkte hver enkelt dag. Fx er jeg selv på noget medicin hvor jeg efter 3 måneder bliver kaldt til lægen og så spørger de bare \"Hvordan er det gået\". Det kan være svært at vide 100%, da periode er så lang, og du ikke har taget noter undervejs. Derfor kan denne data hjælpe til medicinjustering og til forløb for diagnoser eller tilsvarende. Kan også være et værktøj til genoptræning hos Fysioterapeut."
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day1_1.png",
+      "alt": "Dev log screenshot – Figma - Day 1"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 1 • Dag 1 • FigJam Overblik"
+    },
+    {
+      "type": "p",
+      "text": "Som det fremgår har jeg lavet et projekt overview både for UI og for Backend (API Kald mm) i FigJam. Det var et super godt værktøj til netop det, og noget jeg bruger fremover."
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day1_2.png",
+      "alt": "Dev log screenshot – Repo Overview - Day 1"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 2 • Dag 1 • /frontend struktur i Next.js"
+    },
+    {
+      "type": "p",
+      "text": "Jeg har sat projektet op (Frontend) som et Next.js projekt da Next.js er klart bedre end ReactJS og har flere ting i sig. Next.js har et indbygget framework som gør routing nemt, bedre performance og skalering. For ikke at nævne struktur. Det er sat op via npx som henter seneste Next.js settings til /frontend mappen."
+    },
+    {
+      "type": "code",
+      "text": "npx create-next-app@latest ."
+    },
+    {
+      "type": "h3",
+      "text": "Learning by doing"
+    },
+    {
+      "type": "p",
+      "text": "Jeg har herudover kigget lidt på hvordan .tsx, .ts og diverse filer skal sættes op korrekt og hvilke fejl / ting man skal være opmærksomme på. Dette har jeg tilføjet til min server på Discord som jeg bruger til Studiet. Dette skaber overblik, og giver mig mulighed for at skrive vigtige ting ned. De øvrige medlemmer kan også benytte sig af dette, men som udgangspunkt er det bare til mig selv, da der ofte er meget som skal huskes. Fx at folders i nyeste Next.js npx install ikke kan være med stort."
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day1_3.png",
+      "alt": "Dev log screenshot – Discord overblik - Day 1"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 3 • Dag 1 • Discord server overblik"
+    },
+    {
+      "type": "p",
+      "text": "Jeg starter normalt med frontend hvorfor det er det jeg har fokuseret på indtil videre. Java er bare sat op med configs, servers mm som normalt. Men indtil nu har jeg brainstorme lavet frontend og sat mig ind i hvad jeg ønsker siden skal kunne, og sat components mm op."
+    },
+    {
+      "type": "h3",
+      "text": "Sidste tanker"
+    },
+    {
+      "type": "p",
+      "text": "Dette konkluderer dagen, og jeg er klar til at arbejde yderligere på projektet når det kommer der til."
+    }
+  ]
+}

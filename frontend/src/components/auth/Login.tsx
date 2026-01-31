@@ -86,13 +86,6 @@ export default function Login() {
         />
       )}
 
-      {/* Return Button */}
-      <div className="return-button-moodmap">
-        <button>
-          <i className="fa fa-arrow-left"></i>
-        </button>
-      </div>
-
     </section>
     
   );

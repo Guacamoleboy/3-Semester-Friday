@@ -33,7 +33,7 @@ export default function Header() {
   }, []);
 
   // Hide header
-  if (pathname.startsWith("/login") || user === undefined || user === null) return null;
+  if (pathname.startsWith("/login") || pathname.startsWith("/dev-log") || user === undefined || user === null) return null;
 
   // Logout Button Handle
   const handleLogout = () => {

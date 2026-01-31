@@ -1,5 +1,13 @@
-import DevLog from "@/components/dev-log/DevLogUI";
+"use client";
 
-export default async function ClinicPage() {
-    return <DevLog />;
+import DevLog from "@/components/dev-log/DevLogUI";
+import ReturnButton from "@/components/ui/ReturnButton";
+
+export default function ClinicPage() {
+  return (
+    <>
+      <ReturnButton to="/" /> {}
+      <DevLog />
+    </>
+  );
 }

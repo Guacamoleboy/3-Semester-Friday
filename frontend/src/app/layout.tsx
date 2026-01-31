@@ -1,5 +1,5 @@
-import './style.css';
-import './animation.css';
+import '@/styles/style.css';
+import '@/styles/animation.css';
 import Header from '@/components/Header';
 import { ReactNode } from "react";
 
