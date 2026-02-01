@@ -28,8 +28,8 @@ export default function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (email === hardcodedUser.email && password === hardcodedUser.password) {
-      localStorage.setItem("userRole", "clinician"); // Debug
-      router.push("/clinician")
+      localStorage.setItem("userRole", "client"); // Debug
+      router.push("/client")
     } else {
       setNotification("Ugyldig email eller kodeord");
       setNotificationType("wrong");

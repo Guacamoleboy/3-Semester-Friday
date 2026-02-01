@@ -38,21 +38,21 @@
 :root {
 
     /* Theme Specific */
-    --mm-background: #4b2b75;
+    --mm-background: #392580;
 
     /* Color Palette */
-    --mm-red: #FFF;
-    --mm-orange: #FFF;
-    --mm-blue: #FFF;
-    --mm-green: #FFF;
-    --mm-black: #FFF;
+    --mm-red: #ff0000;
+    --mm-orange: #ffe600;
+    --mm-blue: #0059ff;
+    --mm-green: #09ff00;
+    --mm-black: #000000;
     --mm-white: #FFF;
-    --mm-pink: #FFF;
-    --mm-grey: #FFF;
-    --mm-yellow: #FFF;
+    --mm-pink: #ff00dd;
+    --mm-grey: #8d8d8d;
+    --mm-yellow: #fbff00;
     
     /* Navbar Theme */
-    --mm-nav-background: #462b69;
+    --mm-nav-background: #352377;
     --mm-nav-text: #FFF;
     --mm-nav-text-hover: #FFF;
     --mm-nav-text-shadow: 0 2px 2px rgba(0,0,0,.3);
@@ -65,7 +65,7 @@
 
     /* Announcement Bar Theme */
     --mm-ab-height: 3rem;
-    --mm-ab-background: #412763;
+    --mm-ab-background: #322170;
     --mm-ab-text: #FFF;
     --mm-ab-icon-size: 24px;
 
@@ -75,7 +75,7 @@
     --mm-notification-outline-warning: 2px solid rgb(255, 196, 0);
 
     /* Auth Theme */
-    --mm-auth-section-background: #3c1f61;
+    --mm-auth-section-background: #392580;
     --mm-auth-background: #635bbe;
     --mm-auth-text: #FFF;
     --mm-auth-outline: 2px solid rgba(255, 255, 255, 0.226);
@@ -84,6 +84,14 @@
     --mm-auth-input-focused: #FFF;
     --mm-auth-button-bg: transparent;
     --mm-auth-button-text: #FFF;
+
+    /* Components Theme */
+    --mm-comp-background: #422880;
+    --mm-comp-border: 2px solid rgba(255, 255, 255, 0.15);
+
+    /* Tooltip Theme */
+    --mm-tooltip-border: 2px solid rgba(255,255,255,0.3);
+    --mm-tooltip-background: rgba(0,0,0,0.7)
 
 }
 
@@ -104,9 +112,69 @@ html, body {
     background: var(--mm-background);
 }
 
+html,body::after {
+    z-index: 0;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+    linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.015) 2px,
+        transparent 1px
+    ),
+    linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.015) 2px,
+        transparent 1px
+    );
+    background-size: 3rem 3rem;
+    animation: grid-drift 10s linear infinite;
+}
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
     display: none;
+}
+
+/* ################################################################# */
+/*                           0.2 FRAMEWORK                           */
+/* ################################################################# */
+
+.moodmap-flex {
+    display: flex;
+}
+
+.moodmap-flex-fw {
+    flex: 0 0 100%; 
+}
+
+.moodmap-flex-hw {
+    flex: 0 0 50%;
+}
+
+.moodmap-flex-fw-grow {
+    flex: 1 1 100%;
+}
+
+.moodmap-flex-hw-grow {
+    flex: 1 1 50%;
+}
+
+.moodmap-flex-sb {
+    justify-content: space-between;
+}
+
+.moodmap-flex-jc {
+    justify-content: center;
+}
+
+.moodmap-ac {
+    align-items: center;
+}
+
+.moodmap-text-c {
+    text-align: center;
 }
 
 /* ################################################################# */
@@ -123,6 +191,7 @@ body::-webkit-scrollbar {
     z-index: 1000;
     justify-content: space-between;
     padding: 0 5rem;
+    margin-bottom: 4rem;
 }
 
 .moodmap-logo-size {
@@ -620,6 +689,18 @@ body::-webkit-scrollbar {
     opacity: 0.95;
 }
 
+.dev-log-entry-body .dev-log-img.small {
+    width: 50%;
+    border-radius: 6px;
+    opacity: 0.95;
+}
+
+.dev-log-entry-body .dev-log-img.medium {
+    width: 75%;
+    border-radius: 6px;
+    opacity: 0.95;
+}
+
 .dev-log-entry-body img {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -639,4 +720,170 @@ body::-webkit-scrollbar {
   content: "$ ";
   color: #7cff9e;
   opacity: 0.8;
+}
+
+/* ################################################################# */
+/*                         7.0 GRAPH STOCK                           */
+/* ################################################################# */
+
+.graph-container {
+  width: 600px;  
+  height: 300px;  
+  border: 2px solid #6e6e6e; 
+  border-radius: 1rem;
+  padding: 1rem;  
+  background-color: rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-container-title {
+  margin: 0 0 0.5rem 0; 
+  text-align: center;
+  color: #d6d6d6;
+  font-size: 1.5rem;
+}
+
+.graph-stock-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  position: relative;
+  overflow: hidden;       
+}
+
+.graph-stock {
+  flex: 1 1 auto;          
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ################################################################# */
+/*                   8.0 COMPONENTS - INTRO BAR                      */
+/* ################################################################# */
+
+.moodmap-intro-bar {
+    border-radius: 0.5rem;
+    border: var(--mm-comp-border);
+    background-color: var(--mm-comp-background);
+    max-width: 90%;
+    color: var(--mm-white);
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 4rem;
+}
+
+.moodmap-intro-bar-card {
+    flex: 1;           
+    padding: 3rem;
+    transition: all 0.2s ease-in-out;      
+    flex-direction: column;     
+    position: relative; 
+    overflow: visible;
+}
+
+.moodmap-intro-bar-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.moodmap-intro-bar-card i {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    color: var(--mm-white);
+}
+
+.moodmap-intro-bar-card.streak i {
+    color: var(--mm-orange);
+    opacity: 1;
+}
+
+.moodmap-intro-bar-card h2 {
+    margin-top: 0;
+    position: relative;
+}
+
+.moodmap-intro-bar-card h2::after {
+    content: "";
+    display: block;
+    width: 4rem;              
+    height: 2px; 
+    opacity: 0.2;             
+    background-color: var(--mm-white); 
+    margin: 1rem auto 0;   
+}
+
+.moodmap-intro-bar-card span {
+    font-size: 1.25rem;
+    opacity: 0.8;
+}
+
+.moodmap-intro-bar-button {
+    padding: 0.5rem;
+    width: 40%;
+    color: var(--mm-white);
+    border-radius: 0.5rem;
+    outline: none !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background-color: #492c8d;
+    margin: 0 auto;
+}
+
+/* ################################################################# */
+/*                     8.1 COMPONENTS - TOOLTIP                      */
+/* ################################################################# */
+
+.tooltip-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip-line:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.tooltip {
+    position: fixed;           
+    pointer-events: none;
+    z-index: 1000;
+    background-color: var(--mm-tooltip-background);
+    color: var(--mm-white);
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    font-size: 1rem;
+    transform: translateX(-50%);
+    border: var(--mm-tooltip-border);
+}
+
+/* ################################################################# */
+/*                  8.3 COMPONENTS - CON DOTS (DOWN)                 */
+/* ################################################################# */
+
+.con-dot-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -2rem auto 2rem;
+    gap: 1rem; 
+    position: relative; 
+    flex-direction: column;
+}
+
+.con-dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
 }

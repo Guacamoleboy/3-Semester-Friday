@@ -2,10 +2,12 @@
 
 import DevLogEntry, { DevLogEntryProps } from "./DevLogEntry";
 import day1Json from "@/data/devlog/day1.json";
+import day2Json from "@/data/devlog/day2.json";
 
 // Array of .json files
 const day1 = day1Json as DevLogEntryProps;
-const devLogData: DevLogEntryProps[] = [day1];
+const day2 = day2Json as DevLogEntryProps;
+const devLogData: DevLogEntryProps[] = [day1, day2];
 
 // UI Load
 export default function DevLogUI() {
@@ -24,11 +26,11 @@ export default function DevLogUI() {
 
         {/* Card Per Day */}
         {devLogData.map((entry, i) => (
-          <DevLogEntry key={i} {...entry} />
+          <div key={i}>
+            <DevLogEntry {...entry} />
+            <div className="section-divider"></div>
+          </div>
         ))}
-        
-        {/* Divider pr article / card */}
-        <div className="section-divider"></div>
 
       </div>
     </section>

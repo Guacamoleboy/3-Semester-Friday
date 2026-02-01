@@ -1,0 +1,92 @@
+{
+  "date": "01/02-2026",
+  "title": "Charts, charts.. CHARTS!",
+  "badges": ["Backend", "Components"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Målet for dagen.."
+    },
+    {
+      "type": "p",
+      "text": [
+        "Målet i dag var at kigge på charts samt muligheder for charts i Next.js (React). ",
+        "Jeg prøvede først at lave .svg render selv som component, ",
+        "men kom hurtigt frem til at jeg ikke gad opfinde hjulet igen.. Derfor kom jeg frem til MUI Charts som jeg installerede via powershell!"
+      ]
+    },
+    {
+      "type": "code",
+      "text": "npm install @mui/material @emotion/react @emotion/styled"
+    },
+    {
+      "type": "code",
+      "text": "npm install @mui/x-charts"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dette giver mig fuld kontrol over MUI Charts og jeg kan derefter edit og tilføje hvilken Chart jeg vil benytte mig af. ",
+        "Jeg prøvede lidt forskellige, men landede hurtigt på én som jeg bedst kunne lide. ",
+        "Mening er, at man har 14 dages skema som man skal besvare. Den orange linje er indikation for forventet resultat, og den blå er brugerens input. ",
+        "Jeg planlægger, at den orange er hidden by default, men kan vises ved klik på knap. Lige nu tester jeg bare lidt."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day2_1.png",
+      "alt": "Dev log screenshot – Chart - Day 2"
+    },
+    {
+      "type": "h3",
+      "text": "Opsætning af layout.tsx mm"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Ifm charts (som er component) skal jeg lige have layout på plads igen. Det betyder, at layout.tsx står for det overordnet layout, og page.tsx står for components. ",
+        "Dette gør at hvis jeg fx loader 4 components som alle har deres egne styling, så har selve section altså én overordnet styling som alle components følger." ,
+        "Dette bruges via <section className>"
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Tooltip og Bar component"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg fik kigget lidt på tooltips, håndtering heraf ift React. Normalt laver jeg det bare i CSS, men React har nogle nemmere funktioner at gøre brug af. ",
+        "Dette resulterede i en nem tooltip som kan bruges som component og loader data vi et Array af String content. "
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day2_2.png",
+      "alt": "Dev log screenshot – Tooltip - Day 2"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Denne tooltip skulle netop bruges sammen med en bar som er øverst på hhv client, clinician og clinic siderne. På clients side er der en knap som man kan :hover over, ",
+        "og få vist sin medicin hvis man har glemt det. Jeg planlægger at lave denne bar dynamisk via role når API connectes, men er ikke helt sikker endnu."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day2_3.png",
+      "alt": "Dev log screenshot – Intro Bar - Day 2"
+    },
+    {
+      "type": "h3",
+      "text": "Dagens konklusion"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Alt gik som forventet. Jeg har fået kigget på Chart components og fundet mig en overodnet idé omkring hvordan jeg skal vise data til hhv læge og klienten. ",
+        "Jeg planlægger at oprette en 3-4 charts mere som jeg bare kan loade når jeg har behov for det senere når API connectes. Oh ja.. Fik også lige skiftet farven lidt. Den var alt for lilla før! "
+      ]
+    }
+  ]
+}

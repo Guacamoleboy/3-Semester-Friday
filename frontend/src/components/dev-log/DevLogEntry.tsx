@@ -40,13 +40,23 @@ export default function DevLogEntry({ date, title, badges, content }: DevLogEntr
         {/* Card Information */}            
         <div className="dev-log-entry-body">
         {content.map((item, i) => {
-            switch (item.type) {
+            const [baseType, size] = item.type.split(" ");
+            const additionalClass = size ? size : "";
+
+            switch (baseType) {
             case "p":
                 return <p key={i} className={item.class}>{item.text}</p>;
             case "h3":
                 return <h3 key={i}>{item.text}</h3>;
             case "img":
-                return <img key={i} src={item.src} alt={item.alt} />;
+                return (
+                <img
+                key={i}
+                src={item.src}
+                alt={item.alt}
+                className={additionalClass ? `dev-log-img ${additionalClass}` : "dev-log-img"}
+                />
+                );
             case "code":
                 return <p key={i} className="dev-log-code">{item.text}</p>;
             default:
