@@ -5,7 +5,7 @@
     3. Semester
 
     Sidst opdateret:
-    Dato: 29/1-2026
+    Dato: 02/02-2026
 
 */
 
@@ -14,6 +14,8 @@ baseline_individual,
 baseline,
 questions,
 client_diagnoses,
+medication,
+medication_client,
 diagnoses,
 clients,
 users,
@@ -46,6 +48,19 @@ CREATE TABLE diagnoses (
 id SERIAL PRIMARY KEY,
 name VARCHAR(50) UNIQUE NOT NULL,                                                               -- Name
 description TEXT                                                                                -- Description
+);
+
+CREATE TABLE medication (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) UNIQUE NOT NULL,                                                               -- Medication Name
+description TEXT                                                                                -- Small description
+);
+
+CREATE TABLE medication_client (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) UNIQUE NOT NULL,                                                               -- Medication name
+amount INT NOT NULL,                                                                            -- 1,2,3 etc
+timeline VARCHAR(50) NOT NULL                                                                   -- Daily, Twice Daily
 );
 
 CREATE TABLE client_diagnoses (

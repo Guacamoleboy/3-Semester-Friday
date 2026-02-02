@@ -67,7 +67,8 @@ export default function Header() {
         <div className="moodmap-navbar-right">
           <div className="moodmap-navbar-buttons">
             {user.role === "clinician" && <button>Opret Skema</button>}
-            {user.role === "clinician" && <button onClick={handleLogout}>Log Ud</button>}
+            {user.role === "client" && <button>Overblik</button>} {/*<i className="fa fa-bars"></i>*/}
+            <button onClick={handleLogout}>Log Ud</button>{/*<i className="fa fa-sign-out"></i>*/}
           </div>
         </div>
       </div>

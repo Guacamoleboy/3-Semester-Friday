@@ -1,6 +1,7 @@
 import '@/styles/style.css';
 import '@/styles/animation.css';
 import Header from '@/components/Header';
+import Preloader from '@/components/ui/Preloader';
 import { ReactNode } from "react";
 
 export const metadata = {
@@ -25,6 +26,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             />
         </head>
         <body>
+
+            {/* Preloader */}
+            <Preloader />
 
             {/* Header */}
             <Header />
