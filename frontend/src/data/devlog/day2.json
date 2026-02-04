@@ -1,6 +1,8 @@
 {
   "date": "01/02-2026",
   "title": "Charts, charts.. CHARTS!",
+  "description": "UI Components, further brainstorming and general setup",
+  "overviewPhoto": "/images/devlog/day2_1.png",
   "badges": ["Backend", "Components"],
   "content": [
     {

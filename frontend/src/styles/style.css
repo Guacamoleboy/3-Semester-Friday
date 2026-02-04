@@ -87,8 +87,13 @@
 
     /* Components Theme */
     --mm-comp-background: #422880;
+    --mm-comp-background-second: #3a236e;
+    --mm-comp-header-border: 2px solid rgba(255,255,255,0.15);
     --mm-comp-background-hover: #3d2575;
     --mm-comp-border: 2px solid rgba(255, 255, 255, 0.15);
+    --mm-comp-box-shadow: 0 6px 2px rgba(0,0,0,0.3);
+    --mm-comp-box-shadow-hover: 0 10px 2px rgba(0,0,0,0.6);
+    --mm-comp-transform-hover: -4px;
 
     /* Tooltip Theme */
     --mm-tooltip-border: 2px solid rgba(255,255,255,0.3);
@@ -628,9 +633,14 @@ body::-webkit-scrollbar {
     margin-bottom: 0.5rem;
 }
 
+.dev-log-reading-time,
 .dev-log-date {
     font-size: 0.85rem;
     opacity: 0.8;
+}
+
+.dev-log-entry-meta-right span:not(:last-child) {
+    margin-right: 0.5rem;
 }
 
 .dev-log-title {
@@ -733,6 +743,81 @@ body::-webkit-scrollbar {
   content: "$ ";
   color: #7cff9e;
   opacity: 0.8;
+}
+
+.dev-log-overview-wrapper {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 2rem; 
+    margin: 0 auto;
+}
+
+.dev-log-overview-card {
+    z-index: 1;
+    flex: 1 1 300px;
+    min-width: 400px;
+    max-width: 400px;
+    border-radius: 0.5rem;
+    background-color: var(--mm-comp-background);
+    border: var(--mm-comp-border);
+    box-shadow: var(--mm-comp-box-shadow);
+    transition: all 0.2s ease-in-out;
+}
+
+.dev-log-overview-card:hover {
+    box-shadow: var(--mm-comp-box-shadow-hover);
+    transform: translateY(var(--mm-comp-transform-hover));
+}
+
+.dev-log-overview-card-meta {
+    background-color: var(--mm-comp-background-second);
+    border-bottom: var(--mm-comp-header-border);
+    opacity: 0.75;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dev-log-overview-card-center {
+    width: 100%;
+    height: 200px; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: var(--mm-comp-header-border);
+}
+
+.dev-log-overview-card-center img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.dev-log-overview-card-desc {
+    text-align: left !important;
+    display: flex;
+    background-color: var(--mm-comp-background-header);
+    padding: 2rem;
+    flex-direction: column;
+}
+
+.dev-log-overview-card-desc span:not(:last-child) {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.dev-log-overview-card-desc span:first-child {
+    font-size: 1.2rem;
+    min-height: 3rem;
+}
+
+.dev-log-overview-card-desc span:last-child {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.85;
 }
 
 /* ################################################################# */
