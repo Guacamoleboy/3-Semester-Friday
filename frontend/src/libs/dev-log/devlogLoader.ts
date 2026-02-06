@@ -6,6 +6,17 @@ export interface DevLogContentItem {
     class?: string;
 }
 
+export interface DevLogEntryPropsPlain {
+    slug: string;
+    title: string;
+    date: string;
+    readingTime: number;
+    badges: string[];
+    content: DevLogContentItem[];
+    description: string;
+    overviewPhoto: string;
+}
+
 interface DevLogJSON {
     date: string;
     title: string;
@@ -22,12 +33,20 @@ const SECONDS_PER_IMAGE = 20;
 export default class DevLogLoader {
 
     // Attributes
+    private slug: string
     private data: DevLogJSON;
 
     // ___________________________________________________________________
 
-    constructor(jsonData: DevLogJSON) {
+    constructor(slug: string, jsonData: DevLogJSON) {
         this.data = jsonData;
+        this.slug = slug;
+    }
+
+    // ___________________________________________________________________
+
+    returnSlug(): string {
+        return this.slug;
     }
 
     // ___________________________________________________________________
@@ -134,6 +153,21 @@ export default class DevLogLoader {
 
     returnReadingTimeMinutes(): number {
         return Math.ceil(this.countReadingTimeSeconds() / 60);
+    }
+
+    // ___________________________________________________________________
+
+    toProps(): DevLogEntryPropsPlain {
+        return {
+        slug: this.slug,
+        title: this.returnTitle(),
+        date: this.returnDate(),
+        readingTime: this.returnReadingTimeMinutes(),
+        badges: this.returnBadges(),
+        content: this.returnContent(),
+        description: this.returnDescription(),
+        overviewPhoto: this.returnOverviewPhoto()
+        };
     }
 
 }

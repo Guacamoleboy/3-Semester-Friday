@@ -5,16 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Utils {
+public class Util {
 
     // Attributes
 
-    // ______________________________________________________________
+    // _________________________________________________________________
 
     public static String getPropertyValue(String propName, String resourceName)  {
-
-        try (InputStream is = Utils.class.getClassLoader().getResourceAsStream(resourceName)) {
-
+        try (InputStream is = Util.class.getClassLoader().getResourceAsStream(resourceName)) {
             Properties prop = new Properties();
             prop.load(is);
 
@@ -24,10 +22,9 @@ public class Utils {
             } else {
                 throw new ApiException(500, String.format("Property %s not found in %s", propName, resourceName));
             }
-
         } catch (IOException ex) {
             throw new ApiException(500, String.format("Could not read property %s.", propName));
         }
-
     }
+
 }

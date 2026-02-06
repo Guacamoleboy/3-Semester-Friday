@@ -1,15 +1,13 @@
 "use client";
 
 import Tooltip from "@/components/ui/Tooltip";
+import ConnectionDots from "@/components/ui/ConnectionDots"
 
 export default function IntroBar() {
   return (
     <>
 
-    <div className="con-dot-wrapper">    
-        <div className="con-dot"></div>
-        <div className="con-dot"></div>
-    </div>
+    <ConnectionDots />
 
     <div className="moodmap-intro-bar moodmap-flex">
 

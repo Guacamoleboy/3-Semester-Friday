@@ -9,9 +9,9 @@ export const metadata = {
   description:
     'MoodMap hjælper med at overvåge og forstå mental sundhed, så vi sammen kan tage bedre beslutninger for dit velbefindende.',
     icons: {
-    icon: 'images/logo/logo-icon.png',           
-    shortcut: 'images/logo/logo-icon-16.png', 
-    apple: 'images/logo/logo-icon.png', 
+    icon: '/images/logo/logo-icon.png',           
+    shortcut: '/images/logo/logo-icon-16.png', 
+    apple: '/images/logo/logo-icon.png', 
   },
 };
 

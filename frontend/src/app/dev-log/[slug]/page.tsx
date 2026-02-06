@@ -1,28 +1,32 @@
-import { readingTimeMinutes } from "@/libs/dev-log/readingTime";
 import DevLogEntry from "@/components/dev-log/DevLogEntry";
+import DevLogLoader from "@/libs/dev-log/devlogLoader";
+import DevLogHeader from "@/components/dev-log/DevLogHeader";
+import ReturnButton from "@/components/ui/ReturnButton";
+import ConnectionDots from "@/components/ui/ConnectionDots"
 import { notFound } from "next/navigation";
-import type { DevLogEntryProps } from "@/components/dev-log/DevLogEntry";
 
 interface DevLogPageProps {
   params: { slug: string };
 }
 
 export default async function DevLogDayPage({ params }: DevLogPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
-  let entry: DevLogEntryProps;
+  let loader: DevLogLoader;
+
   try {
-    const module = await import(`@/data/devlog/${slug}.json`);
-    entry = module.default as DevLogEntryProps;
+    const jsonData = await import(`@/data/devlog/${slug}.json`);
+    loader = new DevLogLoader(slug, jsonData.default);
   } catch {
     return notFound();
   }
 
-  const readingTime = readingTimeMinutes({ content: entry.content });
-
   return (
     <section className="dev-log-section">
-      <DevLogEntry {...entry} readingTime={readingTime} />
+      <ReturnButton to="/dev-log" />
+      <DevLogHeader slug={slug}/>
+      <ConnectionDots />
+      <DevLogEntry loader={loader.toProps()} />
     </section>
   );
 }

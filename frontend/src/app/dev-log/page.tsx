@@ -1,34 +1,25 @@
-"use client";
-
-import DevLogUI from "@/components/dev-log/DevLogUI";
 import DevLogOverview from "@/components/dev-log/DevLogOverview";
-import DevLogHeader from "@/components/dev-log/DevLogHeader";
-import ReturnButton from "@/components/ui/ReturnButton";
+import DevLogLoader from "@/libs/dev-log/devlogLoader";
 import day1Json from "@/data/devlog/day1.json";
 import day2Json from "@/data/devlog/day2.json";
-import DevLogLoader from "@/libs/dev-log/devlogLoader";
+import DevLogHeader from "@/components/dev-log/DevLogHeader";
+import ReturnButton from "@/components/ui/ReturnButton";
 
 export default function DevLogPage() {
+  
+  // Loader setup
+  const loaders = [
+    new DevLogLoader("day1", day1Json).toProps(),
+    new DevLogLoader("day2", day2Json).toProps(),
+  ];
 
-  // Initial Load
-  const day1Loader = new DevLogLoader(day1Json);
-  const day2Loader = new DevLogLoader(day2Json);
-
-  // Setup
-  const loaders = [day1Loader, day2Loader];
-
-  // Render
+  // Visuals & Component render for /dev-log
   return (
-    <>
-
-      <section className="dev-log-section">
-
-        <ReturnButton to="/" /> {}
-        <DevLogHeader />
-        <DevLogOverview loaders={loaders} />
-
-      </section> 
-
-    </>
+    <section className="dev-log-section">
+      <ReturnButton to="/" />
+      <DevLogHeader />
+      <DevLogOverview loaders={loaders} />
+    </section>
   );
+
 }

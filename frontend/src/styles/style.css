@@ -114,7 +114,6 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     scrollbar-width: none;
@@ -538,6 +537,12 @@ body::-webkit-scrollbar {
     margin: 2rem 0;
 }
 
+.section-divider-devlog {
+    border: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    margin: 2rem 10rem 4rem;
+}
+
 /* ################################################################# */
 /*                           6.0 DEV-LOG                             */
 /* ################################################################# */
@@ -549,36 +554,23 @@ body::-webkit-scrollbar {
     color: #FFF;
 }
 
-.dev-log-section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-    linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.015) 2px,
-        transparent 1px
-    ),
-    linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.015) 2px,
-        transparent 1px
-    );
-    background-size: 3rem 3rem;
-    animation: grid-drift 10s linear infinite;
+.dev-log-section a {
+    text-decoration: none !important;
+    color: inherit;
+    z-index: 1;
 }
 
 .dev-log-content-wrapper {
     position: relative;
     z-index: 1;
     border-radius: 0.5rem;
-    background-color: #7a779b;
+    background-color: rgba(104, 103, 122, 0.15);
     padding: 2rem 2rem;
     display: flex;
     flex-direction: column;
     box-shadow: 6px 6px 1px rgba(0,0,0,0.3);
     border: 4px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
 }
 
 .dev-log-meta {
