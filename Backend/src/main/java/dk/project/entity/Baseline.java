@@ -1,19 +1,11 @@
 package dk.project.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import java.sql.Timestamp;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 @Table(name = "baseline")
-public class Baseline {
+public class Baseline extends AbstractEntity {
 
     // @ManyToOne | Many (Baseline) | One (Client)
     // @ManyToOne | Many (Baseline) | One (Diagnose)
