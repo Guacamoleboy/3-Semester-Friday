@@ -702,6 +702,8 @@ body::-webkit-scrollbar {
     border-radius: 6px;
     margin: 0.5rem 0;
     opacity: 0.95;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 1px rgba(0,0,0,0.5);
 }
 
 .dev-log-entry-body .dev-log-img.extra-tiny {
@@ -726,10 +728,6 @@ body::-webkit-scrollbar {
     width: 75%;
     border-radius: 6px;
     opacity: 0.95;
-}
-
-.dev-log-entry-body img {
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dev-log-code {
@@ -815,7 +813,6 @@ body::-webkit-scrollbar {
 
 .dev-log-overview-card-desc span:first-child {
     font-size: 1.2rem;
-    min-height: 3rem;
 }
 
 .dev-log-overview-card-desc span:last-child {
