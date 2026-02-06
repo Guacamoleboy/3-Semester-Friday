@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Table(name = "side_effects")
-public class SideEffect {
+public class SideEffect{
 
     // Attributes
     @Id

@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 @Table(name = "questions",
 uniqueConstraints = @UniqueConstraint(columnNames = {"diagnosis_id", "medication_id", "title"}))
-public class Question {
+public class Question{
 
     // byte -> smallint in PostgreSQL (-128 | +127)
     // 1-6 value as default (instantiated)
