@@ -1,0 +1,92 @@
+{
+  "date": "06/02-2026",
+  "title": "JPL, JPQL & [slug]",
+  "description": "Generisk implemtering af hhv frontend og backend samt JPL / JPQL CRUD operations.",
+  "overviewPhoto": "/images/devlog/day3_1.png",
+  "badges": ["Backend", "Frontend", "Setup"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Frontend"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg startede ud med at kigge på min frontend kode, da jeg ønskede at lave dev-log generisk via Next.js implementering af [slug] og dens egen page.tsx fil ",
+        "Det var relativt simpelt. page.tsx skulle bare sættes op uden use client, og så skal slug loades korrekt - selvfølgelig. ",
+        "Det største problem var at få sat type korrekt op, og få sendt props videre fra /dev-log til /dev-log/[slug], men det lykkedes. "
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Nu kan jeg bare oprette en ny .json fil, og så opdaterer alt pr automatik uden jeg skal gøre noget."
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day3_5.png",
+      "alt": "Dev log screenshot – Slug Setup - Day 3"
+    },
+    {
+      "type": "h3",
+      "text": "Backend"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Målet var i dag at få lavet alle Entity klasserne, og få sat Service op, så jeg fremover har korrekt arkitektur på plads først. ",
+        "Jeg synes næsten det vigtigste - for mig - er at skabe overblik så ikke det ender i spaghetti. Derfor deler jeg det op i lag, og loader det den vej igennem."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Mine entities er lavet ud fra mit .sql som jeg lavede ifm brainstorm til første Feedback om mandagen. Som det fremgår herunder har jeg dannet mig en idé til hvordan det kunne laves. ",
+        "Dette skaber så grundlaget for entities klasserne. Noget er ændret, og noget er ikke."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day3_1.png",
+      "alt": "Dev log screenshot – Entity & Service (1) - Day 3"
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day3_3.png",
+      "alt": "Dev log screenshot – Entity & Service (2) - Day 3"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Da det var sat op, kiggede jeg lidt på HibernateConfig da jeg havde problemer med CREATE. Herudover delte jeg HibernateConfig ud i forskellige klasser som har hvert deres ansvar. ",
+        "Dermed kan jeg sikre mig, at det ikke bliver spaghetti."
+      ]
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day3_2.png",
+      "alt": "Dev log screenshot – HibernateConfig - Day 3"
+    },
+    {
+      "type": "h3",
+      "text": "Til sidst..."
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg sluttede dagen ud med at lave diverse metoder generiske for nemhedens skyld i fremtiden. Jeg gør bl.a brug af Supplier fra java.util og <T> for at loade Objekter dynamisk ifm CRUD. ",
+        "Jeg synes jeg fik lavet meget, og jeg fik lavet det som jeg havde planlagt jeg skulle lave."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day3_6.png",
+      "alt": "Dev log screenshot – Discord - Day 3"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg fik opdateret og gemt information på Discord så jeg selv - og de øvrige medlemmer har et opslag lige ved hånden. Jeg synes dagen gik godt, og jeg kom fint i mål med hvad jeg havde planlagt jeg ville lave."
+      ]
+    }
+  ]
+}
