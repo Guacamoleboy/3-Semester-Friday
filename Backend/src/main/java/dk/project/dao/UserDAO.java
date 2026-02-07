@@ -65,6 +65,7 @@ public class UserDAO extends EntityManagerDAO {
     }
 
     // ________________________________________________________________________
+    // Generic update method for a single column
 
     public int updateUserColumn(UUID userId, String column, Object value) {
 

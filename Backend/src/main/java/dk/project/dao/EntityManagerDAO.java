@@ -24,18 +24,13 @@ public class EntityManagerDAO {
 
     protected <T> T executeQuery(Supplier<T> query) {
         try {
-            // begin()
             if (!em.getTransaction().isActive()) {
                 em.getTransaction().begin();
             }
-            // Query (JPA / JPQL)
             T result = query.get();
-            // commit()
             em.getTransaction().commit();
-            // Return T
             return result;
         } catch (RuntimeException e) {
-            // Fallback
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
