@@ -71,6 +71,12 @@ public class UserService {
 
     // ____________________________________________________________
 
+    public Role getRoleForUser(UUID userId){
+        return userDAO.getRoleForUser(userId);
+    }
+
+    // ____________________________________________________________
+
     public int updateUserColumn(UUID userId, String column, Object value) {
         if ("role".equals(column) && value != null && !(value instanceof Role)) {
             throw new IllegalArgumentException("Value for 'role' skal være et Role objekt");

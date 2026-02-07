@@ -1,5 +1,6 @@
 package dk.project.dao;
 
+import dk.project.entity.Role;
 import dk.project.entity.User;
 import jakarta.persistence.EntityManager;
 import java.util.List;
@@ -62,6 +63,15 @@ public class UserDAO extends EntityManagerDAO {
 
     public User updateUser(User user) {
         return executeQuery(() -> em.merge(user));
+    }
+
+    // ________________________________________________________________________
+
+    public Role getRoleForUser(UUID userId) {
+        return executeQuery(() -> {
+            User user = em.find(User.class, userId);
+            return user.getRole();
+        });
     }
 
     // ________________________________________________________________________

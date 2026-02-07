@@ -38,8 +38,7 @@ public class BaselineIndividual {
     private Question question;
 
     @ManyToMany
-    @JoinTable(
-    name = "baseline_individual_side_effects",
+    @JoinTable(name = "baseline_individual_side_effects",
     joinColumns = @JoinColumn(name = "baseline_individual_id"),
     inverseJoinColumns = @JoinColumn(name = "side_effect_id"))
     private List<SideEffect> sideEffects = new ArrayList<>();

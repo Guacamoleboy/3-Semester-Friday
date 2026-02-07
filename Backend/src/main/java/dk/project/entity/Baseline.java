@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -41,6 +43,9 @@ public class Baseline {
 
     @Column(name = "last_updated")
     private Timestamp lastUpdated;
+
+    @OneToMany(mappedBy = "baseline", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<BaselineIndividual> baselineIndividuals = new ArrayList<>();
 
     // __________________________________________________________
     // First Commit
