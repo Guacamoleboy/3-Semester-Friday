@@ -1,9 +1,9 @@
-<h1 style="color:red;">MoodMap</h1>
+<h1>$${\color{red}Welcome \space \color{lightblue}To \space \color{orange}Stackoverflow}$$</h1>
 <h3>Keeping track of YOUR mood.</h3>
 
 ---
 
-<h1>MoodMap's Mission</h1>
+<h3>MoodMap's Mission</h3>
 
 <p style="margin-bottom: 2rem;">
   Data tracking for Clinicians and Clients.
