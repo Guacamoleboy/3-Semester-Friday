@@ -1,16 +1,11 @@
 package dk.project.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
 @Table(name = "questions",
 uniqueConstraints = @UniqueConstraint(columnNames = {"diagnosis_id", "medication_id", "title"}))
 public class Question{

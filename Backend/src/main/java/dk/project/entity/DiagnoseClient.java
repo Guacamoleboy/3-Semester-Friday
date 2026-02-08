@@ -1,18 +1,13 @@
 package dk.project.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Timestamp;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
 @Table(name = "diagnose_client",
 uniqueConstraints = @UniqueConstraint(columnNames = {"client_id", "diagnose_id"}))
 public class DiagnoseClient {

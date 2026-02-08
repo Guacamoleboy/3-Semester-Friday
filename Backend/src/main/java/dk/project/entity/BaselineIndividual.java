@@ -1,19 +1,15 @@
 package dk.project.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
 @Table(name = "baseline_individual",
 uniqueConstraints = @UniqueConstraint(columnNames = {"baseline_id", "question_id"}))
 public class BaselineIndividual {
