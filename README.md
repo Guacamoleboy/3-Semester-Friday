@@ -4,8 +4,10 @@
 
 ---
 
-<h3>MoodMap's Mission</h3>
+<h3>$\color{#392580}\large{\textbf{MoodMaps Mission}}$</h3>
 
-<p style="margin-bottom: 2rem;">
-  Data tracking for Clinicians and Clients.
+<p>
+  $\color{Green}{\textsf{Normal, colored text}}$
+  $\color{Blue}{\textbf{Normal, Bold and colored text}}$
+  $\color{#999999}\large{\textbf{Data tracking for Clinicians and Clients.}}$
 </p>
