@@ -24,6 +24,7 @@
   <br>
   $\color{#999999}\large{\textbf{
     Myself:
+  }}$
 </p>
 
 ---
@@ -54,6 +55,7 @@
   With MoodMap the clinician and the program itself is able to track if something is off track. This provides information to the clinician and to the client. MoodMap will provide suggested actions.
   <br>
   MoodMap also provides Training Schedules and exercises for the user to complete over a given timeline specified by the Clinician.
+  }}$
 </p>
 
 ---
