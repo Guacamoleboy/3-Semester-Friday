@@ -1,4 +1,4 @@
-<h1>${{\color{Goldenrod}\Huge{\textsf{  Hi\ there\ \}}}}\$</h1>
+<h1>$\color{Orange}\Huge{\textbf{Huge, Bold and colored text}}$</h1>
 <h3>Keeping track of YOUR mood.</h3>
 
 ---
