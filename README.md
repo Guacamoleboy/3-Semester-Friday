@@ -4,9 +4,6 @@
 
 _____________________________________________
 
-# What's MoodMaps mission?
+<h1>Header</h1>
 
-If you've ever been to a clinician - either mental or physical - you're often left alone untill the next appointment.\n
-No tracking, no side effect tracking, no schemas and worst of all... NO DATA!\n
-
-Data 
+<p>Text</p>
