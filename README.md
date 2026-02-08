@@ -1,9 +1,15 @@
-# MoodMap
+<h1>MoodMap</h1>
 
-## Keeping track of YOUR mood.
+<h3>Keeping track of YOUR mood.</h3>
 
 _____________________________________________
 
-<h1>Header</h1>
+<h1>MoodMaps mission</h1>
 
-<p>Text</p>
+<p style="margin-bottom: 1rem">
+  Data tracking for Clinicians and Clients.
+</p>
+
+<p style="margin-bottom: 1rem">
+  Data tracking for Clinicians and Clients.
+</p>
