@@ -669,6 +669,18 @@ body::-webkit-scrollbar {
     background-color: rgb(207, 13, 13)
 }
 
+.dev-log-badge.reactjs {
+    background-color: rgb(214, 48, 48)
+}
+
+.dev-log-badge.next\.js {
+    background-color: rgb(91, 17, 211)
+}
+
+.dev-log-badge.java {
+    background-color: rgb(28, 54, 202)
+}
+
 .dev-log-badge.components {
     background-color: rgb(10, 155, 34)
 }

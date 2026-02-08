@@ -1,9 +1,9 @@
 {
   "date": "06/02-2026",
-  "title": "JPL, JPQL & [slug]",
+  "title": "JPL, JPQL, DTO & [slug]",
   "description": "Generisk implemtering af hhv frontend og backend samt JPL / JPQL CRUD operations.",
   "overviewPhoto": "/images/devlog/day3_1.png",
-  "badges": ["Backend", "Frontend", "Setup"],
+  "badges": ["Backend", "Frontend", "Setup", "Next.js", "Java"],
   "content": [
     {
       "type": "h3",
@@ -12,7 +12,7 @@
     {
       "type": "p",
       "text": [
-        "Jeg startede ud med at kigge på min frontend kode, da jeg ønskede at lave dev-log generisk via Next.js implementering af [slug] og dens egen page.tsx fil ",
+        "Jeg startede ud med at kigge på min frontend kode, da jeg ønskede at lave dev-log generisk via Next.js implementering af [slug] og dens egen page.tsx fil. ",
         "Det var relativt simpelt. page.tsx skulle bare sættes op uden use client, og så skal slug loades korrekt - selvfølgelig. ",
         "Det største problem var at få sat type korrekt op, og få sendt props videre fra /dev-log til /dev-log/[slug], men det lykkedes. "
       ]
@@ -68,13 +68,46 @@
     },
     {
       "type": "h3",
+      "text": "DTO & Next.js relationer hertil"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg har ifm at vi til ReactJS (jeg bruger Next.js) sat DTOs op så vi kan sende og modtage JSON korrekt. Jeg har gjort det explicit - forstået på den måde - at jeg i mine DTOs har gjort JSON ",
+        "felternes navne explicitte. Fx hvis vi skal bruge medication_id i QuestionDTO eller lign, så bruger jeg klassens navn efterfulgt af hvad vi skal bruge. På den måde er der ikke forvirring omkring ",
+        "om det er medication_id fra MedicationDTO eller om det er medication_id fra Question da vi bruger question_medication_id."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day3_8.png",
+      "alt": "Dev log screenshot – DTO Class Preview - Day 3"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg gjorde tilsvarende for alle øvrige klasser, og så ændrede jeg lige @Getter, @Setter osv til @Data så jeg slipper for 4 linjer da @Data har hvad jeg skal bruge. Det kom så til at se således ud:"
+      ]
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day3_7.png",
+      "alt": "Dev log screenshot – DTOs - Day 3"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Der sendes selvfølgelig kun korrekt data med - og SIKKER data... For ikke at nævne at objekter defineres som objekter. Fx Role roleId hentes som Integer fremfor int."
+      ]
+    },
+    {
+      "type": "h3",
       "text": "Til sidst..."
     },
     {
       "type": "p",
       "text": [
-        "Jeg sluttede dagen ud med at lave diverse metoder generiske for nemhedens skyld i fremtiden. Jeg gør bl.a brug af Supplier fra java.util og <T> for at loade Objekter dynamisk ifm CRUD. ",
-        "Jeg synes jeg fik lavet meget, og jeg fik lavet det som jeg havde planlagt jeg skulle lave."
+        "Jeg sluttede dagen ud med at lave diverse metoder generiske for nemhedens skyld i fremtiden. Jeg gør bl.a brug af Supplier fra java.util og <T> for at loade Objekter dynamisk ifm CRUD. "
       ]
     },
     {
