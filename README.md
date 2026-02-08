@@ -1,4 +1,4 @@
-<h1>{\color{red}Welcome \space \color{lightblue}To \space \color{orange}Stackoverflow}</h1>
+<h1>${{\color{Goldenrod}\Huge{\textsf{  Hi\ there\ \}}}}\$</h1>
 <h3>Keeping track of YOUR mood.</h3>
 
 ---
