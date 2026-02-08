@@ -15,12 +15,11 @@
 
 Providing data directly to your clinician and yourself to show **real-time progress**.
 
-<div style="border-left:5px solid #FF0000; padding:10px; background-color:#f5f5f5; color:#333;">
-<strong>The Problem:</strong><br>
-If you've been to a clinician — whether for physical or mental health — you're often left alone for long periods between checkups. After months, you're asked: <em>"How do you feel?"</em> or <em>"Any improvements?"</em><br><br>
-This is an <strong>"on the spot"</strong> question. Patients describe how they <em>think</em> they've progressed, which is often inaccurate. This lack of objective data can lead to incorrect medication, inefficient follow-ups, and long-term consequences.
-</div>
-
+**The Problem:**
+>
+> If you've been to a clinician — whether for physical or mental health — you're often left alone for long periods between checkups. After months, you're asked: *"How do you feel?"* or *"Any improvements?"*
+>
+> This is an **"on the spot"** question. Patients describe how they *think* they've progressed, which is often inaccurate. This lack of objective data can lead to incorrect medication, inefficient follow-ups, and long-term consequences.
 
 ---
 
