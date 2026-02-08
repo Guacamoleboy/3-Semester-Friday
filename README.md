@@ -1,11 +1,12 @@
 # MoodMap
 
-## Text
+## Keeping track of YOUR mood.
 
 _____________________________________________
 
-# Text
+# What's MoodMaps mission?
 
-## Text
+### If you've ever been to a clinician - either mental or physical - you're often left alone untill the next appointment.\
+No tracking, no side effect tracking, no schemas and worst of all... NO DATA!
 
-### Text
+Data 
