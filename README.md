@@ -7,7 +7,6 @@
 <h3>$\color{#392580}\large{\textbf{MoodMaps Mission}}$</h3>
 
 <p>
-  $\color{Green}{\textsf{Normal, colored text}}$
-  $\color{Blue}{\textbf{Normal, Bold and colored text}}$
-  $\color{#999999}\large{\textbf{Data tracking for Clinicians and Clients.}}$
+  $\color{#999999}\large{\textbf{Data tracking for Clinicians and Clients.}}$<br><br>
+  Noget
 </p>
