@@ -31,8 +31,10 @@ Providing data directly to your clinician and yourself to show **real-time progr
 5. **The Error:** The client, relying on memory, says *"It's been alright"*, forgetting side effects or "lows" that occurred weeks ago.
 6. **Result:** The clinician extends the prescription based on incomplete information, even though the client might still be clinically depressed or suffering side effects.
 
+---
 
-**With MoodMap**
+### With MoodMap
+
 * **Data:** No more guessing during reviews.
 * **Actions:** Automated insights based on trends.
 * **Schedules:** Exercises specified by your clinician.
