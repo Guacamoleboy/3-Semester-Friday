@@ -6,7 +6,7 @@ _____________________________________________
 
 <h1>MoodMaps mission</h1>
 
-<p style="margin-bottom: 1rem">
+<p style="margin-bottom: 4rem">
   Data tracking for Clinicians and Clients.
 </p>
 
