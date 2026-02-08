@@ -15,10 +15,9 @@
 
 Providing data directly to your clinician and yourself to show **real-time progress**.
 
-**The Problem:**
+> **The Problem:**
 >
 > If you've been to a clinician — whether for physical or mental health — you're often left alone for long periods between checkups. After months, you're asked: *"How do you feel?"* or *"Any improvements?"*
->
 > This is an **"on the spot"** question. Patients describe how they *think* they've progressed, which is often inaccurate. This lack of objective data can lead to incorrect medication, inefficient follow-ups, and long-term consequences.
 
 ---
