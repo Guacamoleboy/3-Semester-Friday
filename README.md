@@ -14,13 +14,12 @@
   $\color{#999999}\large{\textbf{
     Providing data directly to your clinician and yourself to show real-time progress!
   }}$
-  <br>
-  $\color{#999999}\large{\textbf{
-    If you've been to a clinician - whether it's physic or mental - you're left alone for a long period of time untill your next checkup. 
-    After a few months you're at a check up and they ask you "How do you feel..?" or "Any improvements in movement..?" etc. 
+  <br><br>
+  $\color{#999999}\large{\textbf{If you've been to a clinician - whether it's physic or mental - you're left alone for a long period of time}}$
+  $\color{#999999}\large{\textbf{untill your next checkup. After a few months you're at a check up and they ask you}}$ 
+  $\color{#999999}\large{\textbf{After a few months you're at a check up and they ask you "How do you feel..?" or "Any improvements in movement..?" etc.}}$  
     This is a "on the spot" question - meaning - the person has to describe how they THINK the progress has went. 
     This isn't optimal and often causes wrong medication, follow ups, and consequences for the individual person.
-  }}$
   <br>
   $\color{#999999}\large{\textbf{
     Myself:
