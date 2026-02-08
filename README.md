@@ -1,4 +1,4 @@
-<h1>$\color{Orange}\Huge{\textbf{Huge, Bold and colored text}}$</h1>
+<h1>$\color{Purple}\Huge{\textbf{MoodMap}}$</h1>
 <h3>Keeping track of YOUR mood.</h3>
 
 ---
