@@ -1,10 +1,10 @@
 <div align="LEFT">
 
-# 🧠 MoodMap
+# MoodMap
 **Keeping track of YOUR mood**
 
-[![Visit MoodMap](https://img.shields.io/badge/Visit-MoodMap-392580?style=for-the-badge&logo=appveyor&logoColor=white)](http://moodmap.guacamoleboy.dk)
-[![Visit Devlog](https://img.shields.io/badge/Visit-MoodMap-392580?style=for-the-badge&logo=appveyor&logoColor=white)](http://moodmap.guacamoleboy.dk/dev-log)
+[![Visit MoodMap](https://img.shields.io/badge/Visit-MoodMap-392580?style=for-the-badge&color=white)](http://moodmap.guacamoleboy.dk)
+[![Visit Devlog](https://img.shields.io/badge/Visit-MoodMap-392580?style=for-the-badge&color=white)](http://moodmap.guacamoleboy.dk/dev-log)
 
 </div>
 
