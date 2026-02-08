@@ -1,8 +1,9 @@
-<div align="left">
-# MoodMap
+<div align="center">
+
+# 🧠 MoodMap
 **Keeping track of YOUR mood**
 
-[![Visit MoodMap](https://img.shields.io)](http://moodmap.guacamoleboy.dk)
+[![Visit MoodMap](https://img.shields.io/badge/Visit-MoodMap-purple?style=for-the-badge)](http://moodmap.guacamoleboy.dk)
 
 </div>
 
