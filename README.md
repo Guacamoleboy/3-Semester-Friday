@@ -1,92 +1,55 @@
-<h1>$\color{#392580}\Huge{\textbf{MoodMap}}$</h1>
+<div align="center">
 
-<h3>$\color{#999999}\large{\textbf{Keeping track of YOUR mood.}}$</h3>
+# 🧠 MoodMap
+**Keeping track of YOUR mood**
 
----
+[![Dev Log](https://img.shields.io)](http://moodmap.guacamoleboy.dk)
 
-<h3>$\color{#392580}\large{\textbf{MoodMaps Mission}}$</h3>
-
-<p>
-  $\color{#999999}\large{\textbf{
-    Data tracking for Clinicians and Clients.
-  }}$
-  <br><br>
-  $\color{#999999}\large{\textbf{
-    Providing data directly to your clinician and yourself to show real-time progress!
-  }}$
-  <br><br>
-  $\color{#999999}\large{\textbf{If you've been to a clinician - whether it's physic or mental - you're left alone for a long period of time}}$
-  $\color{#999999}\large{\textbf{untill your next checkup. After a few months you're at a check up and they ask you}}$ 
-  $\color{#999999}\large{\textbf{After a few months you're at a check up and they ask you "How do you feel..?"}}$
-  $\color{#999999}\large{\textbf{or "Any improvements in movement..?" etc. }}$  
-  $\color{#999999}\large{\textbf{This is a "on the spot" question - meaning - the person has to describe how they THINK the progress has went.}}$  
-  $\color{#999999}\large{\textbf{This isn't optimal and often causes wrong medication, follow ups, and consequences for the individual person.}}$
-  <br>
-  $\color{#999999}\large{\textbf{
-    Myself:
-  }}$
-</p>
+</div>
 
 ---
 
-<h3>$\color{#392580}\large{\textbf{Use Case}}$</h3>
+### 🎯 MoodMap's Mission
+**Data tracking for Clinicians and Clients.**
 
-<p>
-  $\color{#999999}\large{\textbf{
-  - 1) A client is diagnosed with Depression.
-  }}$
-  <br>
-  - 2) The clinician tells the Client to take anti-depressants for 3 months.
-  <br>
-  - 3) Client takes the medication and after 3 months is set for a review.
-  <br>
-  - 4) Client has no logging, data, side effect schema or anything that he - or the clinician - can use to see how the actual progress has been
-  <br>
-  - 5) Client is at review and the doctor asks "How has it been..?". Client doesn't really know other than maybe feeling slightly better. Client says it's been alright - but in fact the client isn't well.
-  <br>
-  - 6) Clinician tells the client to keep using the anti-depressants for another 3 months.
-  <br><br>
-  Now.. What's the issue?
-  <br>
-  Client doesn't really "know" the progress, pre and post medication statements. Client might feel better - but not up to par. Clinician thinks everything's fine. In fact the Client still is depressed. Just not as much as before.
-  <br>
-  Client might even have Side Effects that the Client has forgotten to mention on the day. Or maybe didn't notice as Side Effects as they went away after some time.
-  <br><br>
-  With MoodMap the clinician and the program itself is able to track if something is off track. This provides information to the clinician and to the client. MoodMap will provide suggested actions.
-  <br>
-  MoodMap also provides Training Schedules and exercises for the user to complete over a given timeline specified by the Clinician.
-  }}$
-</p>
+Providing data directly to your clinician and yourself to show **real-time progress**.
+
+> **The Problem:** 
+> If you've been to a clinician — whether for physical or mental health — you're often left alone for long periods between checkups. After months, you're asked: *"How do you feel?"* or *"Any improvements?"*
+>
+> This is an **"on the spot"** question. Patients describe how they *think* they've progressed, which is often inaccurate. This lack of objective data can lead to incorrect medication, inefficient follow-ups, and long-term consequences.
 
 ---
 
-<h3>$\color{#392580}\large{\textbf{Links}}$</h3>
+### 📋 Use Case: The "Memory Gap"
 
-<p>
-  $\color{#999999}\large{\textbf{
-  Development Log
-  <br>
-  moodmap.guacamoleboy.dk/dev-log
-  }}$
-</p>
+1. **Diagnosis:** A client is diagnosed with depression.
+2. **Prescription:** The clinician prescribes anti-depressants for 3 months.
+3. **The Void:** Client takes the medication but has no system for logging daily moods or side effects.
+4. **The Review:** After 3 months, the doctor asks *"How has it been?"*.
+5. **The Error:** The client, relying on memory, says *"It's been alright"*, forgetting side effects or "lows" that occurred weeks ago.
+6. **Result:** The clinician extends the prescription based on incomplete information, even though the client might still be clinically depressed or suffering side effects.
+
+**With MoodMap**, the clinician and the program track if something is off track in real-time. It provides:
+*   ✅ **Objective Data:** No more guessing during reviews.
+*   ✅ **Suggested Actions:** Automated insights based on trends.
+*   ✅ **Training Schedules:** Exercises specified by your clinician.
 
 ---
 
-<h3>$\color{#392580}\large{\textbf{Development}}$</h3>
+### 🛠 Development & Tech Stack
 
-<p>
-  $\color{#999999}\large{\textbf{
-  Developed in:
-  <br><br>
-  • Java
-  <br>
-  • Next.js
-  Developed By:
-  <br><br>
-  Jonas Meinert Larsen
-  <br>
-  Guacamoleboy
-  <br>
-  cph-jl325@stud.ek.dk
-  }}$
-</p>
+| Component | Technology |
+| :--- | :--- |
+| **Backend** | Java |
+| **Frontend** | Next.js |
+| **Dev Log** | [moodmap.guacamoleboy.dk/dev-log](http://moodmap.guacamoleboy.dk) |
+
+**Developed By:**
+**Jonas Meinert Larsen** (Guacamoleboy)
+📧 [cph-jl325@stud.ek.dk](mailto:cph-jl325@stud.ek.dk)
+
+---
+<div align="center">
+<sub>MoodMap - Bridging the gap in clinical recovery.</sub>
+</div>
