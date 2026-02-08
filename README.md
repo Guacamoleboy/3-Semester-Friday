@@ -49,7 +49,9 @@ Providing data directly to your clinician and yourself to show **real-time progr
 | **Dev Log** | [![Visit Devlog](https://img.shields.io/badge/Visit%20Devlog-ffffff?style=for-the-badge&color=392580)](http://moodmap.guacamoleboy.dk/dev-log) |
 
 **Developed By:**
+
 **Jonas Meinert Larsen** (Guacamoleboy)
+
 **cph-jl325@stud.ek.dk**
 
 ---
