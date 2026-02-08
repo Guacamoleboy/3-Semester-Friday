@@ -3,8 +3,8 @@
 # MoodMap
 **Keeping track of YOUR mood**
 
-[![Visit MoodMap](https://img.shields.io/badge/Visit-MoodMap-392580?style=for-the-badge&color=white)](http://moodmap.guacamoleboy.dk)
-[![Visit Devlog](https://img.shields.io/badge/Visit-MoodMap-392580?style=for-the-badge&color=white)](http://moodmap.guacamoleboy.dk/dev-log)
+[![Visit MoodMap](https://img.shields.io/badge/Visit%20MoodMap-ffffff?style=for-the-badge&labelColor=392580)](http://moodmap.guacamoleboy.dk)
+[![Visit Devlog](https://img.shields.io/badge/Visit%20Devlog-ffffff?style=for-the-badge&labelColor=392580)](http://moodmap.guacamoleboy.dk/dev-log)
 
 </div>
 
