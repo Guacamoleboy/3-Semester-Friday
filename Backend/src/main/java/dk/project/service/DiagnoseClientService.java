@@ -21,41 +21,41 @@ public class DiagnoseClientService {
     public void createDiagnoseClient(DiagnoseClient diagnoseClient){
         validateNotEmpty(diagnoseClient.getClient(), "DiagnoseClient.client");
         validateNotEmpty(diagnoseClient.getDiagnose(), "DiagnoseClient.diagnose");
-        diagnoseClientDAO.createDiagnoseClient(diagnoseClient);
+        diagnoseClientDAO.create(diagnoseClient);
     }
 
     // ________________________________________
 
-    public void updateDiagnoseClient(DiagnoseClient diagnoseClientc){
-        validateNotEmpty(diagnoseClientc.getClient(), "DiagnoseClient.client");
-        validateNotEmpty(diagnoseClientc.getDiagnose(), "DiagnoseClient.diagnose");
-        diagnoseClientDAO.updateDiagnoseClient(diagnoseClientc);
+    public void updateDiagnoseClient(DiagnoseClient diagnoseClient){
+        validateNotEmpty(diagnoseClient.getClient(), "DiagnoseClient.client");
+        validateNotEmpty(diagnoseClient.getDiagnose(), "DiagnoseClient.diagnose");
+        diagnoseClientDAO.update(diagnoseClient);
     }
 
     // ________________________________________
 
-    public void deleteDiagnoseClient(int id){
+    public void deleteDiagnoseClient(Object id){
         validateNotEmpty(id, "DiagnoseClient.id");
-        diagnoseClientDAO.deleteDiagnoseClient(id);
+        diagnoseClientDAO.deleteById(id);
     }
 
     // ________________________________________
 
-    public int deleteAllDiagnoseClients(){
-        return diagnoseClientDAO.deleteAllDiagnoseClients();
+    public void deleteAllDiagnoseClients(){
+        diagnoseClientDAO.deleteAll();
     }
 
     // ________________________________________
 
-    public DiagnoseClient getDiagnoseClientById(int id){
+    public DiagnoseClient getDiagnoseClientById(Object id){
         validateNotEmpty(id, "DiagnoseClient.id");
-        return diagnoseClientDAO.getDiagnoseClientById(id);
+        return diagnoseClientDAO.getById(id);
     }
 
     // ________________________________________
 
     public List<DiagnoseClient> getAllDiagnoseClients(){
-        List<DiagnoseClient> list = diagnoseClientDAO.getAllDiagnoseClients();
+        List<DiagnoseClient> list = diagnoseClientDAO.getAll();
         return list != null ? list : null;
     }
 

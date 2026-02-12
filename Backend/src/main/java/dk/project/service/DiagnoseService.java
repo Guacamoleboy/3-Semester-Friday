@@ -20,34 +20,34 @@ public class DiagnoseService {
 
     public void createDiagnose(Diagnose diagnose){
         validateNotEmpty(diagnose.getName(), "Diagnose.name");
-        diagnoseDAO.createDiagnose(diagnose);
+        diagnoseDAO.create(diagnose);
     }
 
     // _________________________________________________
 
     public void updateDiagnose(Diagnose diagnose){
         validateNotEmpty(diagnose.getName(), "Diagnose.name");
-        diagnoseDAO.updateDiagnose(diagnose);
+        diagnoseDAO.update(diagnose);
     }
 
     // _________________________________________________
 
-    public void deleteDiagnose(int id){
+    public void deleteDiagnose(Object id){
         validateNotEmpty(id, "Diagnose.id");
-        diagnoseDAO.deleteDiagnose(id);
+        diagnoseDAO.deleteById(id);
     }
 
     // _________________________________________________
 
-    public int deleteAllDiagnoses(){
-        return diagnoseDAO.deleteAllDiagnoses();
+    public void deleteAllDiagnoses(){
+        diagnoseDAO.deleteAll();
     }
 
     // _________________________________________________
 
-    public Diagnose getDiagnoseById(int id){
+    public Diagnose getDiagnoseById(Object id){
         validateNotEmpty(id, "Diagnose.id");
-        return diagnoseDAO.getDiagnoseById(id);
+        return diagnoseDAO.getById(id);
     }
 
     // _________________________________________________
@@ -67,11 +67,8 @@ public class DiagnoseService {
     // _________________________________________________
 
     public List<Diagnose> getAllDiagnoses(){
-        List<Diagnose> diagnoses = diagnoseDAO.getAllDiagnoses();
-        if(diagnoses != null){
-            return diagnoses;
-        }
-        return null;
+        List<Diagnose> diagnoses = diagnoseDAO.getAll();
+        return diagnoses != null ? diagnoses : null;
     }
 
     // _________________________________________________

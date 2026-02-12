@@ -20,87 +20,80 @@ public class RoleService {
     // ____________________________________________________________
 
     public void createRole(Role role){
-        validateNotBlank(role.getName(), "Role.name");
-        roleDAO.createRole(role);
+        validateNotEmpty(role.getName(), "Role.name");
+        roleDAO.create(role);
     }
 
     // ____________________________________________________________
 
     public void updateRole(Role role){
-        validateNotBlank(role.getName(), "Role.name");
-        roleDAO.updateRole(role);
+        validateNotEmpty(role.getName(), "Role.name");
+        roleDAO.update(role);
     }
 
     // ____________________________________________________________
 
     public void deleteRole(UUID roleId){
-        validateNotNull(roleId, "roleId");
-        roleDAO.deleteRole(roleId);
+        validateNotEmpty(roleId, "roleId");
+        roleDAO.deleteById(roleId);
     }
 
     // ____________________________________________________________
 
-    public int deleteAllRoles(){
-        return roleDAO.deleteAllRoles();
+    public void deleteAllRoles(){
+        roleDAO.deleteAll();
     }
 
     // ____________________________________________________________
 
     public Role getRoleById(UUID roleId){
-        validateNotNull(roleId, "roleId");
-        return roleDAO.getRoleById(roleId);
+        validateNotEmpty(roleId, "roleId");
+        return roleDAO.getById(roleId);
     }
 
     // ____________________________________________________________
 
     public String getNameById(UUID roleId){
-        validateNotNull(roleId, "roleId");
+        validateNotEmpty(roleId, "roleId");
         return roleDAO.getNameById(roleId);
     }
 
     // ____________________________________________________________
 
     public String getDescriptionById(UUID roleId){
-        validateNotNull(roleId, "roleId");
+        validateNotEmpty(roleId, "roleId");
         return roleDAO.getDescriptionById(roleId);
     }
 
     // ____________________________________________________________
 
     public Role findByName(String name){
-        validateNotBlank(name, "Role.name");
+        validateNotEmpty(name, "Role.name");
         return roleDAO.findByName(name);
     }
 
     // ____________________________________________________________
 
     public boolean existsByName(String name){
-        validateNotBlank(name, "Role.name");
+        validateNotEmpty(name, "Role.name");
         return roleDAO.existsByName(name);
     }
 
     // ____________________________________________________________
 
     public List<Role> getAllRoles(){
-        List<Role> roles = roleDAO.getAllRoles();
+        List<Role> roles = roleDAO.getAll();
         return roles;
     }
 
     // ____________________________________________________________
-    // Validate blank
 
-    private void validateNotBlank(String paramValue, String fieldName) {
-        if (paramValue == null || paramValue.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " kan ikke være tom");
-        }
-    }
-
-    // ____________________________________________________________
-    // Validate null
-
-    private void validateNotNull(Object paramValue, String fieldName) {
-        if (paramValue == null) {
+    private void validateNotEmpty(Object value, String fieldName) {
+        if (value == null) {
             throw new IllegalArgumentException(fieldName + " må ikke være null");
+        }
+        if (value instanceof String text && text.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " kan ikke være tom");
         }
     }
 

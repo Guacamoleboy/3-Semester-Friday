@@ -20,34 +20,34 @@ public class ClientService {
 
     public void createClient(Client client){
         validateNotEmpty(client.getId(), "Client.id");
-        clientDAO.createClient(client);
+        clientDAO.create(client);
     }
 
     // _________________________________________________
 
     public void updateClient(Client client){
         validateNotEmpty(client.getId(), "Client.id");
-        clientDAO.updateClient(client);
+        clientDAO.update(client);
     }
 
     // _________________________________________________
 
     public void deleteClient(String clientId){
         validateNotEmpty(clientId, "Client.id");
-        clientDAO.deleteClient(clientId);
+        clientDAO.deleteById(clientId);
     }
 
     // _________________________________________________
 
-    public int deleteAllClients(){
-        return clientDAO.deleteAllClients();
+    public void deleteAllClients(){
+        clientDAO.deleteAll();
     }
 
     // _________________________________________________
 
     public Client getClientById(String clientId){
         validateNotEmpty(clientId, "Client.id");
-        return clientDAO.getClientById(clientId);
+        return clientDAO.getById(clientId);
     }
 
     // _________________________________________________
@@ -60,8 +60,7 @@ public class ClientService {
     // _________________________________________________
 
     public List<Client> getAllClients(){
-        List<Client> clients = clientDAO.getAllClients();
-        return clients;
+        return clientDAO.getAll();
     }
 
     // _________________________________________________

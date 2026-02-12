@@ -21,7 +21,7 @@ public class QuestionService {
         validateNotEmpty(question.getQuestionTitle(), "Question.title");
         validateNotEmpty(question.getQuestionDescription(), "Question.description");
         validateNotEmpty(question.getDiagnosis(), "Question.diagnosis");
-        questionDAO.createQuestion(question);
+        questionDAO.create(question);
     }
 
     // ________________________________________
@@ -30,33 +30,33 @@ public class QuestionService {
         validateNotEmpty(question.getQuestionTitle(), "Question.title");
         validateNotEmpty(question.getQuestionDescription(), "Question.description");
         validateNotEmpty(question.getDiagnosis(), "Question.diagnosis");
-        questionDAO.updateQuestion(question);
+        questionDAO.update(question);
     }
 
     // ________________________________________
 
     public void deleteQuestion(int id){
         validateNotEmpty(id, "Question.id");
-        questionDAO.deleteQuestion(id);
+        questionDAO.deleteById(id);
     }
 
     // ________________________________________
 
-    public int deleteAllQuestions(){
-        return questionDAO.deleteAllQuestions();
+    public void deleteAllQuestions(){
+        questionDAO.deleteAll();
     }
 
     // ________________________________________
 
     public Question getQuestionById(int id){
         validateNotEmpty(id, "Question.id");
-        return questionDAO.getQuestionById(id);
+        return questionDAO.getById(id);
     }
 
     // ________________________________________
 
     public List<Question> getAllQuestions(){
-        List<Question> list = questionDAO.getAllQuestions();
+        List<Question> list = questionDAO.getAll();
         return list != null ? list : null;
     }
 

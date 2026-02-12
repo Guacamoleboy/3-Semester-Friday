@@ -20,34 +20,34 @@ public class SideEffectService {
 
     public void createSideEffect(SideEffect sideEffect){
         validateNotEmpty(sideEffect.getNote(), "SideEffect.note");
-        sideEffectDAO.createSideEffect(sideEffect);
+        sideEffectDAO.create(sideEffect);
     }
 
     // _________________________________________________
 
     public void updateSideEffect(SideEffect sideEffect){
         validateNotEmpty(sideEffect.getNote(), "SideEffect.note");
-        sideEffectDAO.updateSideEffect(sideEffect);
+        sideEffectDAO.update(sideEffect);
     }
 
     // _________________________________________________
 
     public void deleteSideEffect(int id){
         validateNotEmpty(id, "SideEffect.id");
-        sideEffectDAO.deleteSideEffect(id);
+        sideEffectDAO.deleteById(id);
     }
 
     // _________________________________________________
 
-    public int deleteAllSideEffects(){
-        return sideEffectDAO.deleteAllSideEffects();
+    public void deleteAllSideEffects(){
+        sideEffectDAO.deleteAll();
     }
 
     // _________________________________________________
 
     public SideEffect getSideEffectById(int id){
         validateNotEmpty(id, "SideEffect.id");
-        return sideEffectDAO.getSideEffectById(id);
+        return sideEffectDAO.getById(id);
     }
 
     // _________________________________________________
@@ -60,7 +60,7 @@ public class SideEffectService {
     // _________________________________________________
 
     public List<SideEffect> getAllSideEffects(){
-        List<SideEffect> list = sideEffectDAO.getAllSideEffects();
+        List<SideEffect> list = sideEffectDAO.getAll();
         return list != null ? list : null;
     }
 

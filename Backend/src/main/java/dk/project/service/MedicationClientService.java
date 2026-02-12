@@ -22,7 +22,7 @@ public class MedicationClientService {
         validateNotEmpty(medicationClient.getClient(), "MedicationClient.client");
         validateNotEmpty(medicationClient.getMedication(), "MedicationClient.medication");
         validateNotEmpty(medicationClient.getTimeline(), "MedicationClient.timeline");
-        medicationClientDAO.createMedicationClient(medicationClient);
+        medicationClientDAO.create(medicationClient);
     }
 
     // ________________________________________
@@ -31,33 +31,33 @@ public class MedicationClientService {
         validateNotEmpty(medicationClient.getClient(), "MedicationClient.client");
         validateNotEmpty(medicationClient.getMedication(), "MedicationClient.medication");
         validateNotEmpty(medicationClient.getTimeline(), "MedicationClient.timeline");
-        medicationClientDAO.updateMedicationClient(medicationClient);
+        medicationClientDAO.update(medicationClient);
     }
 
     // ________________________________________
 
     public void deleteMedicationClient(int id){
         validateNotEmpty(id, "MedicationClient.id");
-        medicationClientDAO.deleteMedicationClient(id);
+        medicationClientDAO.deleteById(id);
     }
 
     // ________________________________________
 
-    public int deleteAllMedicationClients(){
-        return medicationClientDAO.deleteAllMedicationClients();
+    public void deleteAllMedicationClients(){
+        medicationClientDAO.deleteAll();
     }
 
     // ________________________________________
 
     public MedicationClient getMedicationClientById(int id){
         validateNotEmpty(id, "MedicationClient.id");
-        return medicationClientDAO.getMedicationClientById(id);
+        return medicationClientDAO.getById(id);
     }
 
     // ________________________________________
 
     public List<MedicationClient> getAllMedicationClients(){
-        List<MedicationClient> list = medicationClientDAO.getAllMedicationClients();
+        List<MedicationClient> list = medicationClientDAO.getAll();
         return list != null ? list : null;
     }
 
@@ -68,6 +68,8 @@ public class MedicationClientService {
         List<MedicationClient> list = medicationClientDAO.findByClientId(clientId);
         return list != null ? list : null;
     }
+
+    // ________________________________________
 
     public List<MedicationClient> findByMedicationId(int medicationId){
         validateNotEmpty(medicationId, "MedicationClient.medicationId");

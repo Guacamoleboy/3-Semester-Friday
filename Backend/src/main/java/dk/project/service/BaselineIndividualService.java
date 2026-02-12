@@ -21,7 +21,7 @@ public class BaselineIndividualService {
     public void createBaselineIndividual(BaselineIndividual baselineIndividual){
         validateNotEmpty(baselineIndividual.getBaseline(), "BaselineIndividual.baseline");
         validateNotEmpty(baselineIndividual.getQuestion(), "BaselineIndividual.question");
-        baselineIndividualDAO.createBaselineIndividual(baselineIndividual);
+        baselineIndividualDAO.create(baselineIndividual);
     }
 
     // ________________________________________
@@ -29,34 +29,33 @@ public class BaselineIndividualService {
     public void updateBaselineIndividual(BaselineIndividual baselineIndividual){
         validateNotEmpty(baselineIndividual.getBaseline(), "BaselineIndividual.baseline");
         validateNotEmpty(baselineIndividual.getQuestion(), "BaselineIndividual.question");
-        baselineIndividualDAO.updateBaselineIndividual(baselineIndividual);
+        baselineIndividualDAO.update(baselineIndividual);
     }
 
     // ________________________________________
 
     public void deleteBaselineIndividual(int id){
         validateNotEmpty(id, "BaselineIndividual.id");
-        baselineIndividualDAO.deleteBaselineIndividual(id);
+        baselineIndividualDAO.deleteById(id);
     }
 
     // ________________________________________
 
-    public int deleteAllBaselineIndividuals(){
-        return baselineIndividualDAO.deleteAllBaselineIndividuals();
+    public void deleteAllBaselineIndividuals(){
+        baselineIndividualDAO.deleteAll();
     }
 
     // ________________________________________
 
     public BaselineIndividual getBaselineIndividualById(int id){
         validateNotEmpty(id, "BaselineIndividual.id");
-        return baselineIndividualDAO.getBaselineIndividualById(id);
+        return baselineIndividualDAO.getById(id);
     }
 
     // ________________________________________
 
     public List<BaselineIndividual> getAllBaselineIndividuals(){
-        List<BaselineIndividual> list = baselineIndividualDAO.getAllBaselineIndividuals();
-        return list != null ? list : null;
+        return baselineIndividualDAO.getAll();
     }
 
     // ________________________________________
@@ -77,8 +76,7 @@ public class BaselineIndividualService {
 
     public List<BaselineIndividual> findByBaselineId(int baselineId){
         validateNotEmpty(baselineId, "BaselineIndividual.baselineId");
-        List<BaselineIndividual> list = baselineIndividualDAO.findByBaselineId(baselineId);
-        return list != null ? list : null;
+        return baselineIndividualDAO.findByBaselineId(baselineId);
     }
 
     // ________________________________________

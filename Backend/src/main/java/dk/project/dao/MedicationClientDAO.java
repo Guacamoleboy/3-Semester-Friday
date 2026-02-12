@@ -4,58 +4,14 @@ import dk.project.entity.MedicationClient;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 
-public class MedicationClientDAO extends EntityManagerDAO {
+public class MedicationClientDAO extends EntityManagerDAO<MedicationClient> {
+
+    // Attributes
 
     // ________________________________________
 
     public MedicationClientDAO(EntityManager em){
-        super(em);
-    }
-
-    // ________________________________________
-
-    public void createMedicationClient(MedicationClient medicationClient){
-        executeQuery(() -> em.persist(medicationClient));
-    }
-
-    // ________________________________________
-
-    public void updateMedicationClient(MedicationClient medicationClient){
-        executeQuery(() -> em.merge(medicationClient));
-    }
-
-    // ________________________________________
-
-    public void deleteMedicationClient(int id){
-        executeQuery(() -> {
-            MedicationClient medicationClient = em.find(MedicationClient.class, id);
-            if (medicationClient != null) em.remove(medicationClient);
-        });
-    }
-
-    // ________________________________________
-
-    public int deleteAllMedicationClients(){
-        return executeQuery(() ->
-            em.createQuery("DELETE FROM MedicationClient x")
-            .executeUpdate()
-        );
-    }
-
-    // ________________________________________
-
-    public MedicationClient getMedicationClientById(int id){
-        return executeQuery(() -> em.find(MedicationClient.class, id));
-    }
-
-    // ________________________________________
-
-    public List<MedicationClient> getAllMedicationClients(){
-        return executeQuery(() -> {
-            String JPQL = "SELECT x FROM MedicationClient x";
-            return em.createQuery(JPQL, MedicationClient.class)
-            .getResultList();
-        });
+        super(em, MedicationClient.class);
     }
 
     // ________________________________________
@@ -64,8 +20,8 @@ public class MedicationClientDAO extends EntityManagerDAO {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM MedicationClient x WHERE x.client.id = :clientId";
             return em.createQuery(JPQL, MedicationClient.class)
-            .setParameter("clientId", clientId)
-            .getResultList();
+                    .setParameter("clientId", clientId)
+                    .getResultList();
         });
     }
 
@@ -75,8 +31,8 @@ public class MedicationClientDAO extends EntityManagerDAO {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM MedicationClient x WHERE x.medication.id = :medicationId";
             return em.createQuery(JPQL, MedicationClient.class)
-            .setParameter("medicationId", medicationId)
-            .getResultList();
+                    .setParameter("medicationId", medicationId)
+                    .getResultList();
         });
     }
 

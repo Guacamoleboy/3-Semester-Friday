@@ -22,7 +22,7 @@ public class BaselineService {
         validateNotEmpty(baseline.getClient(), "Baseline.client");
         validateNotEmpty(baseline.getDiagnose(), "Baseline.diagnose");
         validateNotEmpty(baseline.getEndDate(), "Baseline.endDate");
-        baselineDAO.createBaseline(baseline);
+        baselineDAO.create(baseline);
     }
 
     // _________________________________________________
@@ -31,50 +31,47 @@ public class BaselineService {
         validateNotEmpty(baseline.getClient(), "Baseline.client");
         validateNotEmpty(baseline.getDiagnose(), "Baseline.diagnose");
         validateNotEmpty(baseline.getEndDate(), "Baseline.endDate");
-        baselineDAO.updateBaseline(baseline);
+        baselineDAO.update(baseline);
     }
 
     // _________________________________________________
 
     public void deleteBaseline(int id){
         validateNotEmpty(id, "Baseline.id");
-        baselineDAO.deleteBaseline(id);
+        baselineDAO.deleteById(id);
     }
 
     // _________________________________________________
 
-    public int deleteAllBaselines(){
-        return baselineDAO.deleteAllBaselines();
+    public void deleteAllBaselines(){
+        baselineDAO.deleteAll();
     }
 
     // _________________________________________________
 
     public Baseline getBaselineById(int id){
         validateNotEmpty(id, "Baseline.id");
-        return baselineDAO.getBaselineById(id);
+        return baselineDAO.getById(id);
     }
 
     // _________________________________________________
 
     public List<Baseline> getAllBaselines(){
-        List<Baseline> list = baselineDAO.getAllBaselines();
-        return list != null ? list : null;
+        return baselineDAO.getAll();
     }
 
     // _________________________________________________
 
     public List<Baseline> findByClientId(String clientId){
         validateNotEmpty(clientId, "Baseline.clientId");
-        List<Baseline> list = baselineDAO.findByClientId(clientId);
-        return list != null ? list : null;
+        return baselineDAO.findByClientId(clientId);
     }
 
     // _________________________________________________
 
     public List<Baseline> findByDiagnoseId(int diagnoseId){
         validateNotEmpty(diagnoseId, "Baseline.diagnoseId");
-        List<Baseline> list = baselineDAO.findByDiagnoseId(diagnoseId);
-        return list != null ? list : null;
+        return baselineDAO.findByDiagnoseId(diagnoseId);
     }
 
     // _________________________________________________

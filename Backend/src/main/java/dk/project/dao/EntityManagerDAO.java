@@ -1,33 +1,100 @@
-//
-//  Protected to limit usage to only subclasses (Direct extend from this DAO)
-//  - Guac
-//
-
 package dk.project.dao;
 
 import jakarta.persistence.EntityManager;
+import java.util.List;
+import java.util.UUID;
 import java.util.function.Supplier;
 
-public class EntityManagerDAO {
+public class EntityManagerDAO<T> implements IDAO<T> {
 
     // Attributes
     protected EntityManager em;
+    protected Class<T> entityClass;
 
     // ________________________________________________________
 
-    protected EntityManagerDAO(EntityManager em){
+    protected EntityManagerDAO(EntityManager em, Class<T> entityClass){
         this.em = em;
+        this.entityClass = entityClass;
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public T create(T t) {
+        return executeQuery(() -> {
+            em.persist(t);
+            return t;
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public T update(T t) {
+        return executeQuery(() -> em.merge(t));
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public T delete(T t) {
+        return executeQuery(() -> {
+            em.remove(t);
+            return t;
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public T deleteById(Object id) {
+        return executeQuery(() -> {
+            T t = findById(id);
+            if (t != null) {
+                em.remove(t);
+            }
+            return t;
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public T getById(Object id) {
+        return executeQuery(() -> findById(id));
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public List<T> getAll() {
+        return executeQuery(() -> {
+            String JPQL = "SELECT x FROM " + entityClass.getSimpleName() + " x";
+            return em.createQuery(JPQL, entityClass)
+            .getResultList();
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public void deleteAll() {
+        executeQuery(() -> {
+            String JPQL = "DELETE FROM " + entityClass.getSimpleName();
+            em.createQuery(JPQL).executeUpdate();
+        });
     }
 
     // ________________________________________________________
     // Unknown object type query execute using Supplier from java.util
 
-    protected <T> T executeQuery(Supplier<T> query) {
+    protected <R> R executeQuery(Supplier<R> query) {
         try {
             if (!em.getTransaction().isActive()) {
                 em.getTransaction().begin();
             }
-            T result = query.get();
+            R result = query.get();
             em.getTransaction().commit();
             return result;
         } catch (RuntimeException e) {
@@ -46,6 +113,20 @@ public class EntityManagerDAO {
             task.run();
             return null;
         });
+    }
+
+    // ________________________________________________________
+
+    private T findById(Object id) {
+        if (id instanceof Integer) {
+            return em.find(entityClass, (Integer) id);
+        } else if (id instanceof String) {
+            return em.find(entityClass, (String) id);
+        } else if (id instanceof UUID) {
+            return em.find(entityClass, (UUID) id);
+        } else {
+            throw new IllegalArgumentException("Unsupported ID type: " + id.getClass());
+        }
     }
 
 }

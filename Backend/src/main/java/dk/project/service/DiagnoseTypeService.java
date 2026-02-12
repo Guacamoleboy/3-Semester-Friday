@@ -20,34 +20,34 @@ public class DiagnoseTypeService {
 
     public void createDiagnoseType(DiagnoseType diagnoseType){
         validateNotEmpty(diagnoseType.getName(), "DiagnoseType.name");
-        diagnoseTypeDAO.createDiagnoseType(diagnoseType);
+        diagnoseTypeDAO.create(diagnoseType);
     }
 
     // _________________________________________________
 
     public void updateDiagnoseType(DiagnoseType diagnoseType){
         validateNotEmpty(diagnoseType.getName(), "DiagnoseType.name");
-        diagnoseTypeDAO.updateDiagnoseType(diagnoseType);
+        diagnoseTypeDAO.update(diagnoseType);
     }
 
     // _________________________________________________
 
     public void deleteDiagnoseType(int id){
         validateNotEmpty(id, "DiagnoseType.id");
-        diagnoseTypeDAO.deleteDiagnoseType(id);
+        diagnoseTypeDAO.deleteById(id);
     }
 
     // _________________________________________________
 
-    public int deleteAllDiagnoseTypes(){
-        return diagnoseTypeDAO.deleteAllDiagnoseTypes();
+    public void deleteAllDiagnoseTypes(){
+        diagnoseTypeDAO.deleteAll();
     }
 
     // _________________________________________________
 
     public DiagnoseType getDiagnoseTypeById(int id){
         validateNotEmpty(id, "DiagnoseType.id");
-        return diagnoseTypeDAO.getDiagnoseTypeById(id);
+        return diagnoseTypeDAO.getById(id);
     }
 
     // _________________________________________________
@@ -60,7 +60,7 @@ public class DiagnoseTypeService {
     // _________________________________________________
 
     public List<DiagnoseType> getAllDiagnoseTypes(){
-        List<DiagnoseType> list = diagnoseTypeDAO.getAllDiagnoseTypes();
+        List<DiagnoseType> list = diagnoseTypeDAO.getAll();
         return list != null ? list : null;
     }
 
