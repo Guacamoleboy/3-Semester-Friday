@@ -29,6 +29,7 @@ Thumbs.db
 # === IntelliJ / JetBrains ===
 .idea/
 *.iml
+backend/target/
 
 # === Editor caches ===
 .vscode/
