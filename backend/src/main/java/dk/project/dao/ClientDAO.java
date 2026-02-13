@@ -15,10 +15,10 @@ public class ClientDAO extends EntityManagerDAO<Client> {
 
     // ________________________________________
 
-    public String getIdEndingById(String clientId) {
+    public Integer getIdEndingById(String clientId) {
         return executeQuery(() -> {
             String JPQL = "SELECT x.idEnding FROM Client x WHERE x.id = :id";
-            return em.createQuery(JPQL, String.class)
+            return em.createQuery(JPQL, Integer.class)
             .setParameter("id", clientId)
             .getSingleResult();
         });

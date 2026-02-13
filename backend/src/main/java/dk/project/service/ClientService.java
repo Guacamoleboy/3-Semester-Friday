@@ -52,7 +52,7 @@ public class ClientService {
 
     // _________________________________________________
 
-    public String getIdEndingById(String clientId){
+    public Integer getIdEndingById(String clientId){
         validateNotEmpty(clientId, "Client.id");
         return clientDAO.getIdEndingById(clientId);
     }

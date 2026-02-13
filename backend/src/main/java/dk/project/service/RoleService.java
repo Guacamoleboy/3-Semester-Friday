@@ -55,14 +55,14 @@ public class RoleService {
 
     public String getNameById(UUID roleId){
         validateNotEmpty(roleId, "roleId");
-        return roleDAO.getNameById(roleId);
+        return roleDAO.getColumnById(roleId, "name");
     }
 
     // ____________________________________________________________
 
     public String getDescriptionById(UUID roleId){
         validateNotEmpty(roleId, "roleId");
-        return roleDAO.getDescriptionById(roleId);
+        return roleDAO.getColumnById(roleId, "description");
     }
 
     // ____________________________________________________________

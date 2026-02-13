@@ -7,7 +7,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @Table(name = "questions",
-uniqueConstraints = @UniqueConstraint(columnNames = {"diagnosis_id", "medication_id", "title"}))
+uniqueConstraints = @UniqueConstraint(columnNames = {"diagnosis_id", "medication_id", "question_title"}))
 public class Question{
 
     // byte -> smallint in PostgreSQL (-128 | +127)

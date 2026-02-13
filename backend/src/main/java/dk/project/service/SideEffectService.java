@@ -52,9 +52,10 @@ public class SideEffectService {
 
     // _________________________________________________
 
-    public String getNoteById(int id){
+    public String getNoteById(int id) {
         validateNotEmpty(id, "SideEffect.id");
-        return sideEffectDAO.getNoteById(id);
+        SideEffect sideEffect = sideEffectDAO.getById(id);
+        return sideEffect != null ? sideEffect.getNote() : null;
     }
 
     // _________________________________________________

@@ -54,14 +54,14 @@ public class DiagnoseService {
 
     public String getNameById(int id){
         validateNotEmpty(id, "Diagnose.id");
-        return diagnoseDAO.getNameById(id);
+        return diagnoseDAO.getColumnById(id, "name");
     }
 
     // _________________________________________________
 
     public String getDescriptionById(int id){
         validateNotEmpty(id, "Diagnose.id");
-        return diagnoseDAO.getDescriptionById(id);
+        return diagnoseDAO.getColumnById(id, "description");
     }
 
     // _________________________________________________

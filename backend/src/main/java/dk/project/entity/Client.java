@@ -20,7 +20,7 @@ public class Client {
     private String id;
 
     @Column(name = "id_ending", nullable = false)
-    private int idEnding;
+    private Integer idEnding;
 
     @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;

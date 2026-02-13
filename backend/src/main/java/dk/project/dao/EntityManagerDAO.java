@@ -68,6 +68,18 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     // ________________________________________________________
 
     @Override
+    public <R> R getColumnById(Object id, String column) {
+        return executeQuery(() -> {
+            String jpql = "SELECT x." + column + " FROM " + entityClass.getSimpleName() + " x WHERE x.id = :id";
+            return (R) em.createQuery(jpql, Object.class)
+            .setParameter("id", id)
+            .getSingleResult();
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
     public List<T> getAll() {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM " + entityClass.getSimpleName() + " x";
@@ -90,15 +102,19 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     // Unknown object type query execute using Supplier from java.util
 
     protected <R> R executeQuery(Supplier<R> query) {
+        boolean startedTransaction = false;
         try {
             if (!em.getTransaction().isActive()) {
                 em.getTransaction().begin();
+                startedTransaction = true;
             }
             R result = query.get();
-            em.getTransaction().commit();
+            if (startedTransaction) {
+                em.getTransaction().commit();
+            }
             return result;
         } catch (RuntimeException e) {
-            if (em.getTransaction().isActive()) {
+            if (startedTransaction && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
             throw e;
@@ -116,6 +132,7 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     }
 
     // ________________________________________________________
+    // Java 17 doesn't handle switch-case for instanceof
 
     private T findById(Object id) {
         if (id instanceof Integer) {

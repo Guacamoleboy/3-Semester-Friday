@@ -21,8 +21,8 @@ public class QuestionDAO extends EntityManagerDAO<Question> {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM Question x WHERE x.diagnosis.id = :diagnoseId";
             return em.createQuery(JPQL, Question.class)
-                    .setParameter("diagnoseId", diagnoseId)
-                    .getResultList();
+            .setParameter("diagnoseId", diagnoseId)
+            .getResultList();
         });
     }
 
@@ -32,8 +32,8 @@ public class QuestionDAO extends EntityManagerDAO<Question> {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM Question x WHERE x.medication.id = :medicationId";
             return em.createQuery(JPQL, Question.class)
-                    .setParameter("medicationId", medicationId)
-                    .getResultList();
+            .setParameter("medicationId", medicationId)
+            .getResultList();
         });
     }
 

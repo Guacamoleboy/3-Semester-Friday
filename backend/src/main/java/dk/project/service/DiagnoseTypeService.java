@@ -52,9 +52,9 @@ public class DiagnoseTypeService {
 
     // _________________________________________________
 
-    public String getNameById(int id){
+    public String getNameById(int id) {
         validateNotEmpty(id, "DiagnoseType.id");
-        return diagnoseTypeDAO.getNameById(id);
+        return diagnoseTypeDAO.getColumnById(id, "name");
     }
 
     // _________________________________________________

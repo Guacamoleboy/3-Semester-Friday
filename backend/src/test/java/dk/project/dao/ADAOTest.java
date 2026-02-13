@@ -25,6 +25,7 @@ public abstract class ADAOTest {
     protected void setup() {
         em = emf.createEntityManager();
         em.getTransaction().begin();
+        em.clear();
     }
 
     // ______________________________________________

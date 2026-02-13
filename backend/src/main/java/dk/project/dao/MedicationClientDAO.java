@@ -20,8 +20,8 @@ public class MedicationClientDAO extends EntityManagerDAO<MedicationClient> {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM MedicationClient x WHERE x.client.id = :clientId";
             return em.createQuery(JPQL, MedicationClient.class)
-                    .setParameter("clientId", clientId)
-                    .getResultList();
+            .setParameter("clientId", clientId)
+            .getResultList();
         });
     }
 
@@ -31,8 +31,8 @@ public class MedicationClientDAO extends EntityManagerDAO<MedicationClient> {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM MedicationClient x WHERE x.medication.id = :medicationId";
             return em.createQuery(JPQL, MedicationClient.class)
-                    .setParameter("medicationId", medicationId)
-                    .getResultList();
+            .setParameter("medicationId", medicationId)
+            .getResultList();
         });
     }
 

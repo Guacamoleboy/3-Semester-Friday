@@ -15,7 +15,7 @@ uniqueConstraints = @UniqueConstraint(columnNames = {"baseline_id", "question_id
 public class BaselineIndividual {
 
     // @ManyToOne | Many (BaselineIndividual) | One (Baseline)
-    // @OneToOne | One (BaselineIndividual) | One (Question)
+    // @ManyToOne | Many (BaselineIndividual) | One (Question)
     // @ManyToOne | Many (BaselineIndividual) | Many (SideEffect)
     // Notes as optional
 
@@ -29,7 +29,7 @@ public class BaselineIndividual {
     @JoinColumn(name = "baseline_id", referencedColumnName = "id", nullable = false)
     private Baseline baseline;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "question_id", referencedColumnName = "id", nullable = false)
     private Question question;
 

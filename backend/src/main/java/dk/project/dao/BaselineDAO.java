@@ -20,8 +20,8 @@ public class BaselineDAO extends EntityManagerDAO<Baseline> {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM Baseline x WHERE x.client.id = :clientId";
             return em.createQuery(JPQL, Baseline.class)
-                    .setParameter("clientId", clientId)
-                    .getResultList();
+            .setParameter("clientId", clientId)
+            .getResultList();
         });
     }
 
@@ -31,8 +31,8 @@ public class BaselineDAO extends EntityManagerDAO<Baseline> {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM Baseline x WHERE x.diagnose.id = :diagnoseId";
             return em.createQuery(JPQL, Baseline.class)
-                    .setParameter("diagnoseId", diagnoseId)
-                    .getResultList();
+            .setParameter("diagnoseId", diagnoseId)
+            .getResultList();
         });
     }
 
