@@ -63,6 +63,10 @@
     --mm-nav-button-seconday-hover: #b30303;
     --mm-nav-button-outline: 2px solid rgba(255,255,255,0.15);
 
+    /* Footer */
+    --mm-footer-border-top: 2px solid rgba(255,255,255,0.1);
+    --mm-footer-background: #352377;
+
     /* Announcement Bar Theme */
     --mm-ab-height: 3rem;
     --mm-ab-background: #322170;
@@ -113,6 +117,7 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
@@ -122,22 +127,24 @@ html, body {
     background: var(--mm-background);
 }
 
-html,body::after {
-    z-index: 0;
-    content: "";
-    position: absolute;
-    inset: 0;
+.moodmap-site-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.moodmap-site-wrapper > *:not(.moodmap-footer) {
+    flex-shrink: 0; 
+}
+
+.background-grid-layer {
+    position: fixed;    
+    inset: 0;            
+    z-index: 0;            
+    pointer-events: none;  
     background-image:
-    linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.015) 2px,
-        transparent 1px
-    ),
-    linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.015) 2px,
-        transparent 1px
-    );
+        linear-gradient(to right, rgba(255,255,255,0.015) 2px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.015) 2px, transparent 1px);
     background-size: 3rem 3rem;
     animation: grid-drift 10s linear infinite;
 }
@@ -188,6 +195,321 @@ body::-webkit-scrollbar {
 }
 
 /* ################################################################# */
+/*                     0.3 DEV-LOG FORMATTING                        */
+/* ################################################################# */
+
+.moodmap-bold {
+    font-weight: 700;
+}
+
+.moodmap-italic {
+    font-style: italic;
+}
+
+.moodmap-ssh, .moodmap-bash, .moodmap-bashbackend, .moodmap-bashfrontend,
+.moodmap-bashrepo, .moodmap-bashfrontendfinal {
+    display: inline-block;
+    font-family: "Fira Code", "Source Code Pro", monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: #242424; 
+    color: #fafafa; 
+    padding: 0.2rem 0.5rem 0.25rem 0.5rem; 
+    border-radius: 0.35rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+    white-space: nowrap;
+    line-height: 1.4;
+    position: relative;
+}
+
+.moodmap-ssh::before {
+    content: "moodmap ~$ ";
+    font-weight: normal;
+    margin-right: 0.25rem;
+    color: #00ff2a;
+}
+
+.moodmap-bash::before {
+    content: "PS C:\\WINDOWS\\System32>";
+    font-weight: normal;
+    margin-right: 0.25rem;
+    color: #fff;
+}
+
+.moodmap-bashrepo::before {
+    content: "PS C:\\WINDOWS\\3Semester>";
+    font-weight: normal;
+    margin-right: 0.25rem;
+    color: #fff;
+}
+
+.moodmap-bashbackend::before {
+    content: "PS C:\\WINDOWS\\backend>";
+    font-weight: normal;
+    margin-right: 0.25rem;
+    color: #fff;
+}
+
+.moodmap-bashfrontend::before {
+    content: "PS C:\\WINDOWS\\frontend>";
+    font-weight: normal;
+    margin-right: 0.25rem;
+    color: #fff;
+}
+
+.moodmap-bash::after {
+    content: "|";
+    animation: blink 1s step-start infinite;
+}
+
+.moodmap-glow {
+    background-color: rgba(126, 95, 255, 0.2);
+    color: #fff;
+    padding: 0 0.2rem;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 8px rgba(126,95,255,0.6);
+}
+
+.moodmap-pill {
+    background-color: #d1a618;
+    color: #000;
+    border-radius: 999px;
+    padding: 0.15rem 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-block;
+    border: 2px solid #dad181;
+}
+
+.moodmap-terminal {
+    display: inline-block;
+    font-family: "Fira Code", "Source Code Pro", monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: #242424; 
+    color: #FFF; 
+    padding: 1.5rem 2rem 1rem 1rem; 
+    border-radius: 0.35rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+    white-space: nowrap;
+    line-height: 1.4;
+    position: relative;
+}
+
+.moodmap-fade {
+    color: rgba(255,255,255,0.7);
+    opacity: 0.6;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.moodmap-fade:hover {
+    opacity: 1;
+}
+
+.moodmap-flicker {
+    color: #ff4c4c;
+    animation: flicker 1.2s infinite alternate;
+}
+
+.moodmap-pulse {
+    color: #6effff;
+    animation: pulse 2s infinite;
+}
+
+.moodmap-cursor::after {
+    content: "|";
+    animation: blink 1s step-start infinite;
+}
+
+.moodmap-error {
+    color: #ff4c4c;
+    font-weight: bold;
+    display: inline-block;
+    animation: shake 0.5s infinite;
+}
+
+.moodmap-errortwo {
+    color: #ff4c4c;
+    font-weight: bold;
+    display: inline-block;   
+    animation: error2 0.5s infinite;
+}
+
+.moodmap-chalk {
+    background-color: #1f1f1f;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    position: relative;
+    color: #FFF;       
+    font-weight: 700;
+    display: inline-block;
+}
+
+.moodmap-chalk::after {
+    content: "";
+    position: absolute;
+    top: 50%;            
+    left: 50%;
+    width: 80%;          
+    height: 3px;          
+    background-color: #ff1e00;
+    transform: translate(-50%, -50%) rotate(-15deg);  
+    pointer-events: none;       
+    opacity: 0.7;
+}
+
+.moodmap-chalk::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 3px;          
+    background-color: #ff1e00; 
+    transform: translate(-50%, -50%) rotate(15deg);  
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.moodmap-sparkle {
+    color: #fff;
+    position: relative;
+}
+
+.moodmap-sparkle::after {
+    content: "X";
+    color: RED;
+    font-weight: 700;
+    position: absolute;
+    top: -0.2rem;
+    right: -0.2rem;
+    font-size: 0.7rem;
+    animation: sparkle 1.5s infinite;
+}
+
+.moodmap-glass {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    color: #fff;
+}
+
+.moodmap-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px #ff99cc;
+    font-weight: 700;
+}
+
+.moodmap-invert {
+    background-color: #fff;
+    color: #000;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+    font-weight: 600;
+}
+
+.moodmap-neon {
+    color: #39ff14;
+    text-shadow: 0 0 2px #39ff14, 0 0 4px #39ff14, 0 0 8px #39ff14;
+    font-weight: 600;
+}
+
+.moodmap-terminal::before {
+    content: "";
+    position: absolute;
+    top: 0.35rem;
+    left: 0.35rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background-color: #ff5f56;
+    box-shadow: 0.5rem 0 #ffbd2e, 1rem 0 #27c93f;
+}
+
+.moodmap-warning {
+    background-color: rgba(255, 204, 51, 0.2);
+    color: #ffcc33;
+    font-weight: bold;
+    padding: 0.25rem 0.3rem;
+    border-radius: 0.2rem;
+}
+
+.moodmap-warning::before {
+    content: "\26A0";
+    font-weight: normal !important;
+    margin: 0 0.5rem 0 0.25rem;
+    color: #ffcc33;
+}
+
+.moodmap-highlight, .moodmap-class {
+    background-color: #ffcc33; 
+    color: #000; 
+    font-weight: 600;
+    padding: 0.1rem 0.5rem 0.25rem 0.5rem;
+    border-radius: 0.2rem;
+    box-shadow: 0 3px 1px rgba(255, 204, 51, 0.6);
+}
+
+.moodmap-class::before {
+    content: "• ";
+}
+
+.moodmap-underline {
+    text-decoration: underline;
+    text-decoration-color: rgba(255,255,255, 0.5);
+}
+
+.moodmap-strikethrough {
+    text-decoration: line-through;
+    color: rgba(255,0,0,0.7);
+}
+
+.moodmap-shadow {
+    text-shadow: 0 2px 1px rgba(0,0,0,1);
+}
+
+.moodmap-small {
+    font-size: 0.85rem;
+}
+
+.moodmap-tiny {
+    font-size: 0.5rem;
+}
+
+.moodmap-large {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.moodmap-db {
+    display: inline-block;
+    font-family: "Fira Code", monospace;
+    background-color: #242424;
+    color: #fff;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.35rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    margin: 0 0.2rem;
+}
+
+.moodmap-db .table {
+    font-weight: 600;
+    color: #00d4ff;
+    font-size: 0.85rem;
+}
+
+.moodmap-db .column {
+    font-size: 0.75rem;
+    color: #ffd700;
+    margin-top: 0.1rem;
+    display: block;
+}
+
+/* ################################################################# */
 /*                            1.0 NAVBAR                             */
 /* ################################################################# */
 
@@ -205,7 +527,7 @@ body::-webkit-scrollbar {
 }
 
 .moodmap-logo-size {
-    height: 48px;
+    height: 64px;
 }
 
 .moodmap-navbar-left {
@@ -523,7 +845,7 @@ body::-webkit-scrollbar {
 
 .return-button-moodmap button:hover {
     border: 2px solid rgba(255,255,255,0.5);
-    background: rgba(99, 107, 241, 1);
+    background: rgb(84, 91, 218);
     transform: translateY(-2px);
 }
 
@@ -655,6 +977,7 @@ body::-webkit-scrollbar {
     user-select: none;
     font-weight: 600;
     border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 3px 1px rgba(0,0,0,0.4);
 }
 
 .dev-log-badge.frontend {
@@ -667,6 +990,14 @@ body::-webkit-scrollbar {
 
 .dev-log-badge.setup {
     background-color: rgb(207, 13, 13)
+}
+
+.dev-log-badge.refactor {
+    background-color: rgba(255, 255, 255, 0.3)
+}
+
+.dev-log-badge.unit.test {
+    background-color: rgb(180, 99, 23)
 }
 
 .dev-log-badge.reactjs {
@@ -760,23 +1091,23 @@ body::-webkit-scrollbar {
 }
 
 .dev-log-overview-wrapper {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 2rem; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    gap: 2rem;
+    justify-content: center;   
+    max-width: 1400px;        
     margin: 0 auto;
+    transition: all 0.3s ease;
 }
 
 .dev-log-overview-card {
-    z-index: 1;
-    flex: 1 1 300px;
-    min-width: 400px;
-    max-width: 400px;
+    position: relative; 
+    width: 400px;
     border-radius: 0.5rem;
     background-color: var(--mm-comp-background);
     border: var(--mm-comp-border);
     box-shadow: var(--mm-comp-box-shadow);
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .dev-log-overview-card:hover {
@@ -831,6 +1162,44 @@ body::-webkit-scrollbar {
     font-size: 1rem;
     font-style: italic;
     opacity: 0.85;
+}
+
+.dev-log-sort-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;                
+    margin: 2rem 0;            
+}
+
+.dev-log-sort-buttons button {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    color: #e2e2e2;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    margin-bottom: 1rem;
+    box-shadow: var(--mm-button-box-shadow);
+    transition: background-color 0.3s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+.dev-log-sort-buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: var(--mm-button-box-shadow-hover);
+}
+
+.dev-log-sort-buttons button.active {
+    border-color: rgba(255,255,255,0.75);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dev-log-sort-buttons.direction-left button.previous-active {
+  animation: fadeLeft 0.3s forwards;
+}
+
+/* when container has class direction-right */
+.dev-log-sort-buttons.direction-right button.previous-active {
+  animation: fadeRight 0.3s forwards;
 }
 
 /* ################################################################# */
@@ -1023,11 +1392,54 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    animation: fadeOut 1s ease-in-out forwards;
+    animation: fadeOutDelayed 1.25s ease-in-out forwards;
+}
+
+.preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .preloader-img {
-    width: 20%;
+    width: 30%;
     height: auto;
-    animation: bounceMoodmap 1s ease-in-out;
+}
+
+/* ################################################################# */
+/*                           9.0 FOOTER                              */
+/* ################################################################# */
+
+.moodmap-footer {
+    z-index: 1;
+    margin-top: auto;
+    border-top: var(--mm-footer-border-top);
+    background-color: var(--mm-footer-background);
+    color: rgba(255,255,255,0.6);
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+}
+
+.moodmap-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  
+}
+
+.moodmap-footer-link {
+    text-decoration: none !important;
+    color: inherit;
+    cursor: pointer;
+}
+
+.moodmap-footer-link:hover {
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 3px 1px rgba(0,0,0,0.3);
+}
+
+.moodmap-footer-divider:first-child {
+    margin-right: 0.25rem;
 }

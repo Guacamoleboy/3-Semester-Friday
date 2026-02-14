@@ -5,8 +5,80 @@ interface DevLogEntryProps {
 }
 
 export default function DevLogEntry({ loader }: DevLogEntryProps) {
+
+    // Initial
     const { title, date, readingTime, badges, content } = loader;
 
+    // Parser
+    const parseMoodmapText = (text: string, keyPrefix: string) => {
+        const root: any = { children: [] };
+        const stack = [root];
+
+        const regex = /<moodmap-([a-z]+)>|<moodmap-stop>|<moodmap-lc>|<moodmap-lcpush>/g;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = regex.exec(text)) !== null) {
+            const before = text.slice(lastIndex, match.index);
+            if (before) {
+                stack[stack.length - 1].children.push(before);
+            }
+
+            if (match[0] === "<moodmap-stop>") {
+                stack.pop();
+            } 
+            else if (match[0] === "<moodmap-lc>") {
+                stack[stack.length - 1].children.push("\n");
+            }
+            else if (match[0] === "<moodmap-lctwo>") {
+                stack[stack.length - 1].children.push("\n\n");
+            }  
+            else if (match[0] === "<moodmap-lcpush>") {
+                stack[stack.length - 1].children.push("\n\t");
+            } 
+            else if (match[1]) {
+                const node = {
+                    type: match[1],
+                    children: []
+                };
+                stack[stack.length - 1].children.push(node);
+                stack.push(node);
+            }
+
+            lastIndex = regex.lastIndex;
+        }
+
+        const after = text.slice(lastIndex);
+        if (after) {
+            stack[stack.length - 1].children.push(after);
+        }
+
+        return renderNodes(root.children, keyPrefix);
+    };
+
+    // Nodes
+    const renderNodes = (nodes: any[], keyPrefix: string) => {
+        return nodes.map((node, index) => {
+            if (typeof node === "string") return node;
+
+            return (
+                <span
+                    key={`${keyPrefix}-${index}`}
+                    className={`moodmap-${node.type}`}
+                    style={
+                        node.type === "terminal"
+                            ? { whiteSpace: "pre-wrap" }
+                            : undefined
+                    }
+                >
+                    {renderNodes(node.children, `${keyPrefix}-${index}`)}
+                </span>
+            );
+        });
+    };
+
+
+    // Entry
     return (
         <article className="dev-log-entry dev-log-content-wrapper">
             
@@ -40,7 +112,19 @@ export default function DevLogEntry({ loader }: DevLogEntryProps) {
 
                     switch (baseType) {
                     case "p":
-                        return <p key={i} className={item.class}>{item.text}</p>;
+                        return (
+                            <p key={i} className={item.class}>
+                            {Array.isArray(item.text)
+                                ? item.text.map((t, idx) =>
+                                    t ? (
+                                    <span key={`${i}-${idx}`}>{parseMoodmapText(t, `${i}-${idx}`)}</span>
+                                    ) : null
+                                )
+                                : item.text
+                                ? parseMoodmapText(item.text, `${i}-0`)
+                                : null}
+                            </p>
+                        );
                     case "h3":
                         return <h3 key={i}>{item.text}</h3>;
                     case "img":

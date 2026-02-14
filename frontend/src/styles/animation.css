@@ -46,6 +46,29 @@
     100% { opacity: 0; transform: translateY(10px); }
 }
 
+@keyframes fadeOutSmooth {
+    0%   { opacity: 1; }
+    10%  { opacity: 0.9; }
+    20%  { opacity: 0.8; }
+    30%  { opacity: 0.7; }
+    40%  { opacity: 0.6; }
+    50%  { opacity: 0.5; }
+    60%  { opacity: 0.4; }
+    70%  { opacity: 0.3; }
+    80%  { opacity: 0.2; }
+    90%  { opacity: 0.1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeOutDelayed {
+    0%   { opacity: 1; }
+    80%  { opacity: 1; }  
+    85%  { opacity: 0.8; }
+    90%  { opacity: 0.6; }
+    95%  { opacity: 0.3; }
+    100% { opacity: 0; }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -71,4 +94,46 @@
     to {
         background-position: 3rem 3rem, 3rem 3rem;
     }
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 5px #6effff; }
+    50% { text-shadow: 0 0 20px #6effff; }
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes error2 {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    10%  { transform: translate(-2px, -1px) rotate(-2deg); }
+    20%  { transform: translate(2px, 1px) rotate(2deg); }
+    30%  { transform: translate(-2px, 1px) rotate(-2deg); }
+    40%  { transform: translate(2px, -1px) rotate(2deg); }
+    50%  { transform: translate(-1px, 0) rotate(-1deg); }
+    60%  { transform: translate(1px, 1px) rotate(1deg); }
+    70%  { transform: translate(-1px, -1px) rotate(-1deg); }
+    80%  { transform: translate(1px, 0) rotate(1deg); }
+    90%  { transform: translate(-1px, 1px) rotate(-1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }

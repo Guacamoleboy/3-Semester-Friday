@@ -55,7 +55,7 @@ export default function Header() {
       <div className="moodmap-navbar">
         <div className="moodmap-navbar-left">
           <div className="moodmap-navbar-logo">
-            <img src="/images/logo/logo-white.png" alt="moodmap-logo" className="moodmap-logo-size" />
+            <img src="/images/logo/logo-svg.svg" alt="moodmap-logo" className="moodmap-logo-size" />
           </div>
           <div className="moodmap-navbar-content">
             <span>Lægerne i Skævinge</span>

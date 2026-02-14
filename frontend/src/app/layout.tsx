@@ -2,13 +2,15 @@ import '@/styles/style.css';
 import '@/styles/animation.css';
 import Header from '@/components/Header';
 import Preloader from '@/components/ui/Preloader';
+import BackgroundGrid from '@/components/ui/BackgroundGrid';
+import Footer from '@/components/Footer';
 import { ReactNode } from "react";
 
 export const metadata = {
   title: 'MoodMap - Mood tracking og velvære',
   description:
     'MoodMap hjælper med at overvåge og forstå mental sundhed, så vi sammen kan tage bedre beslutninger for dit velbefindende.',
-    icons: {
+  icons: {
     icon: '/images/logo/logo-icon.png',           
     shortcut: '/images/logo/logo-icon-16.png', 
     apple: '/images/logo/logo-icon.png', 
@@ -16,27 +18,32 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-
   return (
     <html lang="en">
-        <head>
-            <link
-                rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            />
-        </head>
-        <body>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+      </head>
+      <body>
+        <div className="moodmap-site-wrapper">
+          {/* Preloader */}
+          <Preloader />
 
-            {/* Preloader */}
-            <Preloader />
+          {/* Baggrundsgrid */}
+          <BackgroundGrid />
 
-            {/* Header */}
-            <Header />
+          {/* Header */}
+          <Header />
 
-            {/* Page Specific */}
-            {children}
+          {/* Page Specific */}
+          {children}
 
-        </body>
+          {/* Footer */}
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

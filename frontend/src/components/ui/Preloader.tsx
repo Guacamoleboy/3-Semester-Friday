@@ -1,20 +1,41 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { LottiePlayer } from "@/libs/lottie/LottiePlayer";
 
 export default function Preloader() {
-    const [show, setShow] = useState(true);
+
+    // Initial setup
+    const [isDone, setIsDone] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const timer = setTimeout(() => setShow(false), 1000); 
-        return () => clearTimeout(timer);
+
+        // No container validation
+        if (!containerRef.current) return;
+        
+        // Lottie call with param
+        const player = new LottiePlayer({
+            container: containerRef.current,
+            path: "/images/logo/logo-svg.json",
+            duration: 0.5,
+            loop: false,
+            onComplete: () => setIsDone(true),
+        });
+
+        // Init player
+        player.init();
+
+        // Destroy lottie
+        return () => player.destroy();
+
     }, []);
 
-    if (!show) return null;
-
+    // Insert preloader to DOM
     return (
-        <div className="preloader">
-        <img src="/images/logo/logo-white.png" className="preloader-img" />
+        <div className={`preloader ${isDone ? "fade-out" : ""}`}>
+            <div ref={containerRef} className="preloader-img" />
         </div>
     );
+
 }

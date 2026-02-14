@@ -1,0 +1,155 @@
+{
+  "date": "13/02-2026",
+  "title": "Refactor, Unit Tests & Generic",
+  "description": "Refactor of Entity, Service & DAO to avoid repeating code over and over.",
+  "overviewPhoto": "/images/devlog/day4/9.png",
+  "badges": ["Backend", "Refactor", "Unit Test", "Java"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Intro.."
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg havde ifm. sidste dev-log lavet noget DAO og Service som ikke var specielt generiskt. Derfor var målet i dag at få lavet så meget som muligt generiskt. ",
+        "Jeg kiggede først på DAOs og IDAO (interface) som implementerer <moodmap-highlight>Class<T><moodmap-stop> som jeg ikke umiddelbart har benyttet før. Det gør, at jeg kan delete CRUD metoder som er ",
+        "fælles for klasserne ud i EntityManagerDAO som så implementerer interfacet. Dvs når jeg extender fx RoleDAO med EntityManagerDAO, så arver den de basis ",
+        "CRUD metoder som er fælles for alle klasserne. Fx <moodmap-highlight>create()<moodmap-stop> <moodmap-highlight>update()<moodmap-stop> <moodmap-highlight>getById()<moodmap-stop> osv. Det er sat op med <R> og <T> for at det er generiskt. "
+      ]
+    },
+    {
+      "type": "p",
+      "text": [ 
+      "Jeg startede først ud med at kigge på <moodmap-highlight>Object o<moodmap-stop> fremfor T, men fandt hurtigt ud af, at ved Object skal der typecastes - hvilket ikke er optimalt i længden. ",
+      "Derfor lavede jeg et lille interface - <moodmap-bold>IDAO.java<moodmap-stop> - som kunne de mest basale operations - og nogle lidt mere advanced."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/9.png",
+      "alt": "Dev log screenshot – Interface - Day 4"
+    },
+    {
+      "type": "p",
+      "text": [ 
+      "Grunden til at der bliver brugt <R> R er fordi T repræsenterer hele entiteten i dette tilfælde. Når vi kun vil hente værdien af en enkelt kolonne, ",
+      "f.eks. 'name' eller 'idEnding', vil typen ikke nødvendigvis være T, men f.eks. String eller Integer. <R> gør metoden generisk, ",
+      "så den kan returnere præcis den type kolonnen har uden at vi behøver typecasts."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [ 
+      "Vi sætter ikke access modifier da interfaces metoder i Java by default er public. Havde vi skrevet <moodmap-highlight>public<moodmap-stop> foran, havde det ikke haft nogen funktion."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Implementering heraf"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg satte EntityManagerDAO op, så den håndterer basis CRUD, og kan Unit Testes direkte uden at skulle lave i hver enkelt DAO."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/1.png",
+      "alt": "Dev log screenshot – DAO Generic - Day 4"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Når jeg så kalder fra service laget i fx Client, så kan jeg bare bruge <moodmap-highlight>create()<moodmap-stop> da vi bruger metoden fra EntityManagerDAO."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/10.png",
+      "alt": "Dev log screenshot – Service layer - Day 4"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg begyndte at kigge på samme løsning til Service laget, da jeg lige pt har create, update, delete osv i alle Service klasser. Ved at lave en <moodmap-highlight>EntityManagerService.java<moodmap-stop> ",
+        "kan jeg bare extend den ligesom jeg gjorde på DAO, og så slipper jeg for at lave de basale operations da det bare er repeat af kode. Den holder også validation metoden."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/11.png",
+      "alt": "Dev log screenshot – Service Generic - Day 4"
+    },
+    {
+      "type": "h3",
+      "text": "Unit Tests"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg kiggede lidt på hvordan man kunne sætte Unit Tests op generiskt, og om de kunne arve fra anden klasse. Det kunne de godt, så jeg har lavet alt <moodmap-highlight>@AfterAll<moodmap-stop> <moodmap-highlight>@BeforeAll<moodmap-stop> mm ",
+        "i en klasse som jeg kalder <moodmap-highlight>ADAOTest.java<moodmap-stop> (abstract). Det gør, at når jeg laver en DAOTest klasse, så extender jeg bare med ADAO, og så har jeg det jeg skal bruge."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/4.png",
+      "alt": "Dev log screenshot – ADAOTest - Day 4"
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/6.png",
+      "alt": "Dev log screenshot – ADAOTest Implementering - Day 4"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg kunne herefter fokusere på, blot at lave det respektive arbejde - de unikke metoder. Dette blev gjort for alle DAOs. Lavede det ikke på Service laget, da Service blot kalder ",
+        "DAOs metoder, som testes direkte i <moodmap-highlight>EntityManagerDAOTest.java<moodmap-stop>. Derfor ingen grund til at lave kald direkte på Service medmindre nogen laver specifikke opgaver. Som fx User ",
+        "der bruger <moodmap-highlight>BCrypt<moodmap-stop> til diverse. Men det kan jeg kigge på senere."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Bidirectional != unidirectional"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Der blev kigget kort på <moodmap-highlight>bidirectional<moodmap-stop> og <moodmap-highlight>unidirectional<moodmap-stop> af Entity klassernes relationer. Jeg har ikke kigget super meget på hvordan jeg vil gemme / loade dem, derfor minimalt. ",
+        "Jeg tænker det kommer når jeg på et tidspunkt begynder at kalde nogle metoder og så finder ud af, at jeg mangler en liste af et eller andet. Men lige pt er det fint."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day4/3.png",
+      "alt": "Dev log screenshot – Bidirectional - Day 4"
+    },
+    {
+      "type": "h3",
+      "text": "Afslutning & Next.js -> SSH"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Til at slutte dagen af skriver jeg her en Dev Log, og uploader den til SSH som Next.js build. Hvis jeg bare sender .next og public/ direkte op på SSH fx via SCP, så laver ",
+        "den ét kald pr fil. Det er ikke optimalt. Eftersom Next.js builds packer depencies i .sst filer, så er der alt for mange kald til SSH. Derfor packes filen til Linux Zip (.tar) ",
+        "og forsøges at compresses med .gz. Dvs jeg packer de filer og mapper jeg skal bruge i en date-build.tar.gz fil. Denne kan jeg så upload som ét enkelt kald til SSH via SCP. ",
+        "På SSH unpacker jeg så bare via Linux .tar.gz, og så er projektet opdateret. Det sparer utrolig meget tid!"
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day4/12.png",
+      "alt": "Dev log screenshot – Bidirectional - Day 4"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dagen afsluttet"
+      ]
+    }
+  ]
+}
