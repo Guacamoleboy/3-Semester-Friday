@@ -167,6 +167,64 @@ public class EntityManagerDAOTest extends ADAOTest {
     // ____________________________________________________
 
     @Test
+    public void shouldUpdateColumnById() {
+        // Arrange
+        Role role = new Role();
+        role.setName("InitialRole");
+        role.setDescription("Initial description");
+        entityManagerDAO.create(role);
+
+        // Act
+        int updatedCount = entityManagerDAO.updateColumnById(role.getId(), "description", "Updated description");
+        String updatedDescription = entityManagerDAO.getColumnById(role.getId(), "description");
+
+        // Assert
+        assertEquals(1, updatedCount);
+        assertEquals("Updated description", updatedDescription);
+    }
+
+    // ____________________________________________________
+
+    @Test
+    public void shouldFindEntityByColumn() {
+        // Arrange
+        Role role = new Role();
+        role.setName("FindMe");
+        role.setDescription("Role description");
+        entityManagerDAO.create(role);
+
+        // Act
+        Role foundRole = entityManagerDAO.findEntityByColumn("FindMe", "name");
+
+        // Assert
+        assertNotNull(foundRole);
+        assertEquals(role.getId(), foundRole.getId());
+        assertEquals("FindMe", foundRole.getName());
+        assertEquals("Role description", foundRole.getDescription());
+    }
+
+    // ____________________________________________________
+
+    @Test
+    public void shouldReturnTrueIfColumnExists() {
+        // Arrange
+        Role role = new Role();
+        role.setName("Exists");
+        role.setDescription("Description");
+        entityManagerDAO.create(role);
+
+        // Act
+        boolean exists = entityManagerDAO.existByColumn("Exists", "name");
+        boolean notExists = entityManagerDAO.existByColumn("NonExistent", "name");
+
+        // Assert
+        assertTrue(exists);
+        assertFalse(notExists);
+    }
+
+    // ____________________________________________________
+
+    @Test
     public void shouldExecuteQuerySupplier() {
         // Arrange
         Role role = new Role();

@@ -33,5 +33,3 @@ public class BaselineDTO {
     private List<Integer> baselineIndividualIds;
 
 }
-
-

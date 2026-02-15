@@ -65,7 +65,7 @@ public class UserDAOTest extends ADAOTest {
         userDAO.create(user);
 
         // Act
-        int updatedCount = userDAO.updateUserColumn(user.getId(), "username", "Andreas");
+        int updatedCount = userDAO.updateColumnById(user.getId(), "username", "Andreas");
         em.clear();
         User updatedUser = userDAO.getById(user.getId());
 
@@ -92,7 +92,7 @@ public class UserDAOTest extends ADAOTest {
 
         // Act
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
-            userDAO.updateUserColumn(user.getId(), "invalidColumn", "value")
+            userDAO.updateColumnById(user.getId(), "invalidColumn", "value")
         );
 
         // Assert

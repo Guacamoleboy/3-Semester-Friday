@@ -3,9 +3,8 @@ package dk.project.service;
 import dk.project.dao.DiagnoseDAO;
 import dk.project.entity.Diagnose;
 import jakarta.persistence.EntityManager;
-import java.util.List;
 
-public class DiagnoseService {
+public class DiagnoseService extends EntityManagerService<Diagnose> {
 
     // Attributes
     private final DiagnoseDAO diagnoseDAO;
@@ -13,87 +12,34 @@ public class DiagnoseService {
     // _________________________________________________
 
     public DiagnoseService(EntityManager em){
-        this.diagnoseDAO = new DiagnoseDAO(em);
-    }
-
-    // _________________________________________________
-
-    public void createDiagnose(Diagnose diagnose){
-        validateNotEmpty(diagnose.getName(), "Diagnose.name");
-        diagnoseDAO.create(diagnose);
-    }
-
-    // _________________________________________________
-
-    public void updateDiagnose(Diagnose diagnose){
-        validateNotEmpty(diagnose.getName(), "Diagnose.name");
-        diagnoseDAO.update(diagnose);
-    }
-
-    // _________________________________________________
-
-    public void deleteDiagnose(Object id){
-        validateNotEmpty(id, "Diagnose.id");
-        diagnoseDAO.deleteById(id);
-    }
-
-    // _________________________________________________
-
-    public void deleteAllDiagnoses(){
-        diagnoseDAO.deleteAll();
-    }
-
-    // _________________________________________________
-
-    public Diagnose getDiagnoseById(Object id){
-        validateNotEmpty(id, "Diagnose.id");
-        return diagnoseDAO.getById(id);
+        super(new DiagnoseDAO(em), Diagnose.class);
+        this.diagnoseDAO = (DiagnoseDAO) this.entityManagerDAO;
     }
 
     // _________________________________________________
 
     public String getNameById(int id){
         validateNotEmpty(id, "Diagnose.id");
-        return diagnoseDAO.getColumnById(id, "name");
+        return getColumnById(id, "name");
     }
 
     // _________________________________________________
 
     public String getDescriptionById(int id){
         validateNotEmpty(id, "Diagnose.id");
-        return diagnoseDAO.getColumnById(id, "description");
+        return getColumnById(id, "description");
     }
 
     // _________________________________________________
 
-    public List<Diagnose> getAllDiagnoses(){
-        List<Diagnose> diagnoses = diagnoseDAO.getAll();
-        return diagnoses != null ? diagnoses : null;
+    public boolean existsByName(String name) {
+        return existByColumn(name, "name");
     }
 
     // _________________________________________________
 
-    public boolean existsByName(String name){
-        validateNotEmpty(name, "Diagnose.name");
-        return diagnoseDAO.existsByName(name);
-    }
-
-    // _________________________________________________
-
-    public Diagnose findByName(String name){
-        validateNotEmpty(name, "Diagnose.name");
-        return diagnoseDAO.findByName(name);
-    }
-
-    // _________________________________________________
-
-    private void validateNotEmpty(Object value, String fieldName) {
-        if (value == null) {
-            throw new IllegalArgumentException(fieldName + " må ikke være null");
-        }
-        if (value instanceof String text && text.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " kan ikke være tom");
-        }
+    public Diagnose findDiagnoseByName(String name){
+        return findEntityByColumn(name, "name");
     }
 
 }

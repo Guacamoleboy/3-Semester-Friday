@@ -7,6 +7,8 @@ import java.util.UUID;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
@@ -16,8 +18,9 @@ public class User {
     // @ManyToOne | Many (users) | One (role)
 
     @Id
+    @GeneratedValue
     @Column(name = "id", columnDefinition = "uuid")
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     @Column(nullable = false, unique = true)
     private String username;

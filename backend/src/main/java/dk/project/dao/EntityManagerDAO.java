@@ -23,8 +23,12 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     @Override
     public T create(T t) {
         return executeQuery(() -> {
-            em.persist(t);
-            return t;
+            if (em.contains(t)) {
+                return t;
+            } else {
+                em.persist(t);
+                return t;
+            }
         });
     }
 
@@ -80,6 +84,44 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     // ________________________________________________________
 
     @Override
+    public <R> R updateColumnById(Object id, String column, Object value) {
+        return executeQuery(() -> {
+            String jpql = "UPDATE " + entityClass.getSimpleName() + " x SET x." + column + " = :value WHERE x.id = :id";
+            int updatedRows = em.createQuery(jpql)
+            .setParameter("value", value)
+            .setParameter("id", id)
+            .executeUpdate();
+            return (R) Integer.valueOf(updatedRows);
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public boolean existByColumn(Object value, String column) {
+        String jpql = "SELECT COUNT(x) FROM " + entityClass.getSimpleName() + " x WHERE x." + column + " = :value";
+        Long count = executeQuery(() -> em.createQuery(jpql, Long.class)
+        .setParameter("value", value)
+        .getSingleResult());
+        return count != null && count > 0;
+    }
+
+    // ________________________________________________________
+
+    @Override
+    public T findEntityByColumn(Object value, String column) {
+        return executeQuery(() -> {
+            String JPQL = "SELECT x FROM " + entityClass.getSimpleName() + " x WHERE x." + column + " = :value";
+            List<T> results = em.createQuery(JPQL, entityClass)
+            .setParameter("value", value)
+            .getResultList();
+            return results.isEmpty() ? null : results.get(0);
+        });
+    }
+
+    // ________________________________________________________
+
+    @Override
     public List<T> getAll() {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM " + entityClass.getSimpleName() + " x";
@@ -89,13 +131,14 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     }
 
     // ________________________________________________________
+    // JPA instead of JPQL (cascade fix)
 
     @Override
     public void deleteAll() {
-        executeQuery(() -> {
-            String JPQL = "DELETE FROM " + entityClass.getSimpleName();
-            em.createQuery(JPQL).executeUpdate();
-        });
+        List<T> entities = getAll();
+        for (T entity : entities) {
+            em.remove(entity);
+        }
     }
 
     // ________________________________________________________

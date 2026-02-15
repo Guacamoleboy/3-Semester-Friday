@@ -26,23 +26,4 @@ public class DiagnoseDAOTest extends ADAOTest {
         diagnoseDAO.create(sampleDiagnose);
     }
 
-    // _____________________________________________________
-
-    @Test
-    public void shouldExistByName() {
-        assertTrue(diagnoseDAO.existsByName("Diabetes"));
-        assertFalse(diagnoseDAO.existsByName("Hypertension"));
-    }
-
-    // _____________________________________________________
-
-    @Test
-    public void shouldFindByName() {
-        Diagnose foundDiagnose = diagnoseDAO.findByName("Diabetes");
-        assertNotNull(foundDiagnose);
-        assertEquals(sampleDiagnose.getId(), foundDiagnose.getId());
-        assertEquals("Diabetes", foundDiagnose.getName());
-        assertEquals("Chronic condition related to blood sugar", foundDiagnose.getDescription());
-    }
-
 }

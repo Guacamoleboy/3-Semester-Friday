@@ -58,10 +58,37 @@ public class EntityManagerService<T> {
 
     // _________________________________________________
 
+    public boolean existByColumn(Object value, String column) {
+        validateNotEmpty(value, entityClass.getSimpleName() + ".value");
+        validateNotEmpty(column, entityClass.getSimpleName() + "." + column);
+        return entityManagerDAO.existByColumn(value, column);
+    }
+
+    // _________________________________________________
+    // String column is the value in the Entity class. Not the DB column.
+    // For example id_ending (DB) idEnding (Entity). Use the Entity version.
+
     public <R> R getColumnById(Object id, String column){
         validateNotEmpty(id, entityClass.getSimpleName() + ".id");
         validateNotEmpty(column, entityClass.getSimpleName() + "." + column);
         return entityManagerDAO.getColumnById(id, column);
+    }
+
+    // _________________________________________________
+    // Same as above. Just with value attached.
+
+    public <R> R updateColumnById(Object id, String column, Object value){
+        validateNotEmpty(id, entityClass.getSimpleName() + ".id");
+        validateNotEmpty(column, entityClass.getSimpleName() + "." + column);
+        return entityManagerDAO.updateColumnById(id, column, value);
+    }
+
+    // _________________________________________________
+
+    public T findEntityByColumn(Object value, String column) {
+        validateNotEmpty(value, "value");
+        validateNotEmpty(column, entityClass.getSimpleName() + "." + column);
+        return entityManagerDAO.findEntityByColumn(value, column);
     }
 
     // _________________________________________________
