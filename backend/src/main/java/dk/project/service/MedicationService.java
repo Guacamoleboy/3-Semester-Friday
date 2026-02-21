@@ -31,14 +31,14 @@ public class MedicationService extends EntityManagerService<Medication> {
     // _________________________________________________
 
     public boolean existsByName(String name) {
-        validateNotEmpty(name, entityClass.getSimpleName() + ".name");
+        validateNotEmpty(name, classSpecific.getSimpleName() + ".name");
         return medicationDAO.existsByName(name);
     }
 
     // _________________________________________________
 
     public Medication findByName(String name) {
-        validateNotEmpty(name, entityClass.getSimpleName() + ".name");
+        validateNotEmpty(name, classSpecific.getSimpleName() + ".name");
         return medicationDAO.findByName(name);
     }
 

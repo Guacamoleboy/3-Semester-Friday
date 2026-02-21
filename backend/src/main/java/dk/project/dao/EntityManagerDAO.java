@@ -9,13 +9,13 @@ public class EntityManagerDAO<T> implements IDAO<T> {
 
     // Attributes
     protected EntityManager em;
-    protected Class<T> entityClass;
+    protected Class<T> classSpecific;
 
     // ________________________________________________________
 
     protected EntityManagerDAO(EntityManager em, Class<T> entityClass){
         this.em = em;
-        this.entityClass = entityClass;
+        this.classSpecific = entityClass;
     }
 
     // ________________________________________________________
@@ -74,20 +74,21 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     @Override
     public <R> R getColumnById(Object id, String column) {
         return executeQuery(() -> {
-            String jpql = "SELECT x." + column + " FROM " + entityClass.getSimpleName() + " x WHERE x.id = :id";
-            return (R) em.createQuery(jpql, Object.class)
+            String JPQL = "SELECT x." + column + " FROM " + classSpecific.getSimpleName() + " x WHERE x.id = :id";
+            return (R) em.createQuery(JPQL, Object.class)
             .setParameter("id", id)
             .getSingleResult();
         });
     }
 
     // ________________________________________________________
+    // TODO: Refactor to Long / Integer, as we return affected rows no matter the input
 
     @Override
     public <R> R updateColumnById(Object id, String column, Object value) {
         return executeQuery(() -> {
-            String jpql = "UPDATE " + entityClass.getSimpleName() + " x SET x." + column + " = :value WHERE x.id = :id";
-            int updatedRows = em.createQuery(jpql)
+            String JPQL = "UPDATE " + classSpecific.getSimpleName() + " x SET x." + column + " = :value WHERE x.id = :id";
+            int updatedRows = em.createQuery(JPQL)
             .setParameter("value", value)
             .setParameter("id", id)
             .executeUpdate();
@@ -99,8 +100,8 @@ public class EntityManagerDAO<T> implements IDAO<T> {
 
     @Override
     public boolean existByColumn(Object value, String column) {
-        String jpql = "SELECT COUNT(x) FROM " + entityClass.getSimpleName() + " x WHERE x." + column + " = :value";
-        Long count = executeQuery(() -> em.createQuery(jpql, Long.class)
+        String JPQL = "SELECT COUNT(x) FROM " + classSpecific.getSimpleName() + " x WHERE x." + column + " = :value";
+        Long count = executeQuery(() -> em.createQuery(JPQL, Long.class)
         .setParameter("value", value)
         .getSingleResult());
         return count != null && count > 0;
@@ -111,8 +112,8 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     @Override
     public T findEntityByColumn(Object value, String column) {
         return executeQuery(() -> {
-            String JPQL = "SELECT x FROM " + entityClass.getSimpleName() + " x WHERE x." + column + " = :value";
-            List<T> results = em.createQuery(JPQL, entityClass)
+            String JPQL = "SELECT x FROM " + classSpecific.getSimpleName() + " x WHERE x." + column + " = :value";
+            List<T> results = em.createQuery(JPQL, classSpecific)
             .setParameter("value", value)
             .getResultList();
             return results.isEmpty() ? null : results.get(0);
@@ -124,8 +125,8 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     @Override
     public List<T> getAll() {
         return executeQuery(() -> {
-            String JPQL = "SELECT x FROM " + entityClass.getSimpleName() + " x";
-            return em.createQuery(JPQL, entityClass)
+            String JPQL = "SELECT x FROM " + classSpecific.getSimpleName() + " x";
+            return em.createQuery(JPQL, classSpecific)
             .getResultList();
         });
     }
@@ -179,11 +180,11 @@ public class EntityManagerDAO<T> implements IDAO<T> {
 
     private T findById(Object id) {
         if (id instanceof Integer) {
-            return em.find(entityClass, (Integer) id);
+            return em.find(classSpecific, (Integer) id);
         } else if (id instanceof String) {
-            return em.find(entityClass, (String) id);
+            return em.find(classSpecific, (String) id);
         } else if (id instanceof UUID) {
-            return em.find(entityClass, (UUID) id);
+            return em.find(classSpecific, (UUID) id);
         } else {
             throw new IllegalArgumentException("Unsupported ID type: " + id.getClass());
         }
