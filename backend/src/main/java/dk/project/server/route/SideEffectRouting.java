@@ -3,7 +3,7 @@ package dk.project.server.route;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class SideEffectRouting {
 
@@ -13,19 +13,22 @@ public class SideEffectRouting {
 
     // _______________________________________________________________________________
 
-    public SideEffectRouting(EntityManagerFactory emf){
+    public SideEffectRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
         // sideEffectController = new SideEffectController(em);
     }
 
     // _______________________________________________________________________________
 
-    public EndpointGroup routes(){
+    public EndpointGroup routes() {
 
         return () -> {
             path("/sideeffect", () -> {
-
-
+                // get("/all", sideEffectController::getAll);
+                // get("/{id}", sideEffectController::getById);
+                // post("/", sideEffectController::create);
+                // put("/{id}", sideEffectController::updateById);
+                // delete("/{id}", sideEffectController::deleteById);
             });
         };
 

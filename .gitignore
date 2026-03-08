@@ -30,6 +30,8 @@ Thumbs.db
 .idea/
 *.iml
 backend/target/
+backend/src/main/resources/http
+backend/logs
 
 # === Editor caches ===
 .vscode/

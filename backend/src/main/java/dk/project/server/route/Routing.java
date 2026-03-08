@@ -16,9 +16,7 @@ public class Routing {
 
         // EndpointGroup Return to server
         return () -> {
-
             authRouting.routes().addEndpoints();
-
         };
 
     }

@@ -1,0 +1,35 @@
+### GET - Login
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+    "username": "bruger1",
+    "password": "password1"
+}
+> {%
+    client.global.set("ACCESS_TOKEN", response.body.data.access_token);
+    client.global.set("REFRESH_TOKEN", response.body.data.refresh_token);
+%}
+
+### POST | Register new user |
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+    "username": "thisisanewuser14",
+    "email": "newuse44r@live.dk",
+    "password": "Password1234!",
+    "role": "CLINICIAN"
+}
+
+### GET | Should get current user info |
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{ACCESS_TOKEN}}
+
+### POST | Refresh JWT Access Token |
+POST {{baseUrl}}/auth/refresh
+Content-Type: {{contentType}}
+
+{
+  "refresh_token": "{{REFRESH_TOKEN}}"
+}

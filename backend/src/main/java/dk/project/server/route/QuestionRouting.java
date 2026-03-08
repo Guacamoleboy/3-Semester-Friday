@@ -3,34 +3,39 @@ package dk.project.server.route;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class QuestionRouting {
 
-    // Attributes
     private final EntityManager em;
     // private final QuestionController questionController;
 
-    // _______________________________________________________________________________
+    // ______________________________________________________
 
-    public QuestionRouting(EntityManagerFactory emf){
-        em = emf.createEntityManager();
-        // questionController = new QuestionController(em);
+    public QuestionRouting(EntityManagerFactory emf) {
+        this.em = emf.createEntityManager();
+        // this.questionController = new QuestionController(em);
     }
 
-    // _______________________________________________________________________________
+    // ______________________________________________________
 
-    public EndpointGroup routes(){
-
+    public EndpointGroup routes() {
         return () -> {
             path("/question", () -> {
 
+                // get("/all", questionController::getAll);
+                // get("/{id}", questionController::getById);
+                // post("/", questionController::create);
+                // put("/{id}", questionController::updateById);
+                // delete("/{id}", questionController::deleteById);
+
+                // Param Search. For Example:
+                // api.moodmap.dk/question?medication=2&diagnose=5
+
+                // get("/", questionController::paramSearch);
 
             });
         };
-
     }
-
-    // _______________________________________________________________________________
 
 }

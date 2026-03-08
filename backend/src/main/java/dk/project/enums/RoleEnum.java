@@ -7,6 +7,7 @@ public enum RoleEnum {
     MODERATOR("Moderator", "Moderation Team"),
     SUPPORT("Support", "Support Team"),
     CLINICIAN("Clinician", "Authorized MoodMap Clinician"),
+    CLINIC("Clinic", "Authorized MoodMap Clinic"),
     CLIENT("Client", "MoodMap Client");
 
     // ___________________________________________________________

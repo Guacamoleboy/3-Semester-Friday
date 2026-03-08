@@ -1,21 +1,22 @@
 package dk.project.server.route;
 
+import dk.project.controller.AuthController;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class AuthRouting {
 
     // Attributes
     private final EntityManager em;
-    // private final AuthController authController;
+    private final AuthController authController;
 
     // _______________________________________________________________________________
 
     public AuthRouting(EntityManagerFactory emf){
         em = emf.createEntityManager();
-        // authController = new AuthController(em);
+        authController = new AuthController(em);
     }
 
     // _______________________________________________________________________________
@@ -24,8 +25,10 @@ public class AuthRouting {
 
         return () -> {
             path("/auth", () -> {
-
-
+                post("/login", authController::login);
+                post("/register", authController::register);
+                get("/me", authController::me);
+                post("/refresh", authController::refresh);
             });
         };
 

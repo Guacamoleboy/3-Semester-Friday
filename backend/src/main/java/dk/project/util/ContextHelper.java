@@ -1,6 +1,8 @@
 package dk.project.util;
 
 import io.javalin.http.Context;
+import io.javalin.http.HttpResponseException;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
@@ -193,6 +195,16 @@ public class ContextHelper {
             throw new IllegalArgumentException(name + " must not be null or does not exist!");
         }
         return object;
+    }
+
+    // ________________________________________________________________________
+
+    public static String extractBearerToken(Context ctx) {
+        String header = ctx.header("Authorization");
+        if (header == null || !header.startsWith("Bearer ")) {
+            throw new HttpResponseException(401, "Missing token");
+        }
+        return header.substring(7);
     }
 
 }

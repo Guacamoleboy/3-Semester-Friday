@@ -13,19 +13,22 @@ public class UserRouting {
 
     // _______________________________________________________________________________
 
-    public UserRouting(EntityManagerFactory emf){
+    public UserRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
         // userController = new UserController(em);
     }
 
     // _______________________________________________________________________________
 
-    public EndpointGroup routes(){
+    public EndpointGroup routes() {
 
         return () -> {
             path("/user", () -> {
-
-
+                // get("/all", userController::getAll);
+                // delete("/all", userController::deleteAll);
+                // get("/{id}", userController::getById);
+                // put("/{id}", userController::updateById);
+                // delete("/{id}", userController::deleteById);
             });
         };
 

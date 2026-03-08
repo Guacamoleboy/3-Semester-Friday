@@ -13,19 +13,22 @@ public class RoleRouting {
 
     // _______________________________________________________________________________
 
-    public RoleRouting(EntityManagerFactory emf){
+    public RoleRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
         // roleController = new RoleController(em);
     }
 
     // _______________________________________________________________________________
 
-    public EndpointGroup routes(){
+    public EndpointGroup routes() {
 
         return () -> {
             path("/role", () -> {
-
-
+                // get("/all", roleController::getAll);
+                // get("/{id}", roleController::getById);
+                // put("/{id}", roleController::updateById);
+                // delete("/{id}", roleController::deleteById);
+                // delete("/all", roleController::deleteAll);
             });
         };
 
