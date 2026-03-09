@@ -3,11 +3,14 @@ package dk.project.util.jwt;
 import dk.project.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-
 import java.util.Date;
 import java.util.UUID;
 
 public class JwtUser extends JwtUtil {
+
+    // Attributes
+
+    // ___________________________________________________________________
 
     public static String generateAccessToken(User user) {
         return Jwts.builder()
@@ -20,6 +23,8 @@ public class JwtUser extends JwtUtil {
                 .compact();
     }
 
+    // ___________________________________________________________________
+
     public static String generateRefreshToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getId().toString())
@@ -28,6 +33,8 @@ public class JwtUser extends JwtUtil {
                 .signWith(KEY)
                 .compact();
     }
+
+    // ___________________________________________________________________
 
     public static UUID getUserId(String token) {
         Claims claims = Jwts.parser()

@@ -1,4 +1,4 @@
-package dk.project.util.moodmap;
+package dk.project.util.auth;
 
 import dk.project.dao.UserDAO;
 import dk.project.entity.User;
@@ -12,13 +12,19 @@ import java.util.UUID;
 public class AuthUtil {
 
     public static User getUserFromToken(Context ctx, UserDAO userDAO) {
+        // Fetch
         String token = ContextHelper.extractBearerToken(ctx);
+
+        // Validation
         if (!JwtUtil.isValid(token)) {
             throw new HttpResponseException(401, "Invalid token");
         }
+
+        // Act & Check
         UUID userId = JwtUser.getUserId(token);
         User user = userDAO.getById(userId);
         ContextHelper.checkNotNull(user, "User");
+
         return user;
     }
 

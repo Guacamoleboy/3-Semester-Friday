@@ -14,7 +14,7 @@ import dk.project.mapper.UserMapper;
 import dk.project.util.*;
 import dk.project.util.jwt.JwtUser;
 import dk.project.util.jwt.JwtUtil;
-import dk.project.util.moodmap.AuthUtil;
+import dk.project.util.auth.AuthUtil;
 import io.javalin.http.HttpResponseException;
 import jakarta.persistence.EntityManager;
 import io.javalin.http.Context;
