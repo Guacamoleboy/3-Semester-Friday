@@ -12,6 +12,8 @@ import day1Json from "@/data/devlog/day1.json";
 import day2Json from "@/data/devlog/day2.json";
 import day3Json from "@/data/devlog/day3.json";
 import day4Json from "@/data/devlog/day4.json";
+import day5Json from "@/data/devlog/day5.json";
+import day6Json from "@/data/devlog/day6.json";
 
 export default function DevLogPage() {
   
@@ -43,6 +45,8 @@ export default function DevLogPage() {
 
   // Original loaders
   const loaders = [
+    new DevLogLoader("day6", day6Json).toProps(),
+    new DevLogLoader("day5", day5Json).toProps(),
     new DevLogLoader("day4", day4Json).toProps(),
     new DevLogLoader("day3", day3Json).toProps(),
     new DevLogLoader("day2", day2Json).toProps(),
