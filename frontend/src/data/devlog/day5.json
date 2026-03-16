@@ -3,7 +3,7 @@
   "title": "HTTP, JWT & Setup",
   "description": "Implementing Javalin, JWT, upgrading logger & misc implementations.",
   "overviewPhoto": "/images/devlog/day5/6.png",
-  "badges": ["Backend","HTTP", "LOGGING", "Refactor", "Unit Test", "Java", "API"],
+  "badges": ["Backend", "HTTP", "Logging", "Refactor", "Unit Test", "Java", "API"],
   "content": [
     {
       "type": "h3",
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "type": "img small",
+      "type": "img tiny",
       "src": "/images/devlog/day5/4.png",
       "alt": "empty"
     },
@@ -113,7 +113,7 @@
       ]
     },
     {
-      "type": "img small",
+      "type": "img tiny",
       "src": "/images/devlog/day5/3.png",
       "alt": "empty"
     },
@@ -153,7 +153,7 @@
     {
       "type": "p",
       "text": [ 
-      "Jeg synes omskrivningen, implementering og diverse gik godt. Det var lidt besværligt, men jeg synes <moodmap-highlight>jeg kom i mål<moodmap-stop> med en god opsætning."
+      "Jeg synes omskrivningen, implementering og diverse gik godt. Det var lidt besværligt, men jeg synes jeg kom i mål med en god opsætning."
       ]
     },
     {

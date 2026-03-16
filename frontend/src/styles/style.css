@@ -1004,6 +1004,26 @@ body::-webkit-scrollbar {
     background-color: rgb(214, 48, 48)
 }
 
+.dev-log-badge.data {
+    background-color: rgb(150, 48, 214)
+}
+
+.dev-log-badge.cache {
+    background-color: rgb(201, 148, 25)
+}
+
+.dev-log-badge.http {
+    background-color: rgb(130, 61, 61)
+}
+
+.dev-log-badge.api {
+    background-color: rgb(49, 163, 158)
+}
+
+.dev-log-badge.logging {
+    background-color: rgb(214, 48, 48)
+}
+
 .dev-log-badge.next\.js {
     background-color: rgb(91, 17, 211)
 }
