@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.BaselineDAO;
+import dk.project.dao.impl.BaselineDAO;
 import dk.project.entity.Baseline;
 import jakarta.persistence.EntityManager;
 import java.util.List;

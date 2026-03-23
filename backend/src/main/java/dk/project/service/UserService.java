@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.UserDAO;
+import dk.project.dao.impl.UserDAO;
 import dk.project.entity.Role;
 import dk.project.entity.User;
 import jakarta.persistence.EntityManager;

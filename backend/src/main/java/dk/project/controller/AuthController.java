@@ -1,7 +1,7 @@
 package dk.project.controller;
 
-import dk.project.dao.RoleDAO;
-import dk.project.dao.UserDAO;
+import dk.project.dao.impl.RoleDAO;
+import dk.project.dao.impl.UserDAO;
 import dk.project.dto.UserDTO;
 import dk.project.dto.request.LoginRequestDTO;
 import dk.project.dto.request.RefreshTokenRequestDTO;
@@ -16,7 +16,6 @@ import dk.project.util.*;
 import dk.project.util.jwt.JwtUser;
 import dk.project.util.jwt.JwtUtil;
 import dk.project.util.auth.AuthUtil;
-import io.javalin.http.HttpResponseException;
 import jakarta.persistence.EntityManager;
 import io.javalin.http.Context;
 import java.util.UUID;
@@ -71,7 +70,8 @@ public class AuthController {
                     "name"
             );
 
-            ContextHelper.checkNotNull(role, "Role");
+            ContextHelper.notNull(role, "Role");
+
             String hashedPassword = BCryptHash.hash(request.getPassword());
             String hashedEmail = BCryptHash.hash(request.getEmail());
 

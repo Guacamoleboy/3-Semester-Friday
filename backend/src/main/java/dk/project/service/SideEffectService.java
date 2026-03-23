@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.SideEffectDAO;
+import dk.project.dao.impl.SideEffectDAO;
 import dk.project.entity.SideEffect;
 import jakarta.persistence.EntityManager;
 import java.util.List;

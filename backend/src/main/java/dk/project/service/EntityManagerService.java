@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.EntityManagerDAO;
+import dk.project.dao.impl.EntityManagerDAO;
 import java.util.List;
 
 public class EntityManagerService<T> {

@@ -1,4 +1,4 @@
-package dk.project.dao;
+package dk.project.dao.impl;
 
 import dk.project.entity.MedicationClient;
 import jakarta.persistence.EntityManager;

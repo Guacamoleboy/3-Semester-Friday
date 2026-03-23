@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.RoleDAO;
+import dk.project.dao.impl.RoleDAO;
 import dk.project.entity.Role;
 import jakarta.persistence.EntityManager;
 import java.util.UUID;

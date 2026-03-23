@@ -10,6 +10,7 @@ import dk.project.route.Routes;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.HttpStatus;
+import io.javalin.validation.ValidationException;
 import jakarta.persistence.EntityManagerFactory;
 import java.util.Map;
 
@@ -39,9 +40,6 @@ public class Server {
             configureExceptionHandling(config);
         }).start(port);
 
-        // Confirmation output
-        System.out.println("\nServer started on port " + port);
-
     }
 
     // _____________________________________________________________________________________
@@ -60,6 +58,15 @@ public class Server {
     // _____________________________________________________________________________________
 
     private void configureExceptionHandling(JavalinConfig config) {
+
+        // ValidationException
+        config.routes.exception(ValidationException.class, (e, ctx) -> {
+            ctx.status(400).json(Map.of(
+                    "status", "error",
+                    "code", 400,
+                    "message", e.getErrors().toString()
+            ));
+        });
 
         // ApiException
         config.routes.exception(ApiException.class, (e, ctx) -> {

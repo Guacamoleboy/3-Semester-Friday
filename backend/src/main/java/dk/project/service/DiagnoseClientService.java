@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.DiagnoseClientDAO;
+import dk.project.dao.impl.DiagnoseClientDAO;
 import dk.project.entity.DiagnoseClient;
 import jakarta.persistence.EntityManager;
 import java.util.List;

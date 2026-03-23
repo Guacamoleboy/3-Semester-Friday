@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.MedicationDAO;
+import dk.project.dao.impl.MedicationDAO;
 import dk.project.entity.Medication;
 import jakarta.persistence.EntityManager;
 

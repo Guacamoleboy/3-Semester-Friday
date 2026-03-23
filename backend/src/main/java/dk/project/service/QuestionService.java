@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.QuestionDAO;
+import dk.project.dao.impl.QuestionDAO;
 import dk.project.entity.Question;
 import jakarta.persistence.EntityManager;
 import java.util.List;

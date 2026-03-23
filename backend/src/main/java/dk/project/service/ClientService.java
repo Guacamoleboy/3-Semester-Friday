@@ -1,6 +1,6 @@
 package dk.project.service;
 
-import dk.project.dao.ClientDAO;
+import dk.project.dao.impl.ClientDAO;
 import dk.project.entity.Client;
 import jakarta.persistence.EntityManager;
 import org.mindrot.jbcrypt.BCrypt;
