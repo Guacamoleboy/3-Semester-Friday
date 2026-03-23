@@ -1,12 +1,11 @@
 package dk.project.dao;
 
-import dk.project.entity.SideEffect;
-import jakarta.persistence.EntityManager;
+import dk.project.ATest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SideEffectDAOTest extends ADAOTest {
+public class SideEffectDAOTest extends ATest {
 
     // Attributes
     private SideEffectDAO sideEffectDAO;
@@ -20,6 +19,5 @@ public class SideEffectDAOTest extends ADAOTest {
     }
 
     // _____________________________________________________
-    // FIXME: Add unique methods when they are applied to SideEffectDAO
 
 }

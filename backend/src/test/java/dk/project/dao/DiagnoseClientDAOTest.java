@@ -1,5 +1,6 @@
 package dk.project.dao;
 
+import dk.project.ATest;
 import dk.project.entity.Client;
 import dk.project.entity.Diagnose;
 import dk.project.entity.DiagnoseClient;
@@ -10,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DiagnoseClientDAOTest extends ADAOTest {
+public class DiagnoseClientDAOTest extends ATest {
 
     // Attributes
     private DiagnoseClientDAO diagnoseClientDAO;

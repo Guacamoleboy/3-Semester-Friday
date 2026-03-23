@@ -2,11 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <!-- ___________ ## GENERAL ## _________________________________________________________________________________ -->
+
+    <modelVersion>4.0.0</modelVersion>
     <groupId>dk.project</groupId>
     <artifactId>backend</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!-- ___________ ## PROPERTIES ## ______________________________________________________________________________ -->
+
+    <properties>
+        <lombok.version>1.18.38</lombok.version>
+        <hibernate-version>7.1.0.Final</hibernate-version>
+        <junit.version>5.13.4</junit.version>
+        <postgres.version>42.7.7</postgres.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- ___________ ## DEPENDENDICES ## ___________________________________________________________________________ -->
 
     <dependencies>
 
@@ -40,6 +56,19 @@
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>3.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- .env reader -->
@@ -126,14 +155,48 @@
 
     </dependencies>
 
-    <properties>
-        <lombok.version>1.18.38</lombok.version>
-        <hibernate-version>7.1.0.Final</hibernate-version>
-        <junit.version>5.13.4</junit.version>
-        <postgres.version>42.7.7</postgres.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <!-- ___________ ## BUILD ## ___________________________________________________________________________________ -->
+
+    <build>
+        <finalName>MoodMap-REST-API</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>write-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>${project.build.outputDirectory}/properties-from-pom.properties</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>

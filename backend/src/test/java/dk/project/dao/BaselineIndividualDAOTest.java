@@ -1,5 +1,6 @@
 package dk.project.dao;
 
+import dk.project.ATest;
 import dk.project.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class BaselineIndividualDAOTest extends ADAOTest {
+public class BaselineIndividualDAOTest extends ATest {
 
     // Attributes
     private BaselineIndividualDAO baselineIndividualDAO;

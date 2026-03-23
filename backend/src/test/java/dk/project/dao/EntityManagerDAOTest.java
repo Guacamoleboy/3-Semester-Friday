@@ -1,5 +1,6 @@
 package dk.project.dao;
 
+import dk.project.ATest;
 import dk.project.entity.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class EntityManagerDAOTest extends ADAOTest {
+public class EntityManagerDAOTest extends ATest {
 
     // Attributes
     private EntityManagerDAO<Role> entityManagerDAO;

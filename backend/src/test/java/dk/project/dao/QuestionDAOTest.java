@@ -1,5 +1,6 @@
 package dk.project.dao;
 
+import dk.project.ATest;
 import dk.project.entity.Diagnose;
 import dk.project.entity.Medication;
 import dk.project.entity.Question;
@@ -10,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class QuestionDAOTest extends ADAOTest {
+public class QuestionDAOTest extends ATest {
 
     // Attributes
     private QuestionDAO questionDAO;

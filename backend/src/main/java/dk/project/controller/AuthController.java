@@ -10,6 +10,7 @@ import dk.project.dto.response.AuthResponseDTO;
 import dk.project.entity.Role;
 import dk.project.entity.User;
 import dk.project.enums.RoleEnum;
+import dk.project.exception.ApiException;
 import dk.project.mapper.UserMapper;
 import dk.project.util.*;
 import dk.project.util.jwt.JwtUser;
@@ -41,7 +42,7 @@ public class AuthController {
 
             User user = userDAO.findEntityByColumn(request.getUsername(), "username");
             if (user == null || !BCryptHash.check(request.getPassword(), user.getPassword())) {
-                throw new HttpResponseException(401, "Invalid credentials");
+                throw new ApiException(401, "Invalid credentials");
             }
 
             String accessToken = JwtUser.generateAccessToken(user);
@@ -62,7 +63,7 @@ public class AuthController {
             RegisterRequestDTO request = ctx.bodyAsClass(RegisterRequestDTO.class);
 
             if (userDAO.existByColumn(request.getUsername(), "username")) {
-                throw new HttpResponseException(409, "Username already exists");
+                throw new ApiException(409, "Username already exists");
             }
 
             Role role = roleDAO.findEntityByColumn(
@@ -114,7 +115,7 @@ public class AuthController {
             String refreshToken = request.getRefreshToken();
 
             if (!JwtUtil.isValid(refreshToken)) {
-                throw new HttpResponseException(401, "Invalid refresh token");
+                throw new ApiException(401, "Invalid refresh token");
             }
 
             UUID userId = JwtUser.getUserId(refreshToken);

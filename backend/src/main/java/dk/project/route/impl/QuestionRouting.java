@@ -1,4 +1,4 @@
-package dk.project.server.route;
+package dk.project.route.impl;
 
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;

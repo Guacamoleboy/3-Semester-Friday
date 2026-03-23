@@ -1,5 +1,6 @@
 package dk.project.util;
 
+import dk.project.exception.ApiException;
 import io.javalin.http.Context;
 import io.javalin.http.HttpResponseException;
 
@@ -202,7 +203,7 @@ public class ContextHelper {
     public static String extractBearerToken(Context ctx) {
         String header = ctx.header("Authorization");
         if (header == null || !header.startsWith("Bearer ")) {
-            throw new HttpResponseException(401, "Missing token");
+            throw new ApiException(401, "Missing token");
         }
         return header.substring(7);
     }

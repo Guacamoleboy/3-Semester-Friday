@@ -1,10 +1,11 @@
 package dk.project.config;
 
+import dk.project.exception.ApiException;
 import io.github.cdimascio.dotenv.Dotenv;
 
 // Created by: Guacamoleboy
 // ________________________
-// Last updated: 24/02-2026
+// Last updated: 23/03-2026
 // By: Guacamoleboy
 
 public class DotEnv {
@@ -35,17 +36,66 @@ public class DotEnv {
                 .filename(fileName)
                 .ignoreIfMissing()
                 .load();
-
     }
 
     // _________________________________________________
 
     public static String get(String key) {
-        String row = dotenv.get(key);
-        if (row == null){
-            System.out.println("No value found in: " + fileName + ".");
+        String returnedKey = dotenv.get(key);
+        if (returnedKey == null || returnedKey.isEmpty()) {
+            throw new ApiException(500, key + " missing in " + fileName);
         }
-        return row;
+        return returnedKey;
+    }
+
+    // _________________________________________________
+
+    public static int getServerPort() {
+        String port = get("SERVER_PORT");
+        if (port == null || port.isEmpty()) {
+            throw new ApiException(500, "SERVER_PORT missing in " + fileName);
+        }
+        try {
+            return Integer.parseInt(port);
+        } catch (NumberFormatException nfe) {
+            throw new ApiException(500, "SERVER_PORT in " + fileName + " is not a valid Integer");
+        }
+    }
+
+    // _________________________________________________
+
+    public static String getApiBasePath() {
+        String returnedPath = get("API_BASE_PATH");
+        if (returnedPath == null || returnedPath.isEmpty()) {
+            throw new ApiException(500, "API_BASE_PATH missing in " + fileName);
+        }
+        return returnedPath;
+    }
+
+    // _________________________________________________
+
+    public static String getRouteOverviewPath() {
+        String returnedPath = get("ROUTE_ENDPOINT_FOLDER");
+        if (returnedPath == null || returnedPath.isEmpty()) {
+            throw new ApiException(500, "ROUTE_ENDPOINT_FOLDER missing in " + fileName);
+        }
+        return returnedPath;
+    }
+
+    // _________________________________________________
+
+    public static String getUrlPath() {
+        String returnedPath = get("URL_PATHING");
+        if (returnedPath == null || returnedPath.isEmpty()) {
+            throw new ApiException(500, "URL_PATHING missing in " + fileName);
+        }
+        return returnedPath;
+    }
+
+    // _________________________________________________
+
+    public static String getFileName() {
+        return fileName;
     }
 
 }

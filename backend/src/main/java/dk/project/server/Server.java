@@ -1,43 +1,121 @@
 package dk.project.server;
 
+import dk.project.config.DotEnv;
+import dk.project.config.DotEnvLog;
 import dk.project.config.HibernateConfig;
-import dk.project.server.route.Routing;
+import dk.project.exception.ApiException;
+import dk.project.exception.DatabaseException;
+import dk.project.exception.ResourceNotFoundException;
+import dk.project.route.Routes;
 import io.javalin.Javalin;
+import io.javalin.config.JavalinConfig;
+import io.javalin.http.HttpStatus;
 import jakarta.persistence.EntityManagerFactory;
+import java.util.Map;
 
 public class Server {
 
     // Attributes
     private Javalin app;
-    private final EntityManagerFactory entityManagerFactory = HibernateConfig.getEntityManagerFactory();
+    private final EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory();
+    private final Integer port = DotEnv.getServerPort();
 
-    // ____________________________________________________
+    // _____________________________________________________________________________________
 
-    public void start(int port){
+    public void start() {
 
         // Singleton check
         if (app != null){
             return;
         }
 
+        // Logging
+        DotEnvLog.logEnvInfo();
+
         // Javalin setup
         app = Javalin.create(config -> {
-            config.routes.apiBuilder(Routing.registerRoutes(entityManagerFactory));
-            config.bundledPlugins.enableRouteOverview("/routes");
-            config.routes.exception(RuntimeException.class, (e, ctx) -> {
-                ctx.status(400).json(e.getMessage());
-            });
+            configureRouting(config);
+            configurePlugins(config);
+            configureExceptionHandling(config);
         }).start(port);
+
+        // Confirmation output
+        System.out.println("\nServer started on port " + port);
 
     }
 
-    // ____________________________________________________
+    // _____________________________________________________________________________________
 
-    public void stop(){
+    private void configureRouting(JavalinConfig config) {
+        config.router.contextPath = DotEnv.getApiBasePath();
+        config.routes.apiBuilder(Routes.registerRoutes(emf));
+    }
+
+    // _____________________________________________________________________________________
+
+    private void configurePlugins(JavalinConfig config) {
+        config.bundledPlugins.enableRouteOverview(DotEnv.getRouteOverviewPath());
+    }
+
+    // _____________________________________________________________________________________
+
+    private void configureExceptionHandling(JavalinConfig config) {
+
+        // ApiException
+        config.routes.exception(ApiException.class, (e, ctx) -> {
+            ctx.status(e.getCode())
+                .json(Map.of(
+                        "status", "error",
+                        "code", e.getCode(),
+                        "message", e.getMessage()
+                ));
+        });
+
+        // ResourceNotFoundException
+        config.routes.exception(ResourceNotFoundException.class, (e, ctx) -> {
+            ctx.status(HttpStatus.NOT_FOUND)
+                .json(Map.of(
+                        "status", "error",
+                        "code", 404,
+                        "message", e.getMessage()
+                ));
+        });
+
+        // DatabaseException
+        config.routes.exception(DatabaseException.class, (e, ctx) -> {
+            ctx.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .json(Map.of(
+                        "status", "error",
+                        "code", 500,
+                        "message", "Database error"
+                ));
+        });
+
+        // Default Exception Handle
+        config.routes.exception(Exception.class, (e, ctx) -> {
+            ctx.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .json(Map.of(
+                        "status", "error",
+                        "code", 500,
+                        "message", "Internal Server Error"
+                ));
+        });
+
+    }
+
+    // _____________________________________________________________________________________
+
+    public void stop() {
         if (app != null) {
             app.stop();
             app = null;
         }
+    }
+
+    // _____________________________________________________________________________________
+
+    public Javalin getApp() {
+        return app;
     }
 
 }

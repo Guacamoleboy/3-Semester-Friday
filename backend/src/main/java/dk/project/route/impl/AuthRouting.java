@@ -1,4 +1,4 @@
-package dk.project.server.route;
+package dk.project.route.impl;
 
 import dk.project.controller.AuthController;
 import io.javalin.apibuilder.EndpointGroup;

@@ -1,18 +1,19 @@
-package dk.project.server.route;
+package dk.project.route;
 
+import dk.project.route.impl.AuthRouting;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManagerFactory;
 
-public class Routing {
+public class Routes {
 
     // Attributes
 
     // _______________________________________________________________________
 
-    public static EndpointGroup registerRoutes(EntityManagerFactory entityManagerFactory) {
+    public static EndpointGroup registerRoutes(EntityManagerFactory emf) {
 
         // Routings
-        AuthRouting authRouting = new AuthRouting(entityManagerFactory);
+        AuthRouting authRouting = new AuthRouting(emf);
 
         // EndpointGroup Return to server
         return () -> {
@@ -20,7 +21,5 @@ public class Routing {
         };
 
     }
-
-    // _______________________________________________________________________
 
 }

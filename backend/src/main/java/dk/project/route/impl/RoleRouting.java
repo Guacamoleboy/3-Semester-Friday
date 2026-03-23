@@ -1,21 +1,21 @@
-package dk.project.server.route;
+package dk.project.route.impl;
 
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import static io.javalin.apibuilder.ApiBuilder.path;
 
-public class UserRouting {
+public class RoleRouting {
 
     // Attributes
     private final EntityManager em;
-    // private final UserController userController;
+    // private final RoleController roleController;
 
     // _______________________________________________________________________________
 
-    public UserRouting(EntityManagerFactory emf) {
+    public RoleRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
-        // userController = new UserController(em);
+        // roleController = new RoleController(em);
     }
 
     // _______________________________________________________________________________
@@ -23,12 +23,12 @@ public class UserRouting {
     public EndpointGroup routes() {
 
         return () -> {
-            path("/user", () -> {
-                // get("/all", userController::getAll);
-                // delete("/all", userController::deleteAll);
-                // get("/{id}", userController::getById);
-                // put("/{id}", userController::updateById);
-                // delete("/{id}", userController::deleteById);
+            path("/role", () -> {
+                // get("/all", roleController::getAll);
+                // get("/{id}", roleController::getById);
+                // put("/{id}", roleController::updateById);
+                // delete("/{id}", roleController::deleteById);
+                // delete("/all", roleController::deleteAll);
             });
         };
 
