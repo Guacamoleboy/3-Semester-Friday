@@ -3,7 +3,7 @@ package dk.project.service;
 import dk.project.dao.impl.EntityManagerDAO;
 import java.util.List;
 
-public class EntityManagerService<T> {
+public class EntityManagerService <T> {
 
     // Attributes
     protected final EntityManagerDAO<T> entityManagerDAO;
@@ -32,15 +32,28 @@ public class EntityManagerService<T> {
 
     // _________________________________________________
 
-    public void deleteById(Object id){
-        validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
-        entityManagerDAO.deleteById(id);
+    public T delete(T entity){
+        validateNotEmpty(entity, classSpecific.getSimpleName() + ".entity");
+        return entityManagerDAO.delete(entity);
     }
 
     // _________________________________________________
 
-    public void deleteAll(){
-        entityManagerDAO.deleteAll();
+    public T deleteById(Object id){
+        validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
+        return entityManagerDAO.deleteById(id);
+    }
+
+    // _________________________________________________
+
+    public int deleteAll(){
+        return entityManagerDAO.deleteAll();
+    }
+
+    // _________________________________________________
+
+    public int deleteAllSafe() {
+        return entityManagerDAO.deleteAllSafe();
     }
 
     // _________________________________________________
@@ -65,8 +78,6 @@ public class EntityManagerService<T> {
     }
 
     // _________________________________________________
-    // String column is the value in the Entity class. Not the DB column.
-    // For example id_ending (DB) idEnding (Entity). Use the Entity version.
 
     public <R> R getColumnById(Object id, String column){
         validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
@@ -75,9 +86,8 @@ public class EntityManagerService<T> {
     }
 
     // _________________________________________________
-    // Same as above. Just with value attached.
 
-    public <R> R updateColumnById(Object id, String column, Object value){
+    public int updateColumnById(Object id, String column, Object value){
         validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
         validateNotEmpty(column, classSpecific.getSimpleName() + "." + column);
         return entityManagerDAO.updateColumnById(id, column, value);
@@ -95,10 +105,10 @@ public class EntityManagerService<T> {
 
     protected void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {
-            throw new IllegalArgumentException(fieldName + " må ikke være null");
+            throw new IllegalArgumentException(fieldName + " can't be null");
         }
         if (value instanceof String text && text.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " kan ikke være tom");
+            throw new IllegalArgumentException(fieldName + " can't be empty");
         }
     }
 

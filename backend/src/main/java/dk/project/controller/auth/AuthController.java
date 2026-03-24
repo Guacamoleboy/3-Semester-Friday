@@ -1,4 +1,4 @@
-package dk.project.controller;
+package dk.project.controller.auth;
 
 import dk.project.dao.impl.RoleDAO;
 import dk.project.dao.impl.UserDAO;

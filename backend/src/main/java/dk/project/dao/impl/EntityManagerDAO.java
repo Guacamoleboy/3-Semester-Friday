@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public class EntityManagerDAO<T> implements IDAO<T> {
+public class EntityManagerDAO <T> implements IDAO <T> {
 
     // Attributes
     protected EntityManager em;
@@ -83,17 +83,15 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     }
 
     // ________________________________________________________
-    // TODO: Refactor to Long / Integer, as we return affected rows no matter the input
 
     @Override
-    public <R> R updateColumnById(Object id, String column, Object value) {
+    public int updateColumnById(Object id, String column, Object value) {
         return executeQuery(() -> {
             String JPQL = "UPDATE " + classSpecific.getSimpleName() + " x SET x." + column + " = :value WHERE x.id = :id";
-            int updatedRows = em.createQuery(JPQL)
-            .setParameter("value", value)
-            .setParameter("id", id)
-            .executeUpdate();
-            return (R) Integer.valueOf(updatedRows);
+            return em.createQuery(JPQL)
+                    .setParameter("value", value)
+                    .setParameter("id", id)
+                    .executeUpdate();
         });
     }
 
@@ -133,14 +131,28 @@ public class EntityManagerDAO<T> implements IDAO<T> {
     }
 
     // ________________________________________________________
-    // JPA instead of JPQL (cascade fix)
+    // NO CASCADE RESPECT - Bulk delete - JPQL
 
     @Override
-    public void deleteAll() {
-        List<T> entities = getAll();
-        for (T entity : entities) {
-            em.remove(entity);
-        }
+    public int deleteAll() {
+        return executeQuery(() -> {
+            String JPQL = "DELETE FROM " + classSpecific.getSimpleName();
+            return em.createQuery(JPQL).executeUpdate();
+        });
+    }
+
+    // ________________________________________________________
+    // CASCADE RESPECT - Entity by Entity - JPA
+
+    @Override
+    public int deleteAllSafe() {
+        return executeQuery(() -> {
+            List<T> entities = getAll();
+            for (T entity : entities) {
+                em.remove(entity);
+            }
+            return entities.size();
+        });
     }
 
     // ________________________________________________________

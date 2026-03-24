@@ -1,6 +1,6 @@
 package dk.project.route.impl;
 
-import dk.project.controller.AuthController;
+import dk.project.controller.auth.AuthController;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

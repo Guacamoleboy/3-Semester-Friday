@@ -259,4 +259,52 @@ public class EntityManagerDAOTest extends ATest {
         assertEquals("RunnableRole", retrievedRole.getName());
     }
 
+    // ____________________________________________________
+
+    @Test
+    public void shouldDeleteAllRoles_bulk() {
+        // Arrange
+        Role role1 = new Role();
+        role1.setName("Bulk1");
+        role1.setDescription("Bulk role 1");
+        entityManagerDAO.create(role1);
+
+        Role role2 = new Role();
+        role2.setName("Bulk2");
+        role2.setDescription("Bulk role 2");
+        entityManagerDAO.create(role2);
+
+        // Act
+        int deletedCount = entityManagerDAO.deleteAll();
+        List<Role> remainingRoles = entityManagerDAO.getAll();
+
+        // Assert
+        assertEquals(2, deletedCount);
+        assertTrue(remainingRoles.isEmpty());
+    }
+
+    // ____________________________________________________
+
+    @Test
+    public void shouldDeleteAllRoles_safe() {
+        // Arrange
+        Role role1 = new Role();
+        role1.setName("Safe1");
+        role1.setDescription("Safe role 1");
+        entityManagerDAO.create(role1);
+
+        Role role2 = new Role();
+        role2.setName("Safe2");
+        role2.setDescription("Safe role 2");
+        entityManagerDAO.create(role2);
+
+        // Act
+        int deletedCount = entityManagerDAO.deleteAllSafe();
+        List<Role> remainingRoles = entityManagerDAO.getAll();
+
+        // Assert
+        assertEquals(2, deletedCount);
+        assertTrue(remainingRoles.isEmpty());
+    }
+
 }
