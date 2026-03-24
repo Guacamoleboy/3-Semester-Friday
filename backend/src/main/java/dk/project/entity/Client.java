@@ -6,44 +6,61 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "clients")
 public class Client {
 
-    // id_hash is the users CPR Number
-    // id_ending is the last 4 in the CPR number. Used for schema access later on.
 
-    // Attributes
+    // _________________________________________________________________________________________________________________
+
+    // Expected Column Layout in DB
+    // __________________
+    //
+    //
+    //              PgAmin
+    //              _______
+    //              id_hash | id_ending | created_at | last_login
+    //
+    // __________________
+    // Tested: YES
+    // Date: 24/03-2026
+
+    // _________________________________________________________________________________________________________________
+
+
+    // ______ | COLUMNS | ______________________________________________________________________________________________
+
     @Id
     @Column(name = "id_hash", nullable = false, unique = true)
     private String id;
-
     @Column(name = "id_ending", nullable = false)
     private Integer idEnding;
-
     @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
-
     @Column(name = "last_login")
     private Timestamp lastLogin;
 
-    // __________________________________________________________
-    // First Commit
+    // ______ | PERSIST LOGIC | ________________________________________________________________________________________
 
     @PrePersist
     protected void onCreate() {
         createdAt = new Timestamp(System.currentTimeMillis());
         lastLogin = createdAt;
     }
-
-    // __________________________________________________________
-    // Update
-
     @PreUpdate
     protected void onUpdate() {
         lastLogin = new Timestamp(System.currentTimeMillis());
+    }
+
+    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+
+    public static class Columns {
+        public static final String ID_HASH = "id_hash";
+        public static final String ID_ENDING = "id_ending";
+        public static final String CREATED_AT = "created_at";
+        public static final String LAST_LOGIN = "last_login";
     }
 
 }

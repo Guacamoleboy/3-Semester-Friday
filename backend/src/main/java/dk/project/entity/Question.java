@@ -5,40 +5,62 @@ import lombok.*;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "questions",
 uniqueConstraints = @UniqueConstraint(columnNames = {"diagnosis_id", "medication_id", "question_title"}))
-public class Question{
+public class Question {
 
-    // byte -> smallint in PostgreSQL (-128 | +127)
-    // 1-6 value as default (instantiated)
 
-    // Question based off of diagnosis. Medication can occur. Not needed.
+    // _________________________________________________________________________________________________________________
 
-    // @ManyToOne | Many (Question) | One (Diagnose)
-    // @ManyToOne | Many (Question) | One (Medication)
+    // Expected Column Layout in DB
+    // __________________
+    //
+    //
+    //              PgAmin
+    //              _______
+    //              id | question_title | question_description | value | diagnosis_id | medication_id
+    //
+    // __________________
+    // Tested: YES
+    // Date: 24/03-2026
 
-    // Attributes
+    // _________________________________________________________________________________________________________________
+
+
+    // ______ | COLUMNS | ______________________________________________________________________________________________
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
     @Column(name = "question_title" ,nullable = false)
     private String questionTitle;
-
     @Column(name = "question_description" ,nullable = false)
     private String questionDescription;
-
     @Column(name = "value")
     private byte questionValue = 6;
+
+    // ______ | RELATIONS | ____________________________________________________________________________________________
 
     @ManyToOne
     @JoinColumn(name = "diagnosis_id")
     private Diagnose diagnosis;
-
     @ManyToOne
     @JoinColumn(name = "medication_id")
     private Medication medication;
+
+    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+
+    public static class Columns {
+        public static final String ID = "id";
+        public static final String QUESTION_TITLE = "question_title";
+        public static final String QUESTION_DESCRIPTION = "question_description";
+        public static final String VALUE = "value";
+        public static final String DIAGNOSIS = "diagnosis";
+        public static final String MEDICATION = "medication";
+    }
 
 }
