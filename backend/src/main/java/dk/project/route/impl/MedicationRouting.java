@@ -12,7 +12,7 @@ public class MedicationRouting {
     // private final MedicationController medicationController;
     // private final MedicationClientController medicationClientController;
 
-    // _______________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public MedicationRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
@@ -20,7 +20,7 @@ public class MedicationRouting {
         // medicationClientController = new MedicationClientController(em);
     }
 
-    // _______________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public EndpointGroup routes() {
 
@@ -46,6 +46,6 @@ public class MedicationRouting {
 
     }
 
-    // _______________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
 }

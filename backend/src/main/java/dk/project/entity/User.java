@@ -51,7 +51,7 @@ public class User {
     // ______ | RELATIONS | ____________________________________________________________________________________________
 
     @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
     // ______ | PERSIST LOGIC | ________________________________________________________________________________________

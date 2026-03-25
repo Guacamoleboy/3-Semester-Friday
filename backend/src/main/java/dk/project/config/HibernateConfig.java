@@ -17,19 +17,19 @@ public class HibernateConfig {
     private static EntityManagerFactory emfTest;
     private static final String RESOURCE_NAME = "config.properties";
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static void setTest(Boolean test) {
         HibernateEnvironment.setTest(test);
     }
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Boolean getTest() {
         return HibernateEnvironment.getTest();
     }
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static EntityManagerFactory getEntityManagerFactory() {
         if (emf == null)
@@ -37,7 +37,7 @@ public class HibernateConfig {
         return emf;
     }
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static EntityManagerFactory getEntityManagerFactoryForTest() {
         if (emfTest == null){
@@ -47,7 +47,7 @@ public class HibernateConfig {
         return emfTest;
     }
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     private static EntityManagerFactory createEMF(boolean forTest) {
 

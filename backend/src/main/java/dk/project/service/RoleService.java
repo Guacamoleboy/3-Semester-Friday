@@ -12,32 +12,32 @@ public class RoleService extends EntityManagerService<Role> {
 
     // _________________________________________________________________________________________________________________
 
-    public RoleService(EntityManager em){
+    public RoleService(EntityManager em) {
         super(new RoleDAO(em), Role.class);
         this.roleDAO = (RoleDAO) this.entityManagerDAO;
     }
 
     // _________________________________________________________________________________________________________________
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return existByColumn(name, Role.Columns.NAME);
     }
 
     // _________________________________________________________________________________________________________________
 
-    public Role findByName(String name){;
+    public Role findByName(String name) {
         return findEntityByColumn(name, Role.Columns.NAME);
     }
 
     // _________________________________________________________________________________________________________________
 
-    public String getNameById(UUID roleId){
+    public String getNameById(UUID roleId) {
         return getColumnById(roleId, Role.Columns.NAME);
     }
 
     // _________________________________________________________________________________________________________________
 
-    public String getDescriptionById(UUID roleId){
+    public String getDescriptionById(UUID roleId) {
         return getColumnById(roleId, Role.Columns.DESCRIPTION);
     }
 

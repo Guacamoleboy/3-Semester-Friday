@@ -10,47 +10,47 @@ public class SideEffectService {
     // Attributes
     private final SideEffectDAO sideEffectDAO;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public SideEffectService(EntityManager em){
         this.sideEffectDAO = new SideEffectDAO(em);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createSideEffect(SideEffect sideEffect){
         validateNotEmpty(sideEffect.getNote(), "SideEffect.note");
         sideEffectDAO.create(sideEffect);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateSideEffect(SideEffect sideEffect){
         validateNotEmpty(sideEffect.getNote(), "SideEffect.note");
         sideEffectDAO.update(sideEffect);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteSideEffect(int id){
         validateNotEmpty(id, "SideEffect.id");
         sideEffectDAO.deleteById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllSideEffects(){
         sideEffectDAO.deleteAll();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public SideEffect getSideEffectById(int id){
         validateNotEmpty(id, "SideEffect.id");
         return sideEffectDAO.getById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getNoteById(int id) {
         validateNotEmpty(id, "SideEffect.id");
@@ -58,14 +58,14 @@ public class SideEffectService {
         return sideEffect != null ? sideEffect.getNote() : null;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<SideEffect> getAllSideEffects(){
         List<SideEffect> list = sideEffectDAO.getAll();
         return list != null ? list : null;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

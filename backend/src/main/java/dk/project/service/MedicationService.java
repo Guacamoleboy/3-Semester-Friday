@@ -9,33 +9,33 @@ public class MedicationService extends EntityManagerService<Medication> {
     // Attributes
     private final MedicationDAO medicationDAO;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public MedicationService(EntityManager em) {
         super(new MedicationDAO(em), Medication.class);
         this.medicationDAO = (MedicationDAO) this.entityManagerDAO;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getNameById(int id) {
         return getColumnById(id, "name");
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getDescriptionById(int id) {
         return getColumnById(id, "description");
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name) {
         validateNotEmpty(name, classSpecific.getSimpleName() + ".name");
         return medicationDAO.existsByName(name);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Medication findByName(String name) {
         validateNotEmpty(name, classSpecific.getSimpleName() + ".name");

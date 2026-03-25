@@ -12,14 +12,14 @@ public class EntityManagerDAO <T> implements IDAO <T> {
     protected EntityManager em;
     protected Class<T> classSpecific;
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     protected EntityManagerDAO(EntityManager em, Class<T> entityClass){
         this.em = em;
         this.classSpecific = entityClass;
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public T create(T t) {
@@ -33,14 +33,14 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public T update(T t) {
         return executeQuery(() -> em.merge(t));
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public T delete(T t) {
@@ -50,7 +50,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public T deleteById(Object id) {
@@ -63,14 +63,14 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public T getById(Object id) {
         return executeQuery(() -> findById(id));
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public <R> R getColumnById(Object id, String column) {
@@ -82,7 +82,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public int updateColumnById(Object id, String column, Object value) {
@@ -95,7 +95,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public boolean existByColumn(Object value, String column) {
@@ -106,7 +106,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         return count != null && count > 0;
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public T findEntityByColumn(Object value, String column) {
@@ -119,7 +119,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     public List<T> getAll() {
@@ -130,7 +130,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
     // NO CASCADE RESPECT - Bulk delete - JPQL
 
     @Override
@@ -141,7 +141,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
     // CASCADE RESPECT - Entity by Entity - JPA
 
     @Override
@@ -155,7 +155,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
     // Unknown object type query execute using Supplier from java.util
 
     protected <R> R executeQuery(Supplier<R> query) {
@@ -178,7 +178,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         }
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
     // void execute
 
     protected void executeQuery(Runnable task) {
@@ -188,7 +188,7 @@ public class EntityManagerDAO <T> implements IDAO <T> {
         });
     }
 
-    // ________________________________________________________
+    // _________________________________________________________________________________________________________________
     // Java 17 doesn't handle switch-case for instanceof
 
     private T findById(Object id) {

@@ -8,13 +8,13 @@ public class DiagnoseClientDAO extends EntityManagerDAO<DiagnoseClient> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseClientDAO(EntityManager em) {
         super(em, DiagnoseClient.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<DiagnoseClient> findByClientId(String clientId) {
         return executeQuery(() -> {
@@ -25,7 +25,7 @@ public class DiagnoseClientDAO extends EntityManagerDAO<DiagnoseClient> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<DiagnoseClient> findByDiagnoseId(int diagnoseId) {
         return executeQuery(() -> {

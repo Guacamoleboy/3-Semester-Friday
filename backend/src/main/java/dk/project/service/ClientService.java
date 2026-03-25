@@ -10,14 +10,14 @@ public class ClientService extends EntityManagerService<Client> {
     // Attributes
     private final ClientDAO clientDAO;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public ClientService(EntityManager em){
         super(new ClientDAO(em), Client.class);
         this.clientDAO = (ClientDAO) this.entityManagerDAO;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Client createClient(Client client){
         validateNotEmpty(client.getId(), "Client.id");
@@ -26,7 +26,7 @@ public class ClientService extends EntityManagerService<Client> {
         return super.create(client);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsById(String clientId){
         validateNotEmpty(clientId, "Client.id");

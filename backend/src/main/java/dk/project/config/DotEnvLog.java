@@ -8,7 +8,7 @@ public class DotEnvLog {
     // Attributes
     private static final Logger LOGGER = LoggerFactory.getLogger(DotEnvLog.class);
 
-    // _________________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static void logEnvInfo() {
         try {

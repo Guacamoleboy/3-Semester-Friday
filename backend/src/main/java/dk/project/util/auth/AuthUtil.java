@@ -11,6 +11,10 @@ import java.util.UUID;
 
 public class AuthUtil {
 
+    // Attributes
+
+    // _________________________________________________________________________________________________________________
+
     public static User getUserFromToken(Context ctx, UserDAO userDAO) {
         // Fetch
         String token = ContextHelper.extractBearerToken(ctx);

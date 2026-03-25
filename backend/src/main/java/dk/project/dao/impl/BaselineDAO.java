@@ -8,13 +8,13 @@ public class BaselineDAO extends EntityManagerDAO<Baseline> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public BaselineDAO(EntityManager em) {
         super(em, Baseline.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Baseline> findByClientId(String clientId) {
         return executeQuery(() -> {
@@ -25,7 +25,7 @@ public class BaselineDAO extends EntityManagerDAO<Baseline> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Baseline> findByDiagnoseId(int diagnoseId) {
         return executeQuery(() -> {

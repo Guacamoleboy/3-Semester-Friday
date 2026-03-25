@@ -7,13 +7,13 @@ public class DiagnoseTypeDAO extends EntityManagerDAO<DiagnoseType> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseTypeDAO(EntityManager em) {
         super(em, DiagnoseType.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name){
         return executeQuery(() -> {
@@ -25,7 +25,7 @@ public class DiagnoseTypeDAO extends EntityManagerDAO<DiagnoseType> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseType findByName(String name){
         return executeQuery(() -> em.createQuery(

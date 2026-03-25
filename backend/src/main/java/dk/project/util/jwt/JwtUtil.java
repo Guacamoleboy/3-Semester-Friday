@@ -13,7 +13,7 @@ public abstract class JwtUtil {
     protected static final long ACCESS_EXPIRATION = Long.parseLong(DotEnv.get("ACCESS_EXPIRATION"));
     protected static final long REFRESH_EXPIRATION = Long.parseLong(DotEnv.get("REFRESH_EXPIRATION"));
 
-    // _____________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static boolean isValid(String token) {
         try {

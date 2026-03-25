@@ -1,9 +1,13 @@
-package dk.project.mapper;
+package dk.project.mapper.internal;
 
-import dk.project.dto.UserDTO;
+import dk.project.dto.internal.UserDTO;
 import dk.project.entity.User;
 
 public class UserMapper {
+
+    // Attributes
+
+    // _________________________________________________________________________________________________________________
 
     public static UserDTO toDTO(User user) {
 
@@ -14,7 +18,6 @@ public class UserMapper {
         dto.setRoleId(user.getRole().getId());
         dto.setCreatedAt(user.getCreatedAt());
         dto.setLastLogin(user.getLastLogin());
-
         return dto;
 
     }

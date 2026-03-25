@@ -16,7 +16,7 @@ public class ResourceNotFoundException extends RuntimeException {
     private final String entityValue;
     private final String location;
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Message
 
     public ResourceNotFoundException(String entity, String entityValue) {
@@ -26,7 +26,7 @@ public class ResourceNotFoundException extends RuntimeException {
         this.location = null;
     }
 
-    // ____________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Message (+)location
 
     public ResourceNotFoundException(String entity, String entityValue, String location) {
@@ -36,7 +36,7 @@ public class ResourceNotFoundException extends RuntimeException {
         this.location = location;
     }
 
-    // ____________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Cause (-)location
 
     public ResourceNotFoundException(String entity, String entityValue, Throwable cause) {
@@ -46,7 +46,7 @@ public class ResourceNotFoundException extends RuntimeException {
         this.location = null;
     }
 
-    // ____________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Cause (+)location
     public ResourceNotFoundException(String entity, String entityValue, String location, Throwable cause) {
         super(entity + " not found: " + entityValue + " | " + location, cause);
@@ -55,19 +55,19 @@ public class ResourceNotFoundException extends RuntimeException {
         this.location = location;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getEntity() {
         return this.entity;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getEntityValue() {
         return this.entityValue;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
 
     private String getLocation(){
         return this.location;

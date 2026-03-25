@@ -10,12 +10,13 @@ public class QuestionService {
     // Attributes
     private final QuestionDAO questionDAO;
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
+
     public QuestionService(EntityManager em){
         this.questionDAO = new QuestionDAO(em);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createQuestion(Question question){
         validateNotEmpty(question.getQuestionTitle(), "Question.title");
@@ -24,7 +25,7 @@ public class QuestionService {
         questionDAO.create(question);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateQuestion(Question question){
         validateNotEmpty(question.getQuestionTitle(), "Question.title");
@@ -33,34 +34,34 @@ public class QuestionService {
         questionDAO.update(question);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteQuestion(int id){
         validateNotEmpty(id, "Question.id");
         questionDAO.deleteById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllQuestions(){
         questionDAO.deleteAll();
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Question getQuestionById(int id){
         validateNotEmpty(id, "Question.id");
         return questionDAO.getById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Question> getAllQuestions(){
         List<Question> list = questionDAO.getAll();
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Question> findByDiagnoseId(int diagnoseId){
         validateNotEmpty(diagnoseId, "Question.diagnoseId");
@@ -68,7 +69,7 @@ public class QuestionService {
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Question> findByMedicationId(int medicationId){
         validateNotEmpty(medicationId, "Question.medicationId");
@@ -76,14 +77,14 @@ public class QuestionService {
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateQuestionValue(Question question, byte value){
         question.setQuestionValue(value);
         updateQuestion(question);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

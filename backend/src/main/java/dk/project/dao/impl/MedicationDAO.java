@@ -7,13 +7,13 @@ public class MedicationDAO extends EntityManagerDAO<Medication> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public MedicationDAO(EntityManager em){
         super(em, Medication.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name){
         return executeQuery(() -> {
@@ -25,7 +25,7 @@ public class MedicationDAO extends EntityManagerDAO<Medication> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Medication findByName(String name){
         return executeQuery(() -> em.createQuery(

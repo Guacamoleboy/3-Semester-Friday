@@ -4,7 +4,7 @@ public class DatabaseException extends Exception {
 
     // Attributes
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DatabaseException(String userMessage, Throwable cause) {
         super(userMessage, cause);
@@ -12,14 +12,14 @@ public class DatabaseException extends Exception {
         System.out.println("cause: " + cause);
     }
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DatabaseException(String userMessage) {
         super(userMessage);
         System.out.println("userMessage: " + userMessage);
     }
 
-    // __________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DatabaseException(String userMessage, String systemMessage) {
         super(userMessage);
@@ -27,4 +27,4 @@ public class DatabaseException extends Exception {
         System.out.println("errorMessage: " + systemMessage);
     }
 
-} // DatabaseException End
+}

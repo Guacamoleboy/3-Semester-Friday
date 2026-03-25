@@ -45,7 +45,7 @@ public class CityService {
         for (String s : ALLOWED_OE) ALLOWED_CITIES.add(s.toLowerCase());
     }
 
-    // _____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public CompletableFuture<CityPayloadDTO> getCityByName(String cityName) {
 

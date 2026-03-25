@@ -1,4 +1,4 @@
-package dk.project.dto;
+package dk.project.dto.internal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

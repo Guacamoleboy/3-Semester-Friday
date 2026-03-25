@@ -8,13 +8,13 @@ public class MedicationClientDAO extends EntityManagerDAO<MedicationClient> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public MedicationClientDAO(EntityManager em){
         super(em, MedicationClient.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<MedicationClient> findByClientId(String clientId){
         return executeQuery(() -> {
@@ -25,7 +25,7 @@ public class MedicationClientDAO extends EntityManagerDAO<MedicationClient> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<MedicationClient> findByMedicationId(int medicationId){
         return executeQuery(() -> {

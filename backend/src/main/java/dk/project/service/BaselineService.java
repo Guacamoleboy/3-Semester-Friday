@@ -10,13 +10,13 @@ public class BaselineService {
     // Attributes
     private final BaselineDAO baselineDAO;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public BaselineService(EntityManager em){
         this.baselineDAO = new BaselineDAO(em);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createBaseline(Baseline baseline){
         validateNotEmpty(baseline.getClient(), "Baseline.client");
@@ -25,7 +25,7 @@ public class BaselineService {
         baselineDAO.create(baseline);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateBaseline(Baseline baseline){
         validateNotEmpty(baseline.getClient(), "Baseline.client");
@@ -34,47 +34,47 @@ public class BaselineService {
         baselineDAO.update(baseline);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteBaseline(int id){
         validateNotEmpty(id, "Baseline.id");
         baselineDAO.deleteById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllBaselines(){
         baselineDAO.deleteAll();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Baseline getBaselineById(int id){
         validateNotEmpty(id, "Baseline.id");
         return baselineDAO.getById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Baseline> getAllBaselines(){
         return baselineDAO.getAll();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Baseline> findByClientId(String clientId){
         validateNotEmpty(clientId, "Baseline.clientId");
         return baselineDAO.findByClientId(clientId);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Baseline> findByDiagnoseId(int diagnoseId){
         validateNotEmpty(diagnoseId, "Baseline.diagnoseId");
         return baselineDAO.findByDiagnoseId(diagnoseId);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

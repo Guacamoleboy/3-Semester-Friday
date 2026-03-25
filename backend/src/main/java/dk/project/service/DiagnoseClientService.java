@@ -10,13 +10,13 @@ public class DiagnoseClientService {
     // Attributes
     private final DiagnoseClientDAO diagnoseClientDAO;
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseClientService(EntityManager em){
         this.diagnoseClientDAO = new DiagnoseClientDAO(em);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createDiagnoseClient(DiagnoseClient diagnoseClient){
         validateNotEmpty(diagnoseClient.getClient(), "DiagnoseClient.client");
@@ -24,7 +24,7 @@ public class DiagnoseClientService {
         diagnoseClientDAO.create(diagnoseClient);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateDiagnoseClient(DiagnoseClient diagnoseClient){
         validateNotEmpty(diagnoseClient.getClient(), "DiagnoseClient.client");
@@ -32,34 +32,34 @@ public class DiagnoseClientService {
         diagnoseClientDAO.update(diagnoseClient);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteDiagnoseClient(Object id){
         validateNotEmpty(id, "DiagnoseClient.id");
         diagnoseClientDAO.deleteById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllDiagnoseClients(){
         diagnoseClientDAO.deleteAll();
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseClient getDiagnoseClientById(Object id){
         validateNotEmpty(id, "DiagnoseClient.id");
         return diagnoseClientDAO.getById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<DiagnoseClient> getAllDiagnoseClients(){
         List<DiagnoseClient> list = diagnoseClientDAO.getAll();
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<DiagnoseClient> findByClientId(String clientId){
         validateNotEmpty(clientId, "DiagnoseClient.clientId");
@@ -67,7 +67,7 @@ public class DiagnoseClientService {
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<DiagnoseClient> findByDiagnoseId(int diagnoseId){
         validateNotEmpty(diagnoseId, "DiagnoseClient.diagnoseId");
@@ -75,7 +75,7 @@ public class DiagnoseClientService {
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

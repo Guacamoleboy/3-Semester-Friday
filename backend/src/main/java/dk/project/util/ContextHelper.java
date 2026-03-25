@@ -4,6 +4,7 @@ import dk.project.exception.ApiException;
 import io.javalin.http.Context;
 import java.time.LocalTime;
 import java.time.LocalDate;
+import java.util.UUID;
 
 // Created by: Guacamoleboy
 // ________________________
@@ -14,7 +15,7 @@ public class ContextHelper {
 
     // Attributes
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String pathString(Context ctx, String name) {
         return ctx.pathParamAsClass(name, String.class)
@@ -22,7 +23,7 @@ public class ContextHelper {
                 .getOrThrow(errors -> new ApiException(400, errors.values().toString()));
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Integer pathInt(Context ctx, String name) {
         return ctx.pathParamAsClass(name, Integer.class)
@@ -30,7 +31,7 @@ public class ContextHelper {
                 .getOrThrow(errors -> new ApiException(400, errors.values().toString()));
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Long pathLong(Context ctx, String name) {
         return ctx.pathParamAsClass(name, Long.class)
@@ -38,28 +39,35 @@ public class ContextHelper {
                 .getOrThrow(errors -> new ApiException(400, errors.values().toString()));
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static LocalDate pathDate(Context ctx, String name) {
         return ctx.pathParamAsClass(name, LocalDate.class)
                 .getOrThrow(errors -> new ApiException(400, errors.values().toString()));
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
+
+    public static UUID pathUUID(Context ctx, String name) {
+        return ctx.pathParamAsClass(name, java.util.UUID.class)
+                .getOrThrow(errors -> new ApiException(400, "Invalid UUID format for " + name));
+    }
+
+    // _________________________________________________________________________________________________________________
 
     public static LocalTime pathTime(Context ctx, String name) {
         return ctx.pathParamAsClass(name, LocalTime.class)
                 .getOrThrow(errors -> new ApiException(400, errors.values().toString()));
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Boolean pathBoolean(Context ctx, String name) {
         return ctx.pathParamAsClass(name, Boolean.class)
                 .getOrThrow(errors -> new ApiException(400, errors.values().toString()));
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static <T> T notNull(T object, String name) {
         if (object == null) {
@@ -68,7 +76,7 @@ public class ContextHelper {
         return object;
     }
 
-    // ____________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String extractBearerToken(Context ctx) {
         String header = ctx.header("Authorization");

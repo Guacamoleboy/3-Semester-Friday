@@ -7,13 +7,13 @@ public class ClientDAO extends EntityManagerDAO<Client> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public ClientDAO(EntityManager em) {
         super(em, Client.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Integer getIdEndingById(String clientId) {
         return executeQuery(() -> {
@@ -24,7 +24,7 @@ public class ClientDAO extends EntityManagerDAO<Client> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsById(String clientId) {
         return executeQuery(() -> {

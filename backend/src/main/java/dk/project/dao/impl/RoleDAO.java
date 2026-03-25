@@ -7,7 +7,7 @@ public class RoleDAO extends EntityManagerDAO<Role> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public RoleDAO(EntityManager em){
         super(em, Role.class);

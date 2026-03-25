@@ -10,7 +10,7 @@ public class JwtUser extends JwtUtil {
 
     // Attributes
 
-    // ___________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String generateAccessToken(User user) {
         return Jwts.builder()
@@ -23,7 +23,7 @@ public class JwtUser extends JwtUtil {
                 .compact();
     }
 
-    // ___________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String generateRefreshToken(User user) {
         return Jwts.builder()
@@ -34,7 +34,7 @@ public class JwtUser extends JwtUtil {
                 .compact();
     }
 
-    // ___________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static UUID getUserId(String token) {
         Claims claims = Jwts.parser()

@@ -13,7 +13,7 @@ public class DiagnoseRouting {
     // private final DiagnoseClientController diagnoseClientController;
     // private final DiagnoseTypeController diagnoseTypeController;
 
-    // ___________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
@@ -22,7 +22,7 @@ public class DiagnoseRouting {
         // diagnoseTypeController = new DiagnoseTypeController(em);
     }
 
-    // ___________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public EndpointGroup routes(){
         return () -> {

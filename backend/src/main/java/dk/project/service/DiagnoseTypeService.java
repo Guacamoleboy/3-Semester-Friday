@@ -10,75 +10,75 @@ public class DiagnoseTypeService {
     // Attributes
     private final DiagnoseTypeDAO diagnoseTypeDAO;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseTypeService(EntityManager em){
         this.diagnoseTypeDAO = new DiagnoseTypeDAO(em);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createDiagnoseType(DiagnoseType diagnoseType){
         validateNotEmpty(diagnoseType.getName(), "DiagnoseType.name");
         diagnoseTypeDAO.create(diagnoseType);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateDiagnoseType(DiagnoseType diagnoseType){
         validateNotEmpty(diagnoseType.getName(), "DiagnoseType.name");
         diagnoseTypeDAO.update(diagnoseType);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteDiagnoseType(int id){
         validateNotEmpty(id, "DiagnoseType.id");
         diagnoseTypeDAO.deleteById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllDiagnoseTypes(){
         diagnoseTypeDAO.deleteAll();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseType getDiagnoseTypeById(int id){
         validateNotEmpty(id, "DiagnoseType.id");
         return diagnoseTypeDAO.getById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getNameById(int id) {
         validateNotEmpty(id, "DiagnoseType.id");
         return diagnoseTypeDAO.getColumnById(id, "name");
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<DiagnoseType> getAllDiagnoseTypes(){
         List<DiagnoseType> list = diagnoseTypeDAO.getAll();
         return list != null ? list : null;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name){
         validateNotEmpty(name, "DiagnoseType.name");
         return diagnoseTypeDAO.existsByName(name);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseType findByName(String name){
         validateNotEmpty(name, "DiagnoseType.name");
         return diagnoseTypeDAO.findByName(name);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

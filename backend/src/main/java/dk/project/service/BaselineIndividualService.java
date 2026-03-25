@@ -10,13 +10,13 @@ public class BaselineIndividualService {
     // Attributes
     private final BaselineIndividualDAO baselineIndividualDAO;
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public BaselineIndividualService(EntityManager em){
         this.baselineIndividualDAO = new BaselineIndividualDAO(em);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createBaselineIndividual(BaselineIndividual baselineIndividual){
         validateNotEmpty(baselineIndividual.getBaseline(), "BaselineIndividual.baseline");
@@ -24,7 +24,7 @@ public class BaselineIndividualService {
         baselineIndividualDAO.create(baselineIndividual);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateBaselineIndividual(BaselineIndividual baselineIndividual){
         validateNotEmpty(baselineIndividual.getBaseline(), "BaselineIndividual.baseline");
@@ -32,54 +32,54 @@ public class BaselineIndividualService {
         baselineIndividualDAO.update(baselineIndividual);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteBaselineIndividual(int id){
         validateNotEmpty(id, "BaselineIndividual.id");
         baselineIndividualDAO.deleteById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllBaselineIndividuals(){
         baselineIndividualDAO.deleteAll();
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public BaselineIndividual getBaselineIndividualById(int id){
         validateNotEmpty(id, "BaselineIndividual.id");
         return baselineIndividualDAO.getById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<BaselineIndividual> getAllBaselineIndividuals(){
         return baselineIndividualDAO.getAll();
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateValue(BaselineIndividual baselineIndividual, byte value){
         baselineIndividual.setValue(value);
         updateBaselineIndividual(baselineIndividual);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateNote(BaselineIndividual baselineIndividual, String note){
         baselineIndividual.setNote(note);
         updateBaselineIndividual(baselineIndividual);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<BaselineIndividual> findByBaselineId(int baselineId){
         validateNotEmpty(baselineId, "BaselineIndividual.baselineId");
         return baselineIndividualDAO.findByBaselineId(baselineId);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

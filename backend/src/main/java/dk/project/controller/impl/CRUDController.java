@@ -1,75 +1,96 @@
 package dk.project.controller.impl;
 
-import dk.project.controller.IController;
 import dk.project.service.EntityManagerService;
+import dk.project.util.ContextHelper;
+import io.javalin.http.Context;
 import java.util.List;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class CRUDController <T> implements IController <T> {
+public abstract class CRUDController <T> {
 
     // Attributes
-    protected final EntityManagerService<T> service;
+    protected final EntityManagerService<T> classService;
+    protected final Class<T> classSpecific;
+    private final Function<T, Object> classMapper;
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    protected CRUDController(EntityManagerService<T> service) {
-        this.service = service;
+    protected CRUDController(EntityManagerService<T> classService, Class<T> classSpecific, Function<T, Object> classMapper) {
+        this.classService = classService;
+        this.classSpecific = classSpecific;
+        this.classMapper = classMapper;
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public T create(T entity) {
-        return service.create(entity);
+    public void create(Context ctx) {
+        try {
+            T entity = ctx.bodyAsClass(classSpecific);
+            T created = classService.create(entity);
+            ctx.json(classMapper.apply(created));
+        } catch (Exception e) {
+            e.printStackTrace(); // debug
+            throw new dk.project.exception.ApiException(500, e.getMessage());
+        }
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public T update(T entity) {
-        return service.update(entity);
+    public void update(Context ctx) {
+        T entity = ctx.bodyValidator(classSpecific)
+                .check(e -> e != null, classSpecific.getSimpleName() + " can't be null")
+                .get();
+        T updated = classService.update(entity);
+        ctx.json(classMapper.apply(updated));
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public T getById(Object id) {
-        return service.getById(id);
+    public void getById(Context ctx) {
+        String idStr = ctx.pathParam("id");
+        UUID uuid = UUID.fromString(idStr);
+        T entity = ContextHelper.notNull(
+                classService.getById(uuid),
+                classSpecific.getSimpleName()
+        );
+        ctx.json(classMapper.apply(entity));
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public List<T> getAll() {
-        return service.getAll();
+    public void getAll(Context ctx) {
+        List<Object> result = classService.getAll().stream()
+                .map(classMapper)
+                .collect(Collectors.toList());
+        ctx.json(result);
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public T delete(T entity) {
-        return service.delete(entity);
+    public void deleteById(Context ctx) {
+        String idStr = ctx.pathParam("id");
+        UUID uuid = UUID.fromString(idStr);
+        T entity = ContextHelper.notNull(
+                classService.deleteById(uuid),
+                classSpecific.getSimpleName()
+        );
+        ctx.json(classMapper.apply(entity));
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public T deleteById(Object id) {
-        service.deleteById(id);
-        return null;
+    public void deleteAll(Context ctx) {
+        int deleted = classService.deleteAll();
+        ctx.json(deleted);
     }
 
-    // ___________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    @Override
-    public int deleteAll() {
-        return service.deleteAll();
-    }
-
-    // ___________________________________________________________________________________________
-
-    @Override
-    public int deleteAllSafe() {
-        return service.deleteAllSafe();
+    public void deleteAllSafe(Context ctx) {
+        int deleted = classService.deleteAllSafe();
+        ctx.json(deleted);
     }
 
 }

@@ -9,34 +9,34 @@ public class DiagnoseService extends EntityManagerService<Diagnose> {
     // Attributes
     private final DiagnoseDAO diagnoseDAO;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseService(EntityManager em){
         super(new DiagnoseDAO(em), Diagnose.class);
         this.diagnoseDAO = (DiagnoseDAO) this.entityManagerDAO;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getNameById(int id){
         validateNotEmpty(id, "Diagnose.id");
         return getColumnById(id, "name");
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getDescriptionById(int id){
         validateNotEmpty(id, "Diagnose.id");
         return getColumnById(id, "description");
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name) {
         return existByColumn(name, "name");
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public Diagnose findDiagnoseByName(String name){
         return findEntityByColumn(name, "name");

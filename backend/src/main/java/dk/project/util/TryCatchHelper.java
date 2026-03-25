@@ -13,7 +13,7 @@ public class TryCatchHelper {
 
     // Attributes
 
-    // _____________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
     // Supplier <T>
     //      - Needed instead of Runnable as we need a result in return.
     //      - Runnable only executes. Doesn't return anything.
@@ -38,7 +38,7 @@ public class TryCatchHelper {
 
     }
 
-    // _____________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
     // Void specific. Using Runnable instead of Supplier<T>
 
     public static void tryCatchHelperVoid(Context ctx, Runnable runnable, String successMessage) {

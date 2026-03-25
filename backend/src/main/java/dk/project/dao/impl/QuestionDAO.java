@@ -8,13 +8,13 @@ public class QuestionDAO extends EntityManagerDAO<Question> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public QuestionDAO(EntityManager em){
         super(em, Question.class);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
 
     public List<Question> findByDiagnoseId(int diagnoseId){
@@ -26,7 +26,7 @@ public class QuestionDAO extends EntityManagerDAO<Question> {
         });
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<Question> findByMedicationId(int medicationId){
         return executeQuery(() -> {

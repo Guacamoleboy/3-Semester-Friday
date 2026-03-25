@@ -7,7 +7,7 @@ public class DiagnoseDAO extends EntityManagerDAO<Diagnose> {
 
     // Attributes
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public DiagnoseDAO(EntityManager em) {
         super(em, Diagnose.class);

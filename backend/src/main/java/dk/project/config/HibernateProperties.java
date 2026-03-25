@@ -7,7 +7,7 @@ public class HibernateProperties {
 
     // Attributes
 
-    // ________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Properties setBaseProperties() {
         Properties props = new Properties();
@@ -20,7 +20,7 @@ public class HibernateProperties {
         return props;
     }
 
-    // ________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Properties setDeployedProperties(Properties props) {
         String DBName = System.getenv("DB_NAME");
@@ -30,7 +30,7 @@ public class HibernateProperties {
         return props;
     }
 
-    // ________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Properties setDevProperties(Properties props, String resourceName) {
         String DBName = Util.getPropertyValue("DB_NAME", resourceName);
@@ -42,7 +42,7 @@ public class HibernateProperties {
         return props;
     }
 
-    // ________________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static Properties setTestProperties(Properties props) {
         props.put("hibernate.connection.driver_class", "org.testcontainers.jdbc.ContainerDatabaseDriver");

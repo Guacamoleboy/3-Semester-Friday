@@ -10,13 +10,13 @@ public class MedicationClientService {
     // Attributes
     private final MedicationClientDAO medicationClientDAO;
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public MedicationClientService(EntityManager em){
         this.medicationClientDAO = new MedicationClientDAO(em);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void createMedicationClient(MedicationClient medicationClient){
         validateNotEmpty(medicationClient.getClient(), "MedicationClient.client");
@@ -25,7 +25,7 @@ public class MedicationClientService {
         medicationClientDAO.create(medicationClient);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateMedicationClient(MedicationClient medicationClient){
         validateNotEmpty(medicationClient.getClient(), "MedicationClient.client");
@@ -34,34 +34,34 @@ public class MedicationClientService {
         medicationClientDAO.update(medicationClient);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteMedicationClient(int id){
         validateNotEmpty(id, "MedicationClient.id");
         medicationClientDAO.deleteById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void deleteAllMedicationClients(){
         medicationClientDAO.deleteAll();
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public MedicationClient getMedicationClientById(int id){
         validateNotEmpty(id, "MedicationClient.id");
         return medicationClientDAO.getById(id);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<MedicationClient> getAllMedicationClients(){
         List<MedicationClient> list = medicationClientDAO.getAll();
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<MedicationClient> findByClientId(String clientId){
         validateNotEmpty(clientId, "MedicationClient.clientId");
@@ -69,7 +69,7 @@ public class MedicationClientService {
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public List<MedicationClient> findByMedicationId(int medicationId){
         validateNotEmpty(medicationId, "MedicationClient.medicationId");
@@ -77,14 +77,14 @@ public class MedicationClientService {
         return list != null ? list : null;
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateAmount(MedicationClient mc, int amount){
         mc.setAmount(amount);
         updateMedicationClient(mc);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     public void updateTimeline(MedicationClient mc, String timeline){
         validateNotEmpty(timeline, "MedicationClient.timeline");
@@ -92,7 +92,7 @@ public class MedicationClientService {
         updateMedicationClient(mc);
     }
 
-    // ________________________________________
+    // _________________________________________________________________________________________________________________
 
     private void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

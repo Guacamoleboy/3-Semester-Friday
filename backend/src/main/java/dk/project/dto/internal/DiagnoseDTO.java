@@ -1,4 +1,4 @@
-package dk.project.dto;
+package dk.project.dto.internal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -6,16 +6,16 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class MedicationDTO {
+public class DiagnoseDTO {
 
     // Attributes
-    @JsonProperty("medication_id")
+    @JsonProperty("diagnose_id")
     private int id;
 
-    @JsonProperty("medication_name")
+    @JsonProperty("diagnose_name")
     private String name;
 
-    @JsonProperty("medication_description")
+    @JsonProperty("diagnose_description")
     private String description;
 
 }

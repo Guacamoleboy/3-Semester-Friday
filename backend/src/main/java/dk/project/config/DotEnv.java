@@ -15,7 +15,7 @@ public class DotEnv {
     private static final String environment = "development";
     private static final String fileName;
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
     // Usage:
     // ______
     // DotEnv.getTmdbKey(). Returns a String.
@@ -38,7 +38,7 @@ public class DotEnv {
                 .load();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String get(String key) {
         String returnedKey = dotenv.get(key);
@@ -48,7 +48,7 @@ public class DotEnv {
         return returnedKey;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static int getServerPort() {
         String port = get("SERVER_PORT");
@@ -62,7 +62,7 @@ public class DotEnv {
         }
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String getApiBasePath() {
         String returnedPath = get("API_BASE_PATH");
@@ -72,7 +72,7 @@ public class DotEnv {
         return returnedPath;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String getRouteOverviewPath() {
         String returnedPath = get("ROUTE_ENDPOINT_FOLDER");
@@ -82,7 +82,7 @@ public class DotEnv {
         return returnedPath;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String getUrlPath() {
         String returnedPath = get("URL_PATHING");
@@ -92,7 +92,7 @@ public class DotEnv {
         return returnedPath;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String getFileName() {
         return fileName;

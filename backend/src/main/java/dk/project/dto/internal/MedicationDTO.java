@@ -1,22 +1,21 @@
-package dk.project.dto;
+package dk.project.dto.internal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
-public class RoleDTO {
+public class MedicationDTO {
 
     // Attributes
-    @JsonProperty("role_id")
-    private UUID id;
+    @JsonProperty("medication_id")
+    private int id;
 
-    @JsonProperty("role_name")
+    @JsonProperty("medication_name")
     private String name;
 
-    @JsonProperty("role_description")
+    @JsonProperty("medication_description")
     private String description;
 
 }

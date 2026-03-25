@@ -7,7 +7,7 @@ public class HibernateAnnotation {
 
     // Attributes
 
-    // ______________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static void registerEntities(Configuration configuration) {
         configuration.addAnnotatedClass(Baseline.class);

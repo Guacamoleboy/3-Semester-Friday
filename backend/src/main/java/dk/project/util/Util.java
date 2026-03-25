@@ -26,14 +26,14 @@ public class Util {
     private static String root_path = "src/main/resources";
     private static boolean isTest = false;
 
-    // _________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static void setTestMode(boolean testMode) {
         isTest = testMode;
         root_path = isTest ? "src/test/resources" : "src/main/resources";
     }
 
-    // _________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static String getPropertyValue(String propertyName, String resourceName) {
         try (InputStream inputStream = ClassLoader.getSystemResourceAsStream(resourceName)) {
@@ -59,7 +59,7 @@ public class Util {
         }
     }
 
-    // _________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public static List<String> fileMissingSearcher(String resourceName) {
         File folder = new File(root_path);

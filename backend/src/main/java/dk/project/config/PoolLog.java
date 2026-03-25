@@ -14,7 +14,7 @@ public class PoolLog extends ThreadPoolExecutor {
     // Attributes
     private static final Logger LOGGER = LoggerFactory.getLogger(PoolLog.class);
 
-    // __________________________________________________________________
+    // _________________________________________________________________________________________________________________
     // BlockingQueue<Runnable> is used to try and make it as generic as possible. We can use any BlockingQueue on it
     // as long as it follows the principles of it being a BlockingQueue<>.
     // Not to mention we extend ThreadPoolExecutor who demand it in super() call.
@@ -23,7 +23,7 @@ public class PoolLog extends ThreadPoolExecutor {
         super(minThreads, maxThreads, idleTimeout, unit, taskQueue);
     }
 
-    // __________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     @Override
     protected void afterExecute(Runnable r, Throwable t) {

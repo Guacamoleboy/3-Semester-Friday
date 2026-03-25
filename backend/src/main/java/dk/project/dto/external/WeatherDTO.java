@@ -15,7 +15,7 @@ public class WeatherDTO {
     @JsonProperty("current_units")
     private CurrentUnitsDTO currentUnits;
 
-    // ________________________________________________________________
+    // _________________________________________________________________________________________________________________
     // Nested class for "current"
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,7 +28,7 @@ public class WeatherDTO {
         private Double windSpeed;
     }
 
-    // ________________________________________________________________
+    // _________________________________________________________________________________________________________________
     // Nested class for "current_units"
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -41,7 +41,7 @@ public class WeatherDTO {
         private String windSpeedUnit;
     }
 
-    // ________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getWithUnit(String searchType) {
 

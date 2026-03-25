@@ -9,67 +9,67 @@ public class EntityManagerService <T> {
     protected final EntityManagerDAO<T> entityManagerDAO;
     protected final Class<T> classSpecific;
 
-    // _____________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public EntityManagerService(EntityManagerDAO<T> entityManagerDAO, Class<T> entityClass){
+    public EntityManagerService(EntityManagerDAO<T> entityManagerDAO, Class<T> entityClass) {
         this.entityManagerDAO = entityManagerDAO;
         this.classSpecific = entityClass;
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public T create(T entity){
+    public T create(T entity) {
         validateNotEmpty(entity, classSpecific.getSimpleName() + ".entity");
         return entityManagerDAO.create(entity);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public T update(T entity){
+    public T update(T entity) {
         validateNotEmpty(entity, classSpecific.getSimpleName() + ".entity");
         return entityManagerDAO.update(entity);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public T delete(T entity){
+    public T delete(T entity) {
         validateNotEmpty(entity, classSpecific.getSimpleName() + ".entity");
         return entityManagerDAO.delete(entity);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public T deleteById(Object id){
+    public T deleteById(Object id) {
         validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
         return entityManagerDAO.deleteById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public int deleteAll(){
+    public int deleteAll() {
         return entityManagerDAO.deleteAll();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public int deleteAllSafe() {
         return entityManagerDAO.deleteAllSafe();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public T getById(Object id){
+    public T getById(Object id) {
         validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
         return entityManagerDAO.getById(id);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public List<T> getAll(){
+    public List<T> getAll() {
         return entityManagerDAO.getAll();
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public boolean existByColumn(Object value, String column) {
         validateNotEmpty(value, classSpecific.getSimpleName() + ".value");
@@ -77,23 +77,23 @@ public class EntityManagerService <T> {
         return entityManagerDAO.existByColumn(value, column);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public <R> R getColumnById(Object id, String column){
+    public <R> R getColumnById(Object id, String column) {
         validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
         validateNotEmpty(column, classSpecific.getSimpleName() + "." + column);
         return entityManagerDAO.getColumnById(id, column);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
-    public int updateColumnById(Object id, String column, Object value){
+    public int updateColumnById(Object id, String column, Object value) {
         validateNotEmpty(id, classSpecific.getSimpleName() + ".id");
         validateNotEmpty(column, classSpecific.getSimpleName() + "." + column);
         return entityManagerDAO.updateColumnById(id, column, value);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public T findEntityByColumn(Object value, String column) {
         validateNotEmpty(value, "value");
@@ -101,7 +101,7 @@ public class EntityManagerService <T> {
         return entityManagerDAO.findEntityByColumn(value, column);
     }
 
-    // _________________________________________________
+    // _________________________________________________________________________________________________________________
 
     protected void validateNotEmpty(Object value, String fieldName) {
         if (value == null) {

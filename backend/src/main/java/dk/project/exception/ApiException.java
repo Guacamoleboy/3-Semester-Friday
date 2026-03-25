@@ -15,7 +15,7 @@ public class ApiException extends RuntimeException {
     private final int code;
     private final String location;
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Message (-)Location
 
     public ApiException(String message) {
@@ -24,7 +24,7 @@ public class ApiException extends RuntimeException {
         this.location = null;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Message (+)Location
 
     public ApiException(String message, String location) {
@@ -33,7 +33,7 @@ public class ApiException extends RuntimeException {
         this.location = location;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Message (+)Cause (-)Location
     public ApiException(String message, Throwable cause) {
         super(message, cause);
@@ -41,7 +41,7 @@ public class ApiException extends RuntimeException {
         this.location = null;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Message (+)Cause (+)Location
 
     public ApiException(String message, Throwable cause, String location) {
@@ -50,7 +50,7 @@ public class ApiException extends RuntimeException {
         this.location = location;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
 
     // (+)Code (+)Message (-)Location
     public ApiException(int code, String message) {
@@ -59,7 +59,7 @@ public class ApiException extends RuntimeException {
         this.location = null;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Code (+)Message (+)Location
 
     public ApiException(int code, String message, String location) {
@@ -68,7 +68,7 @@ public class ApiException extends RuntimeException {
         this.location = location;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Code (+)Message (+)Cause (-)Location
 
     public ApiException(int code, String message, Throwable cause) {
@@ -77,7 +77,7 @@ public class ApiException extends RuntimeException {
         this.location = null;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
     // (+)Code (+)Message (+)Cause (+)Location
 
     public ApiException(int code, String message, Throwable cause, String location) {
@@ -86,13 +86,13 @@ public class ApiException extends RuntimeException {
         this.location = location;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public int getCode(){
         return this.code;
     }
 
-    // ___________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public String getLocation(){
         return this.location;

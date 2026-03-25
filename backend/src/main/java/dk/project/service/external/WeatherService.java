@@ -13,7 +13,7 @@ public class WeatherService {
     // Attributes
     private static final String BASE_URL = "https://api.open-meteo.com/v1/forecast?current_weather=true";
 
-    // ___________________________________________________________________
+    // _________________________________________________________________________________________________________________
 
     public CompletableFuture<WeatherDTO> getWeatherByCoordinates(Double latitude, Double longitude){
 
