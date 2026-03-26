@@ -7,12 +7,28 @@ import dk.project.exception.ApiException;
 import dk.project.exception.DatabaseException;
 import dk.project.exception.ResourceNotFoundException;
 import dk.project.route.Routes;
+import dk.project.security.api.AccessValidator;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.HttpStatus;
 import io.javalin.validation.ValidationException;
 import jakarta.persistence.EntityManagerFactory;
 import java.util.Map;
+
+// _____________________________________________________________________________________________________________________
+
+// _____________________________________________________________________________________________________________________
+
+// Important links
+// _______________
+
+// 1) - https://javalin.io/documentation#handlers
+// 2) - https://javalin.io/news/javalin-7.0.0-stable.html
+// 3) - https://www.javadoc.io/doc/io.javalin/javalin/7.0.0-alpha.3/io/javalin/Javalin.html
+
+// _____________________________________________________________________________________________________________________
+
+// _____________________________________________________________________________________________________________________
 
 public class Server {
 
@@ -46,6 +62,9 @@ public class Server {
 
     private void configureRouting(JavalinConfig config) {
         config.router.contextPath = DotEnv.getApiBasePath();
+        config.routes.before(ctx -> {
+            AccessValidator.handle(ctx);
+        });
         config.routes.apiBuilder(Routes.registerRoutes(emf));
     }
 

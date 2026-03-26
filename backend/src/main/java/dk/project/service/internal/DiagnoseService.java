@@ -1,45 +1,45 @@
-package dk.project.service;
+package dk.project.service.internal;
 
-import dk.project.dao.impl.MedicationDAO;
-import dk.project.entity.Medication;
+import dk.project.dao.impl.DiagnoseDAO;
+import dk.project.entity.Diagnose;
 import jakarta.persistence.EntityManager;
 
-public class MedicationService extends EntityManagerService<Medication> {
+public class DiagnoseService extends EntityManagerService<Diagnose> {
 
     // Attributes
-    private final MedicationDAO medicationDAO;
+    private final DiagnoseDAO diagnoseDAO;
 
     // _________________________________________________________________________________________________________________
 
-    public MedicationService(EntityManager em) {
-        super(new MedicationDAO(em), Medication.class);
-        this.medicationDAO = (MedicationDAO) this.entityManagerDAO;
+    public DiagnoseService(EntityManager em){
+        super(new DiagnoseDAO(em), Diagnose.class);
+        this.diagnoseDAO = (DiagnoseDAO) this.entityManagerDAO;
     }
 
     // _________________________________________________________________________________________________________________
 
-    public String getNameById(int id) {
+    public String getNameById(int id){
+        validateNotEmpty(id, "Diagnose.id");
         return getColumnById(id, "name");
     }
 
     // _________________________________________________________________________________________________________________
 
-    public String getDescriptionById(int id) {
+    public String getDescriptionById(int id){
+        validateNotEmpty(id, "Diagnose.id");
         return getColumnById(id, "description");
     }
 
     // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name) {
-        validateNotEmpty(name, classSpecific.getSimpleName() + ".name");
-        return medicationDAO.existsByName(name);
+        return existByColumn(name, "name");
     }
 
     // _________________________________________________________________________________________________________________
 
-    public Medication findByName(String name) {
-        validateNotEmpty(name, classSpecific.getSimpleName() + ".name");
-        return medicationDAO.findByName(name);
+    public Diagnose findDiagnoseByName(String name){
+        return findEntityByColumn(name, "name");
     }
 
 }

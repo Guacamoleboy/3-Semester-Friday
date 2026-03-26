@@ -2,7 +2,7 @@ package dk.project.controller.impl;
 
 import dk.project.entity.User;
 import dk.project.mapper.response.UserResponseMapper;
-import dk.project.service.EntityManagerService;
+import dk.project.service.internal.EntityManagerService;
 
 public class UserController extends CRUDController<User> {
 

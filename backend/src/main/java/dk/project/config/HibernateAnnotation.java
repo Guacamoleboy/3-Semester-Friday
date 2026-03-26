@@ -1,6 +1,7 @@
 package dk.project.config;
 
 import dk.project.entity.*;
+import dk.project.entity.api.Api;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateAnnotation {
@@ -22,6 +23,7 @@ public class HibernateAnnotation {
         configuration.addAnnotatedClass(Role.class);
         configuration.addAnnotatedClass(SideEffect.class);
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(Api.class);
     }
 
 }

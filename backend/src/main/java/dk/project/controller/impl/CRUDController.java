@@ -1,6 +1,6 @@
 package dk.project.controller.impl;
 
-import dk.project.service.EntityManagerService;
+import dk.project.service.internal.EntityManagerService;
 import dk.project.util.ContextHelper;
 import io.javalin.http.Context;
 import java.util.List;

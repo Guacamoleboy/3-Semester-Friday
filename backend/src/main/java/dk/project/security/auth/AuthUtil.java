@@ -1,10 +1,10 @@
-package dk.project.util.auth;
+package dk.project.security.auth;
 
 import dk.project.dao.impl.UserDAO;
 import dk.project.entity.User;
 import dk.project.util.ContextHelper;
-import dk.project.util.jwt.JwtUser;
-import dk.project.util.jwt.JwtUtil;
+import dk.project.security.jwt.JwtUser;
+import dk.project.security.jwt.JwtUtil;
 import io.javalin.http.Context;
 import io.javalin.http.HttpResponseException;
 import java.util.UUID;

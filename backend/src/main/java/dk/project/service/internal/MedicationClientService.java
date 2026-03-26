@@ -1,4 +1,4 @@
-package dk.project.service;
+package dk.project.service.internal;
 
 import dk.project.dao.impl.MedicationClientDAO;
 import dk.project.entity.MedicationClient;

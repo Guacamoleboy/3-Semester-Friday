@@ -1,4 +1,4 @@
-package dk.project.util.jwt;
+package dk.project.security.jwt;
 
 import dk.project.entity.User;
 import io.jsonwebtoken.Claims;

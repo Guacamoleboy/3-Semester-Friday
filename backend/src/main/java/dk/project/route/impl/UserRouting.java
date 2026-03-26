@@ -1,7 +1,7 @@
 package dk.project.route.impl;
 
 import dk.project.controller.impl.UserController;
-import dk.project.service.UserService;
+import dk.project.service.internal.UserService;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
