@@ -1,4 +1,4 @@
-### GET - Login
+### POST - Login
 POST {{baseUrl}}/auth/login
 Content-Type: {{contentType}}
 

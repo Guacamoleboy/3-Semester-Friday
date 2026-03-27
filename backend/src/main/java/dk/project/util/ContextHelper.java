@@ -85,4 +85,15 @@ public class ContextHelper {
         }
         return header.substring(7);
     }
+
+    // _________________________________________________________________________________________________________________
+
+    public static String extractApiKey(Context ctx) {
+        String apiKey = ctx.header("X-API-Key");
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new ApiException(401, "Missing or invalid X-API-Key header");
+        }
+        return apiKey;
+    }
+
 }

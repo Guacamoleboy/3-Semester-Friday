@@ -10,16 +10,16 @@ public class AccessValidator {
 
     // Attributes
     private static final List<String> PUBLIC_PATHS = List.of(
-            "/auth/login",
-            "/auth/register",
-            "/auth/refresh"
+            "/api/auth/login",
+            "/api/auth/register",
+            "/api/auth/refresh"
     );
 
     // _________________________________________________________________________________________________________________
     // handle() is a javalin method that runs before controllers
 
     public static void handle(Context ctx) {
-        if (!(isPublic(ctx) || hasApiKey(ctx) || hasJwt(ctx))) {
+        if (!(isPublic(ctx) || hasJwt(ctx))) {
             throw new ApiException(401, "Unauthorized");
         }
     }
@@ -38,16 +38,6 @@ public class AccessValidator {
             return false;
         }
         return JwtUtil.isValid(token);
-    }
-
-    // _________________________________________________________________________________________________________________
-
-    private static boolean hasApiKey(Context ctx) {
-        String apiKey = ctx.header("X-API-Key");
-        if (apiKey == null) {
-            return false;
-        }
-        return false;
     }
 
 }
