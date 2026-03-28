@@ -78,14 +78,14 @@ public class KeyGenerator {
 
     // _________________________________________________________________________________________________________________
 
-    public static Object generateUUID(String outputType) {
-        if (outputType.equalsIgnoreCase("string")) {
-            return UUID.randomUUID().toString();
-        } else if (outputType.equalsIgnoreCase("uuid")) {
-            return UUID.randomUUID();
-        } else {
-            throw new ApiException(500, "Invalid outputType for generateUUID, must be either 'string' or 'uuid'...");
-        }
+    public static String generateUUIDString() {
+        return UUID.randomUUID().toString();
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    public static UUID generateUUID() {
+        return UUID.randomUUID();
     }
 
 }

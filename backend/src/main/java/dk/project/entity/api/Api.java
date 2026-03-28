@@ -24,11 +24,11 @@ public class Api {
     //
     //              PgAmin
     //              _______
-    //              id | name | key | created_at | active
+    //              id | name | key_hash | key_id | created_at | active
     //
     // __________________
-    // Tested: NO
-    // Date:
+    // Tested: YES
+    // Date: 28/03-2026
 
     // _________________________________________________________________________________________________________________
 
@@ -39,10 +39,12 @@ public class Api {
     @GeneratedValue
     @Column(name = "id", columnDefinition = "uuid")
     private UUID id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
     @Column(name = "key_hash", nullable = false, unique = true)
     private String keyHash;
+    @Column(name = "key_id", nullable = false, unique = true)
+    private String keyId;
     @Column(name = "active", nullable = false)
     private boolean active;
     @Column(name = "created_at", updatable = false)
@@ -58,14 +60,15 @@ public class Api {
         active = true;
     }
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID = "id";
         public static final String NAME = "name";
-        public static final String KEY = "key_hash";
+        public static final String KEY_HASH = "keyHash";
+        public static final String KEY_ID = "keyId";
         public static final String ACTIVE = "active";
-        public static final String CREATED_AT = "created_at";
+        public static final String CREATED_AT = "createdAt";
     }
 
 }

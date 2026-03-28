@@ -24,6 +24,7 @@ public class ApiRouting {
 
         return () -> {
             path("/access", () -> {
+                get("/{keyId}", apiController::getApiMeta);
                 post("/create", apiController::createApiKey);
                 post("/validate", apiController::validateApiKey);
                 post("/refresh", apiController::refreshApiKey);

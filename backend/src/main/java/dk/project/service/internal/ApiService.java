@@ -1,7 +1,10 @@
 package dk.project.service.internal;
 
 import dk.project.dao.impl.ApiDAO;
+import dk.project.dto.response.ApiResponseDTO;
 import dk.project.entity.api.Api;
+import dk.project.exception.ApiException;
+import dk.project.mapper.response.ApiResponseMapper;
 import dk.project.util.BCryptHash;
 import dk.project.util.KeyGenerator;
 import jakarta.persistence.EntityManager;
@@ -19,56 +22,59 @@ public class ApiService extends EntityManagerService<Api> {
 
     // _________________________________________________________________________________________________________________
 
-    public String createApiKey(String name) {
-        String rawKey = KeyGenerator.generate64Key();
-        String hashedKey = BCryptHash.hash(rawKey);
+    public ApiResponseDTO createApiKey(String name) {
+        String firstId = KeyGenerator.generate16Key();
+        String lastId = KeyGenerator.generate64Key();
         Api api = Api.builder()
                 .name(name)
-                .keyHash(hashedKey)
+                .keyId(firstId)
+                .keyHash(BCryptHash.hash(lastId))
                 .active(true)
                 .build();
-        entityManagerDAO.create(api);
-        return rawKey;
-    }
-
-    // _________________________________________________________________________________________________________________
-    // Implement cache to prevent multi search
-
-    public boolean validateKey(String apiKey) {
-        for (Api api : entityManagerDAO.getAll()) {
-            if (!api.isActive()) {
-                continue;
-            }
-            if (BCryptHash.check(apiKey, api.getKeyHash())) {
-                api.setLastUsed(new Timestamp(System.currentTimeMillis()));
-                entityManagerDAO.update(api);
-                return true;
-            }
-        }
-        return false;
+        create(api);
+        return ApiResponseMapper.toCreateDto(api, lastId);
     }
 
     // _________________________________________________________________________________________________________________
 
-    public String refreshKey(String apiKey) {
-        Api api = findEntityByColumn(apiKey, Api.Columns.KEY);
+    public ApiResponseDTO getApiMeta(String keyId) {
+        Api api = findEntityByColumn(keyId, Api.Fields.KEY_ID);
         if (api == null || !api.isActive()) {
+            throw new ApiException(404, "API not found or inactive");
+        }
+        return ApiResponseMapper.toDto(api);
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    public boolean validateKey(String apiKey, String keyId) {
+        Api api = findEntityByColumn(keyId, Api.Fields.KEY_ID);
+        if (api == null || !api.isActive()) return false;
+        return BCryptHash.check(apiKey, api.getKeyHash());
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    public String refreshKey(String keyId, String rawApiKey) {
+        Api api = findEntityByColumn(keyId, Api.Fields.KEY_ID);
+        if (api == null || !api.isActive() || !BCryptHash.check(rawApiKey, api.getKeyHash())) {
             return null;
         }
-        String newRawKey = KeyGenerator.generate64Key();
-        api.setKeyHash(BCryptHash.hash(newRawKey));
+        String rawNewApiKey = KeyGenerator.generate64Key();
+        api.setKeyHash(BCryptHash.hash(rawNewApiKey));
         api.setLastUsed(new Timestamp(System.currentTimeMillis()));
         update(api);
-        return newRawKey;
+        return rawNewApiKey;
     }
 
     // _________________________________________________________________________________________________________________
 
-    public boolean deleteKey(String apiKey) {
-        Api api = findEntityByColumn(apiKey, Api.Columns.KEY);
-        if (api == null) return false;
-        api.setActive(false);
-        update(api);
+    public boolean deleteKey(String keyId, String rawApiKey) {
+        Api api = findEntityByColumn(keyId, Api.Fields.KEY_ID);
+        if (api == null || !BCryptHash.check(rawApiKey, api.getKeyHash())) {
+            return false;
+        }
+        delete(api);
         return true;
     }
 
