@@ -24,6 +24,8 @@ public class HibernateAnnotation {
         configuration.addAnnotatedClass(SideEffect.class);
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Api.class);
+        configuration.addAnnotatedClass(MedicationCategory.class);
+        configuration.addAnnotatedClass(SideEffectMedication.class);
     }
 
 }

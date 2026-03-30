@@ -1,10 +1,13 @@
 package dk.project.util;
 
 import dk.project.entity.Client;
+import dk.project.entity.MedicationCategory;
 import dk.project.entity.Role;
 import dk.project.entity.User;
+import dk.project.enums.MedicationCategoryEnum;
 import dk.project.enums.RoleEnum;
 import dk.project.service.internal.ClientService;
+import dk.project.service.internal.MedicationCategoryService;
 import dk.project.service.internal.RoleService;
 import dk.project.service.internal.UserService;
 import jakarta.persistence.EntityManager;
@@ -23,11 +26,13 @@ public class PopulateDB {
         RoleService roleService = new RoleService(em);
         UserService userService = new UserService(em);
         ClientService clientService = new ClientService(em);
+        MedicationCategoryService medicationCategoryService = new MedicationCategoryService(em);
 
         // Clean DB
-        roleService.deleteAll();
-        userService.deleteAll();
-        clientService.deleteAll();
+        roleService.deleteAllSafe();
+        userService.deleteAllSafe();
+        clientService.deleteAllSafe();
+        medicationCategoryService.deleteAllSafe();
 
         // Roles
         List<Role> roleList = new ArrayList<>();
@@ -63,6 +68,18 @@ public class PopulateDB {
                     .idEnding(last4Random)
                     .build();
             clientService.createClient(client);
+        }
+
+        // MedicationCategory
+        List<MedicationCategory> medicationCategoryList = new ArrayList<>();
+        for (MedicationCategoryEnum medicationCategoryEnum : MedicationCategoryEnum.values()) {
+            MedicationCategory medicationCategory = MedicationCategory.builder()
+                    .name(medicationCategoryEnum.getName())
+                    .description(medicationCategoryEnum.getDescription())
+                    .warningLevel(medicationCategoryEnum.getWarningLevel())
+                    .build();
+            medicationCategoryService.create(medicationCategory);
+            medicationCategoryList.add(medicationCategory);
         }
 
         // Final Confirmation

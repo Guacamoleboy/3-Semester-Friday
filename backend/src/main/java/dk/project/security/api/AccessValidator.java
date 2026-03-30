@@ -12,7 +12,8 @@ public class AccessValidator {
     private static final List<String> PUBLIC_PATHS = List.of(
             "/api/auth/login",
             "/api/auth/register",
-            "/api/auth/refresh"
+            "/api/auth/refresh",
+            "/api/data/populate"
     );
 
     // _________________________________________________________________________________________________________________
