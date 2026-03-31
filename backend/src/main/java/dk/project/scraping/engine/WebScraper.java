@@ -17,7 +17,9 @@ public class WebScraper {
     public void setup(String url) {
         try {
             document = Jsoup.connect(url)
-                    .userAgent("Mozilla/5.0")
+                    .userAgent(BrowserIdentity.agentRotation())
+                    .referrer(BrowserIdentity.referrerRotation())
+                    .header("Accept-Language", BrowserIdentity.languageRotation())
                     .timeout(10000)
                     .get();
         } catch (Exception e) {
@@ -45,9 +47,59 @@ public class WebScraper {
 
     // _________________________________________________________________________________________________________________
 
-    //public List<> findChildrenAndSave() {
+    public List<Element> findChildren(List<Element> parents, String tag) {
+        List<Element> children = new ArrayList<>();
+        if (parents == null || parents.isEmpty()) return children;
+        int parentCounter = 0;
+        for (Element parent : parents) {
+            parentCounter++;
+            Element current = parent.nextElementSibling();
+            while (current != null) {
 
-    //}
+                // Next parent
+                if (current.classNames().equals(parent.classNames())) break;
+
+                // Next Child
+                if (current.tagName().equalsIgnoreCase(tag)) {
+                    current.attr("parent-counter", String.valueOf(parentCounter));
+                    children.add(current);
+                }
+
+                current = current.nextElementSibling();
+            }
+        }
+        return children;
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    public List<Element> findChildren(List<Element> parents, String tag, String className) {
+        List<Element> children = new ArrayList<>();
+        if (parents == null || parents.isEmpty()) return children;
+        int parentCounter = 0;
+        for (Element parent : parents) {
+            parentCounter++;
+            Element current = parent.nextElementSibling();
+            while (current != null) {
+
+                // Next parent
+                if (current.classNames().equals(parent.classNames())) break;
+
+                // Tag + Class validation
+                boolean tagExists = current.tagName().equalsIgnoreCase(tag);
+                boolean classExists = className == null || current.hasClass(className);
+
+                // Next Child
+                if (tagExists && classExists) {
+                    current.attr("parent-counter", String.valueOf(parentCounter));
+                    children.add(current);
+                }
+
+                current = current.nextElementSibling();
+            }
+        }
+        return children;
+    }
 
     // _________________________________________________________________________________________________________________
     // Initial Scrape learning method
