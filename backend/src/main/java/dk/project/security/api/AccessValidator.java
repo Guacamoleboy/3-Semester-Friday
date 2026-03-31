@@ -13,7 +13,8 @@ public class AccessValidator {
             "/api/auth/login",
             "/api/auth/register",
             "/api/auth/refresh",
-            "/api/data/populate"
+            "/api/data/populate",
+            "/api/scrape/medicin"
     );
 
     // _________________________________________________________________________________________________________________

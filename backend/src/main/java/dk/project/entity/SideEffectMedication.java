@@ -23,7 +23,7 @@ public class SideEffectMedication {
     //
     //              PgAmin
     //              _______
-    //              id | name | description | medication_category
+    //              id | name | description | header | medication_category
     //
     // __________________
     // Tested: NO
@@ -41,6 +41,8 @@ public class SideEffectMedication {
     private String name;
     @Column(name = "description")
     private String description;
+    @Column(name = "header", nullable = false)
+    private int header;
     @ManyToOne
     @JoinColumn(name = "medication_category", referencedColumnName = "id")
     private MedicationCategory medicationCategory;
@@ -51,6 +53,7 @@ public class SideEffectMedication {
         public static final String ID = "id";
         public static final String NAME = "name";
         public static final String DESCRIPTION = "description";
+        public static final String HEADER = "header";
         public static final String MEDICATION_CATEGORY = "medicationCategory";
     }
 

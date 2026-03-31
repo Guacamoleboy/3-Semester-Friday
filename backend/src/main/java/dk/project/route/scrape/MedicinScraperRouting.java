@@ -1,21 +1,21 @@
-package dk.project.route.data;
+package dk.project.route.scrape;
 
-import dk.project.controller.data.PopulateController;
+import dk.project.controller.scrape.MedicinScraperController;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
-public class PopulateRouting {
+public class MedicinScraperRouting {
 
     // Attributes
-    private final PopulateController populateController;
+    private final MedicinScraperController medicinScraperController;
 
     // _________________________________________________________________________________________________________________
 
-    public PopulateRouting(EntityManagerFactory emf) {
+    public MedicinScraperRouting(EntityManagerFactory emf) {
         EntityManager em = emf.createEntityManager();
-        this.populateController = new PopulateController(em);
+        this.medicinScraperController = new MedicinScraperController(em);
     }
 
     // _________________________________________________________________________________________________________________
@@ -23,13 +23,11 @@ public class PopulateRouting {
     public EndpointGroup routes() {
 
         return () -> {
-            path("/data/populate", () -> {
-                post("", populateController::populate);
+            path("/scrape/medicin", () -> {
+                post("/{id}", medicinScraperController::getSideEffects);
             });
         };
 
     }
-
-
 
 }

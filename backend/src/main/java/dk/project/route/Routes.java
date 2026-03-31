@@ -4,6 +4,7 @@ import dk.project.route.data.PopulateRouting;
 import dk.project.route.impl.ApiRouting;
 import dk.project.route.impl.AuthRouting;
 import dk.project.route.impl.UserRouting;
+import dk.project.route.scrape.MedicinScraperRouting;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManagerFactory;
 
@@ -20,6 +21,7 @@ public class Routes {
         UserRouting userRouting = new UserRouting(emf);
         ApiRouting apiRouting = new ApiRouting(emf);
         PopulateRouting populateRouting = new PopulateRouting(emf);
+        MedicinScraperRouting medicinScraperRouting = new MedicinScraperRouting(emf);
 
         // EndpointGroup Return to server
         return () -> {
@@ -27,6 +29,7 @@ public class Routes {
             userRouting.routes().addEndpoints();
             apiRouting.routes().addEndpoints();
             populateRouting.routes().addEndpoints();
+            medicinScraperRouting.routes().addEndpoints();
         };
 
     }

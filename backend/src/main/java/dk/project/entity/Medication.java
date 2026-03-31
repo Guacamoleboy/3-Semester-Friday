@@ -20,7 +20,7 @@ public class Medication {
     //
     //              PgAmin
     //              _______
-    //              id | name | description
+    //              id | name | description | medicin_dk_id
     //
     // __________________
     // Tested: YES
@@ -39,6 +39,8 @@ public class Medication {
     private String name;
     @Column(name = "description")
     private String description;
+    @Column(name = "medicin_dk_id", unique = true)
+    private int medicinDkId;
 
     // ______ | NESTED COLUMNS | _______________________________________________________________________________________
 
@@ -46,6 +48,7 @@ public class Medication {
         public static final String ID = "id";
         public static final String NAME = "name";
         public static final String DESCRIPTION = "description";
+        public static final String MEDICIN_DK_ID = "medicinDkId";
     }
 
 }
