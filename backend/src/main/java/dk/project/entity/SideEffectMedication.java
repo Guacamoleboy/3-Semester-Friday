@@ -23,11 +23,11 @@ public class SideEffectMedication {
     //
     //              PgAmin
     //              _______
-    //              id | name | description | header | medication_category
+    //              id | name | description | header | medication_category | medidin_dk_id
     //
     // __________________
-    // Tested: NO
-    // Date: N/A
+    // Tested: YES
+    // Date: 01/04-2026
 
     // _________________________________________________________________________________________________________________
 
@@ -46,6 +46,9 @@ public class SideEffectMedication {
     @ManyToOne
     @JoinColumn(name = "medication_category", referencedColumnName = "id")
     private MedicationCategory medicationCategory;
+    @ManyToOne
+    @JoinColumn(name = "medicin_dk_id", referencedColumnName = "medicin_dk_id", nullable = false)
+    private Medication medication;
 
     // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
@@ -55,6 +58,7 @@ public class SideEffectMedication {
         public static final String DESCRIPTION = "description";
         public static final String HEADER = "header";
         public static final String MEDICATION_CATEGORY = "medicationCategory";
+        public static final String MEDICATION = "medication";
     }
 
 }
