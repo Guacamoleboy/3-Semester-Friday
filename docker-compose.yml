@@ -1,0 +1,78 @@
+
+# ----------------------------------------------------------------------------------------
+
+# docker-compose.yml for MoodMap
+# ______________________________
+#
+# Created by: Guacamoleboy / Jonas Meinert Larsen
+# E-mail: cph-jl325@stud.ek.dk
+# 
+# Last tested: 01/04-2026
+# Last updated: 01/04-2026
+#
+# URL Link: https://www.moodmap.guacamoleboy.dk
+
+# ----------------------------------------------------------------------------------------
+
+# ________________________________________________________________________________________
+
+services:
+
+  # --------------------------------------------------------------------------------------
+  # Setup
+  db:
+    image: postgres:16
+    container_name: ${DB_HOST}
+    restart: always
+    ports:
+      - ${DB_EXPOSED_PORTS:-5432}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # --------------------------------------------------------------------------------------
+  # PgAdmin
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: ${PGADMIN_CONTAINER_NAME}
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - ${PGADMIN_PORTS}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # --------------------------------------------------------------------------------------
+  # REST API Setup
+  api:
+    build: ./backend
+    container_name: ${DB_CONTAINER_NAME}
+    restart: always
+    ports:
+      - ${DB_PORTS}
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+    depends_on:
+      db:
+        condition: service_healthy
+
+# ________________________________________________________________________________________
+
+volumes:
+  postgres_data:

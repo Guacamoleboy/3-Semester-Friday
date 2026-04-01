@@ -1,15 +1,9 @@
 package dk.project.util;
 
-import dk.project.entity.Client;
-import dk.project.entity.MedicationCategory;
-import dk.project.entity.Role;
-import dk.project.entity.User;
+import dk.project.entity.*;
 import dk.project.enums.MedicationCategoryEnum;
 import dk.project.enums.RoleEnum;
-import dk.project.service.internal.ClientService;
-import dk.project.service.internal.MedicationCategoryService;
-import dk.project.service.internal.RoleService;
-import dk.project.service.internal.UserService;
+import dk.project.service.internal.*;
 import jakarta.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +17,32 @@ public class PopulateDB {
     public static void populate(EntityManager em){
 
         // Initial
+        MedicationService medicationService = new MedicationService(em);
         RoleService roleService = new RoleService(em);
         UserService userService = new UserService(em);
         ClientService clientService = new ClientService(em);
         MedicationCategoryService medicationCategoryService = new MedicationCategoryService(em);
 
         // Clean DB
+        medicationService.deleteAllSafe();
         roleService.deleteAllSafe();
         userService.deleteAllSafe();
         clientService.deleteAllSafe();
         medicationCategoryService.deleteAllSafe();
+
+        // Medication 1
+        Medication panodil = Medication.builder()
+                .name("Panodil")
+                .medicinDkId(670)
+                .build();
+        medicationService.create(panodil);
+        // Medication 2
+        Medication ipren = Medication.builder()
+                .name("Ipren")
+                .medicinDkId(1254)
+                .build();
+        medicationService.create(ipren);
+
 
         // Roles
         List<Role> roleList = new ArrayList<>();

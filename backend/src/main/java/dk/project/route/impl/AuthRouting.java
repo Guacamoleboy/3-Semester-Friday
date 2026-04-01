@@ -26,6 +26,7 @@ public class AuthRouting {
         return () -> {
             path("/auth", () -> {
                 post("/login", authController::login);
+                post("/logout", authController::logout);
                 post("/register", authController::register);
                 get("/me", authController::me);
                 post("/refresh", authController::refresh);
