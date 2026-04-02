@@ -13,7 +13,7 @@ import dk.project.exception.ApiException;
 import dk.project.mapper.request.UserRequestMapper;
 import dk.project.mapper.response.UserResponseMapper;
 import dk.project.util.*;
-import dk.project.security.jwt.JwtUser;
+import dk.project.security.jwt.JwtService;
 import dk.project.security.jwt.JwtUtil;
 import dk.project.security.auth.AuthUtil;
 import jakarta.persistence.EntityManager;
@@ -45,8 +45,8 @@ public class AuthController {
                 throw new ApiException(401, "Invalid credentials");
             }
 
-            String accessToken = JwtUser.generateAccessToken(user);
-            String refreshToken = JwtUser.generateRefreshToken(user);
+            String accessToken = JwtService.generateAccessToken(user);
+            String refreshToken = JwtService.generateRefreshToken(user);
 
             AuthResponseDTO response = new AuthResponseDTO();
             response.setAccessToken(accessToken);
@@ -110,9 +110,9 @@ public class AuthController {
                 throw new ApiException(401, "Invalid refresh token");
             }
 
-            UUID userId = JwtUser.getUserId(refreshToken);
+            UUID userId = JwtService.getUserId(refreshToken);
             User user = userDAO.getById(userId);
-            String newAccessToken = JwtUser.generateAccessToken(user);
+            String newAccessToken = JwtService.generateAccessToken(user);
 
             return Map.of("access_token", newAccessToken);
         }, "Token refreshed");

@@ -3,7 +3,7 @@ package dk.project.security.auth;
 import dk.project.dao.impl.UserDAO;
 import dk.project.entity.User;
 import dk.project.util.ContextHelper;
-import dk.project.security.jwt.JwtUser;
+import dk.project.security.jwt.JwtService;
 import dk.project.security.jwt.JwtUtil;
 import io.javalin.http.Context;
 import io.javalin.http.HttpResponseException;
@@ -25,7 +25,7 @@ public class AuthUtil {
         }
 
         // Act & Check
-        UUID userId = JwtUser.getUserId(token);
+        UUID userId = JwtService.getUserId(token);
         User user = userDAO.getById(userId);
         ContextHelper.notNull(user, "User");
 

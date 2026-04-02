@@ -17,16 +17,24 @@ public abstract class JwtUtil {
 
     public static boolean isValid(String token) {
         try {
-
             Jwts.parser()
                     .verifyWith(KEY)
                     .build()
                     .parseSignedClaims(token);
-
             return true;
         } catch (JwtException e) {
             return false;
         }
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    protected static Claims getClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(KEY)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
 }
