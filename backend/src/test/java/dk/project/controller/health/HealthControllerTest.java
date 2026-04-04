@@ -18,7 +18,7 @@ class HealthControllerTest extends ATest {
     @DisplayName("Should test Health for REST API")
     public void shouldTestHealth(){
         // Arrange
-        startServer("/api");
+        startServer();
         // Act + Assert
         RestAssured
                 .given()

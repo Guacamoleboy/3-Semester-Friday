@@ -1,6 +1,8 @@
 package dk.project.route.status;
 
 import dk.project.controller.status.StatusController;
+import dk.project.enums.AccessLevelEnum;
+import dk.project.security.access.AccessValidator;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -23,9 +25,19 @@ public class StatusRouting {
     public EndpointGroup routes() {
 
         return () -> {
+
+            // Route Endpoints
             path("/status", () -> {
-                post("", statusController::getStatus);
+
+                // -------------------------------------------------------------------
+
+                post("", AccessValidator.access(
+                        AccessLevelEnum.PUBLIC,
+                        statusController::getStatus
+                ));
+
             });
+
         };
 
     }

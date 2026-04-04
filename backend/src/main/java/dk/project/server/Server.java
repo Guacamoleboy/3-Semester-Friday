@@ -7,7 +7,7 @@ import dk.project.exception.ApiException;
 import dk.project.exception.DatabaseException;
 import dk.project.exception.ResourceNotFoundException;
 import dk.project.route.Routes;
-import dk.project.security.api.AccessValidator;
+import dk.project.security.access.AccessValidator;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.HttpStatus;
@@ -62,9 +62,6 @@ public class Server {
 
     private void configureRouting(JavalinConfig config) {
         config.router.contextPath = DotEnv.getApiBasePath();
-        config.routes.before(ctx -> {
-            AccessValidator.handle(ctx);
-        });
         config.routes.apiBuilder(Routes.registerRoutes(emf));
     }
 

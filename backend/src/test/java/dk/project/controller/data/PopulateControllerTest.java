@@ -18,7 +18,7 @@ class PopulateControllerTest extends ATest {
     @DisplayName("Should Populate DB")
     public void shouldPopulateDatabase() {
         // Arrange
-        startServer("/api");
+        startServer();
         // Act + Assert
         RestAssured
                 .given()

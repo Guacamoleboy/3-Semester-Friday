@@ -18,7 +18,7 @@ class StatusControllerTest extends ATest {
     @DisplayName("Should test Status for REST API")
     public void shouldTestStatus() {
         // Arrange
-        startServer("/api");
+        startServer();
         // Act + Assert
         RestAssured
                 .given()

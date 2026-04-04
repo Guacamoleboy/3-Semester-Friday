@@ -66,9 +66,9 @@ public class User {
         lastLogin = new Timestamp(System.currentTimeMillis());
     }
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID = "id";
         public static final String USERNAME = "username";
         public static final String EMAIL = "email";

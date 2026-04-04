@@ -31,7 +31,7 @@ class ApiControllerTest extends ATest {
 
     @BeforeEach
     public void setupApi() {
-        startServer("/api");
+        startServer();
         this.userService = new UserService(em);
         this.roleService = new RoleService(em);
 

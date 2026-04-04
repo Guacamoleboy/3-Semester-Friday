@@ -31,7 +31,7 @@ class AuthControllerTest extends ATest {
     @BeforeEach
     public void setupAuth() {
         // Setup
-        startServer("/api");
+        startServer();
         this.userService = new UserService(em);
         this.roleService = new RoleService(em);
 
@@ -187,22 +187,6 @@ class AuthControllerTest extends ATest {
                 .statusCode(200)
                 .body("status", equalTo("success"))
                 .body("data.access_token", notNullValue());
-    }
-
-    // _________________________________________________________________________________________________________________
-
-    @Test
-    @DisplayName("Should log out")
-    public void shouldLogout() {
-        RestAssured
-                .given()
-                .header("Authorization", "Bearer " + accessToken)
-                .when()
-                .post("/auth/logout")
-                .then()
-                .statusCode(200)
-                .body("status", equalTo("success"))
-                .body("message", equalTo("Logout successful"));
     }
 
 }

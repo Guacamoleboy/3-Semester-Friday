@@ -17,7 +17,7 @@ class MedicinScraperControllerTest extends ATest {
 
     @BeforeEach
     public void setupMedicinScraper() {
-        startServer("/api");
+        startServer();
         this.medicationService = new MedicationService(em);
         beginTransactionIfNeeded();
         Medication medication = Medication.builder()

@@ -22,7 +22,7 @@ public abstract class ATest {
     protected static Javalin restApp;
     protected static final Logger LOGGER = LoggerFactory.getLogger(DotEnvLog.class);
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     @BeforeAll
     protected void setupAll() {
@@ -31,7 +31,7 @@ public abstract class ATest {
         emf = HibernateConfig.getEntityManagerFactoryForTest();
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     @BeforeEach
     protected void setup() {
@@ -39,7 +39,7 @@ public abstract class ATest {
         em.clear();
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     @AfterEach
     protected void cleanup() {
@@ -49,7 +49,7 @@ public abstract class ATest {
         }
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     @AfterAll
     protected void closeAll() {
@@ -58,7 +58,7 @@ public abstract class ATest {
         }
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     @AfterAll
     protected void stopServer() {
@@ -69,7 +69,20 @@ public abstract class ATest {
         }
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
+
+    protected void startServer() {
+        if (restServer == null) {
+            restServer = new Server();
+            restServer.start();
+            restApp = restServer.getApp();
+            RestAssured.baseURI = DotEnv.getUrlPath();
+            RestAssured.port = DotEnv.getServerPort();
+            RestAssured.basePath = "/v1";
+        }
+    }
+
+    // _________________________________________________________________________________________________________________
 
     protected void startServer(String endpoint) {
         if (restServer == null) {
@@ -82,7 +95,7 @@ public abstract class ATest {
         }
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     protected void beginTransactionIfNeeded() {
         if (!em.getTransaction().isActive()) {
@@ -90,7 +103,7 @@ public abstract class ATest {
         }
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     protected void commitTransactionIfActive() {
         if (em.getTransaction().isActive()) {
@@ -98,7 +111,7 @@ public abstract class ATest {
         }
     }
 
-    // ______________________________________________
+    // _________________________________________________________________________________________________________________
 
     protected void rollbackTransactionIfActive() {
         if (em.getTransaction().isActive()) {

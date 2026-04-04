@@ -1,6 +1,8 @@
 package dk.project.route.scrape;
 
 import dk.project.controller.scrape.MedicinScraperController;
+import dk.project.enums.AccessLevelEnum;
+import dk.project.security.access.AccessValidator;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -24,7 +26,14 @@ public class MedicinScraperRouting {
 
         return () -> {
             path("/scrape/medicin", () -> {
-                post("/{id}", medicinScraperController::getSideEffects);
+
+                // -------------------------------------------------------------------
+
+                post("/{id}", AccessValidator.access(
+                        AccessLevelEnum.ADMIN,
+                        medicinScraperController::getSideEffects
+                ));
+
             });
         };
 

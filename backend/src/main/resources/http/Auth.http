@@ -16,8 +16,8 @@ POST {{baseUrl}}/auth/register
 Content-Type: {{contentType}}
 
 {
-    "username": "thisisanewuser14",
-    "email": "newuse44r@live.dk",
+    "username": "thisisanewuser6666",
+    "email": "newuse44r551@live.dk",
     "password": "Password1234!",
     "role": "CLINICIAN"
 }

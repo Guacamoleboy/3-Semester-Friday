@@ -1,6 +1,8 @@
 package dk.project.route.impl;
 
 import dk.project.controller.auth.AuthController;
+import dk.project.enums.AccessLevelEnum;
+import dk.project.security.access.AccessValidator;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -14,7 +16,7 @@ public class AuthRouting {
 
     // _________________________________________________________________________________________________________________
 
-    public AuthRouting(EntityManagerFactory emf){
+    public AuthRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
         authController = new AuthController(em);
     }
@@ -25,16 +27,39 @@ public class AuthRouting {
 
         return () -> {
             path("/auth", () -> {
-                post("/login", authController::login);
-                post("/logout", authController::logout);
-                post("/register", authController::register);
-                get("/me", authController::me);
-                post("/refresh", authController::refresh);
+
+                // -------------------------------------------------------------------
+
+                post("/login", AccessValidator.access(
+                        AccessLevelEnum.PUBLIC,
+                        authController::login
+                ));
+
+                // -------------------------------------------------------------------
+
+                post("/register", AccessValidator.access(
+                        AccessLevelEnum.PUBLIC,
+                        authController::register
+                ));
+
+                // -------------------------------------------------------------------
+
+                get("/me", AccessValidator.access(
+                        AccessLevelEnum.JWT,
+                        authController::me
+                ));
+
+                // -------------------------------------------------------------------
+
+                post("/refresh", AccessValidator.access(
+                        AccessLevelEnum.JWT,
+                        authController::refresh
+                ));
+
             });
+
         };
 
     }
-
-    // _________________________________________________________________________________________________________________
 
 }

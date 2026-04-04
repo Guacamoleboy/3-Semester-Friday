@@ -1,6 +1,8 @@
 package dk.project.route.data;
 
 import dk.project.controller.data.PopulateController;
+import dk.project.enums.AccessLevelEnum;
+import dk.project.security.access.AccessValidator;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -23,9 +25,18 @@ public class PopulateRouting {
     public EndpointGroup routes() {
 
         return () -> {
+
             path("/data/populate", () -> {
-                post("", populateController::populate);
+
+                // -------------------------------------------------------------------
+
+                post("", AccessValidator.access(
+                        AccessLevelEnum.ADMIN,
+                        populateController::populate
+                ));
+
             });
+
         };
 
     }

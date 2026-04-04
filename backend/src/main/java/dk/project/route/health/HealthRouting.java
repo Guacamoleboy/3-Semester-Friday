@@ -1,6 +1,8 @@
 package dk.project.route.health;
 
 import dk.project.controller.health.HealthController;
+import dk.project.enums.AccessLevelEnum;
+import dk.project.security.access.AccessValidator;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -23,9 +25,19 @@ public class HealthRouting {
     public EndpointGroup routes() {
 
         return () -> {
+
+            // Route Endpoints
             path("/health", () -> {
-                post("", healthController::getHealth);
+
+                // -------------------------------------------------------------------
+
+                post("", AccessValidator.access(
+                        AccessLevelEnum.PUBLIC,
+                        healthController::getHealth
+                ));
+
             });
+
         };
 
     }

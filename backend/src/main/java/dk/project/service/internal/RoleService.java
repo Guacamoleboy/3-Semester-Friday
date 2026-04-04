@@ -20,25 +20,25 @@ public class RoleService extends EntityManagerService<Role> {
     // _________________________________________________________________________________________________________________
 
     public boolean existsByName(String name) {
-        return existByColumn(name, Role.Columns.NAME);
+        return existByColumn(name, Role.Fields.NAME);
     }
 
     // _________________________________________________________________________________________________________________
 
     public Role findByName(String name) {
-        return findEntityByColumn(name, Role.Columns.NAME);
+        return findEntityByColumn(name, Role.Fields.NAME);
     }
 
     // _________________________________________________________________________________________________________________
 
     public String getNameById(UUID roleId) {
-        return getColumnById(roleId, Role.Columns.NAME);
+        return getColumnById(roleId, Role.Fields.NAME);
     }
 
     // _________________________________________________________________________________________________________________
 
     public String getDescriptionById(UUID roleId) {
-        return getColumnById(roleId, Role.Columns.DESCRIPTION);
+        return getColumnById(roleId, Role.Fields.DESCRIPTION);
     }
 
 }
