@@ -1,4 +1,16 @@
 package dk.project.controller.impl;
 
-public class QuestionController {
+import dk.project.entity.Question;
+import dk.project.service.internal.EntityManagerService;
+
+public class QuestionController extends CRUDController<Question> {
+
+    // Attributes
+
+    // _________________________________________________________________________________________________________________
+
+    public QuestionController(EntityManagerService<Question> service) {
+        super(service, Question.class, QuestionResponseMapper::toDTO);
+    }
+
 }
