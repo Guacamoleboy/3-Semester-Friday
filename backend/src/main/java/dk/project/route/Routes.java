@@ -4,6 +4,7 @@ import dk.project.route.data.PopulateRouting;
 import dk.project.route.health.HealthRouting;
 import dk.project.route.impl.ApiRouting;
 import dk.project.route.impl.AuthRouting;
+import dk.project.route.impl.RoleRouting;
 import dk.project.route.impl.UserRouting;
 import dk.project.route.scrape.MedicinScraperRouting;
 import dk.project.route.status.StatusRouting;
@@ -26,6 +27,7 @@ public class Routes {
         MedicinScraperRouting medicinScraperRouting = new MedicinScraperRouting(emf);
         StatusRouting statusRouting = new StatusRouting(emf);
         HealthRouting healthRouting = new HealthRouting(emf);
+        RoleRouting roleRouting = new RoleRouting(emf);
 
         // EndpointGroup Return to server
         return () -> {
@@ -36,6 +38,7 @@ public class Routes {
             medicinScraperRouting.routes().addEndpoints();
             statusRouting.routes().addEndpoints();
             healthRouting.routes().addEndpoints();
+            roleRouting.routes().addEndpoints();
         };
 
     }

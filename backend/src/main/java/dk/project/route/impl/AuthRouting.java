@@ -31,29 +31,29 @@ public class AuthRouting {
                 // -------------------------------------------------------------------
 
                 post("/login", AccessValidator.access(
-                        AccessLevelEnum.PUBLIC,
-                        authController::login
+                        authController::login,
+                        AccessLevelEnum.PUBLIC
                 ));
 
                 // -------------------------------------------------------------------
 
                 post("/register", AccessValidator.access(
-                        AccessLevelEnum.PUBLIC,
-                        authController::register
+                        authController::register,
+                        AccessLevelEnum.PUBLIC
                 ));
 
                 // -------------------------------------------------------------------
 
                 get("/me", AccessValidator.access(
-                        AccessLevelEnum.JWT,
-                        authController::me
+                        authController::me,
+                        AccessLevelEnum.JWT
                 ));
 
                 // -------------------------------------------------------------------
 
                 post("/refresh", AccessValidator.access(
-                        AccessLevelEnum.JWT,
-                        authController::refresh
+                        authController::refresh,
+                        AccessLevelEnum.JWT
                 ));
 
             });

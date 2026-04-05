@@ -49,11 +49,22 @@ public class AccessValidator {
     }
 
     // _________________________________________________________________________________________________________________
-    // Used on Routes that need individual access levels for sub-routes.
 
-    public static Handler access(AccessLevelEnum accessLevelEnum, Handler handler) {
+    public static Handler access(Handler handler, AccessLevelEnum... accessLevelEnums) {
         return ctx -> {
-            handle(ctx, accessLevelEnum);
+            boolean authorized = false;
+            for (AccessLevelEnum level : accessLevelEnums) {
+                try {
+                    handle(ctx, level);
+                    authorized = true;
+                    break;
+                } catch (ApiException e) {
+                    e.getStackTrace();
+                }
+            }
+            if (!authorized) {
+                throw new ApiException(403, "Access denied");
+            }
             handler.handle(ctx);
         };
     }

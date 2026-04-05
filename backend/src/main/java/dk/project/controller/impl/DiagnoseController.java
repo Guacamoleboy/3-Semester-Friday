@@ -1,6 +1,7 @@
 package dk.project.controller.impl;
 
 import dk.project.entity.Diagnose;
+import dk.project.mapper.response.DiagnoseResponseMapper;
 import dk.project.service.internal.EntityManagerService;
 
 public class DiagnoseController extends CRUDController<Diagnose> {

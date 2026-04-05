@@ -8,6 +8,25 @@ import lombok.Data;
 @JsonIgnoreProperties
 public class AuthResponseDTO {
 
+
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON Output
+    // ____________________
+    //
+    //      {
+    //          "access_token": token
+    //          "refresh_token": token
+    //          "user": user
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
     @JsonProperty("access_token")
     private String accessToken;
     @JsonProperty("refresh_token")

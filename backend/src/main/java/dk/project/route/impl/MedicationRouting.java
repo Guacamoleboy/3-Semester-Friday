@@ -1,23 +1,31 @@
 package dk.project.route.impl;
 
+import dk.project.controller.impl.MedicationClientController;
+import dk.project.controller.impl.MedicationController;
+import dk.project.service.internal.MedicationClientService;
+import dk.project.service.internal.MedicationService;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class MedicationRouting {
 
     // Attributes
     private final EntityManager em;
-    // private final MedicationController medicationController;
-    // private final MedicationClientController medicationClientController;
+    private final MedicationController medicationController;
+    private final MedicationClientController medicationClientController;
 
     // _________________________________________________________________________________________________________________
 
     public MedicationRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
-        // medicationController = new MedicationController(em);
-        // medicationClientController = new MedicationClientController(em);
+
+        MedicationService medicationService = new MedicationService(em);
+        medicationController = new MedicationController(medicationService);
+
+        MedicationClientService medicationClientService = new MedicationClientService(em);
+        medicationClientController = new MedicationClientController(medicationClientService);
     }
 
     // _________________________________________________________________________________________________________________
@@ -25,27 +33,61 @@ public class MedicationRouting {
     public EndpointGroup routes() {
 
         return () -> {
-            // Medication
-            path("/medication", () -> {
-                // get("/all", medicationController::getAll);
-                // get("/{id}", medicationController::getById);
-                // post("/", medicationController::create);
-                // put("/{id}", medicationController::updateById);
-                // delete("/{id}", medicationController::deleteById);
 
-                // Medication Client
+            // -------------------------------------------------------------------
+
+            path("/medication", () -> {
+
+                // -------------------------------------------------------------------
+
+                get("/all", medicationController::getAll);
+
+                // -------------------------------------------------------------------
+
+                get("/{id}", medicationController::getById);
+
+                // -------------------------------------------------------------------
+
+                post("/", medicationController::create);
+
+                // -------------------------------------------------------------------
+
+                put("/{id}", medicationController::updateById);
+
+                // -------------------------------------------------------------------
+
+                delete("/{id}", medicationController::deleteById);
+
+                // -------------------------------------------------------------------
+
                 path("/client", () -> {
-                    // get("/all", medicationClientController::getAll);
-                    // get("/{id}", medicationClientController::getById);
-                    // post("/", medicationClientController::create);
-                    // put("/{id}", medicationClientController::updateById);
-                    // delete("/{id}", medicationClientController::deleteById);
+
+                    // -------------------------------------------------------------------
+
+                    get("/all", medicationClientController::getAll);
+
+                    // -------------------------------------------------------------------
+
+                    get("/{id}", medicationClientController::getById);
+
+                    // -------------------------------------------------------------------
+
+                    post("/", medicationClientController::create);
+
+                    // -------------------------------------------------------------------
+
+                    put("/{id}", medicationClientController::updateById);
+
+                    // -------------------------------------------------------------------
+
+                    delete("/{id}", medicationClientController::deleteById);
+
                 });
+
             });
+
         };
 
     }
-
-    // _________________________________________________________________________________________________________________
 
 }

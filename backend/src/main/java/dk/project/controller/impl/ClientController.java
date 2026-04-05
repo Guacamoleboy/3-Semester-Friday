@@ -1,6 +1,7 @@
 package dk.project.controller.impl;
 
 import dk.project.entity.Client;
+import dk.project.mapper.response.ClientResponseMapper;
 import dk.project.service.internal.EntityManagerService;
 
 public class ClientController extends CRUDController<Client> {

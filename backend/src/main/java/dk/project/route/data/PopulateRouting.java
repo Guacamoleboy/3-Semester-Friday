@@ -31,8 +31,8 @@ public class PopulateRouting {
                 // -------------------------------------------------------------------
 
                 post("", AccessValidator.access(
-                        AccessLevelEnum.ADMIN,
-                        populateController::populate
+                        populateController::populate,
+                        AccessLevelEnum.ADMIN
                 ));
 
             });

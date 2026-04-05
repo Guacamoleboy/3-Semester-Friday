@@ -32,8 +32,8 @@ public class StatusRouting {
                 // -------------------------------------------------------------------
 
                 post("", AccessValidator.access(
-                        AccessLevelEnum.PUBLIC,
-                        statusController::getStatus
+                        statusController::getStatus,
+                        AccessLevelEnum.PUBLIC
                 ));
 
             });

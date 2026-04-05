@@ -1,5 +1,7 @@
 package dk.project.route.impl;
 
+import dk.project.controller.impl.SideEffectController;
+import dk.project.service.internal.SideEffectService;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -9,13 +11,15 @@ public class SideEffectRouting {
 
     // Attributes
     private final EntityManager em;
-    // private final SideEffectController sideEffectController;
+    private final SideEffectController sideEffectController;
 
     // _________________________________________________________________________________________________________________
 
     public SideEffectRouting(EntityManagerFactory emf) {
         em = emf.createEntityManager();
-        // sideEffectController = new SideEffectController(em);
+
+        SideEffectService sideEffectService = new SideEffectService(em);
+        sideEffectController = new SideEffectController(sideEffectService);
     }
 
     // _________________________________________________________________________________________________________________
@@ -23,17 +27,32 @@ public class SideEffectRouting {
     public EndpointGroup routes() {
 
         return () -> {
+
             path("/sideeffect", () -> {
-                // get("/all", sideEffectController::getAll);
-                // get("/{id}", sideEffectController::getById);
-                // post("/", sideEffectController::create);
-                // put("/{id}", sideEffectController::updateById);
-                // delete("/{id}", sideEffectController::deleteById);
+
+                // -------------------------------------------------------------------
+
+                get("/all", sideEffectController::getAll);
+
+                // -------------------------------------------------------------------
+
+                get("/{id}", sideEffectController::getById);
+
+                // -------------------------------------------------------------------
+
+                post("/", sideEffectController::create);
+
+                // -------------------------------------------------------------------
+
+                put("/{id}", sideEffectController::updateById);
+
+                // -------------------------------------------------------------------
+
+                delete("/{id}", sideEffectController::deleteById);
+
             });
         };
 
     }
-
-    // _________________________________________________________________________________________________________________
 
 }

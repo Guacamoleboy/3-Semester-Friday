@@ -30,8 +30,8 @@ public class MedicinScraperRouting {
                 // -------------------------------------------------------------------
 
                 post("/{id}", AccessValidator.access(
-                        AccessLevelEnum.ADMIN,
-                        medicinScraperController::getSideEffects
+                        medicinScraperController::getSideEffects,
+                        AccessLevelEnum.ADMIN
                 ));
 
             });

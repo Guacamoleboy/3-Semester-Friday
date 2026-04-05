@@ -9,6 +9,27 @@ import java.sql.Timestamp;
 @JsonIgnoreProperties
 public class ApiResponseDTO {
 
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON Output
+    // ____________________
+    //
+    //      {
+    //          "api_name": name
+    //          "last_used": timestamp
+    //          "active": true
+    //          "created_at": timestamp
+    //          "key_id": id
+    //          "api_key": key
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
     @JsonProperty("api_name")
     private String name;
     @JsonProperty("last_used")

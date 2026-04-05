@@ -17,10 +17,12 @@ public class BaselineResponseDTO {
     // ____________________
     //
     //      {
-    //          "id": 1
-    //          "created_at": date
-    //          "end_date": date
-    //          "last_updated": date
+    //          "id": id
+    //          "client_id": id
+    //          "diagnose_id": id
+    //          "created_at": timestamp
+    //          "end_date": timestamp
+    //          "last_updated": timestamp
     //      }
     //
     // ____________________
@@ -32,6 +34,10 @@ public class BaselineResponseDTO {
 
     @JsonProperty("id")
     private int id;
+    @JsonProperty("client_id")
+    private String clientId;
+    @JsonProperty("diagnose_id")
+    private int diagnoseId;
     @JsonProperty("created_at")
     private Timestamp createdAt;
     @JsonProperty("end_date")

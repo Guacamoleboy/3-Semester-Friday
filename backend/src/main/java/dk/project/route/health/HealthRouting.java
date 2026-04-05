@@ -32,8 +32,8 @@ public class HealthRouting {
                 // -------------------------------------------------------------------
 
                 post("", AccessValidator.access(
-                        AccessLevelEnum.PUBLIC,
-                        healthController::getHealth
+                        healthController::getHealth,
+                        AccessLevelEnum.PUBLIC
                 ));
 
             });

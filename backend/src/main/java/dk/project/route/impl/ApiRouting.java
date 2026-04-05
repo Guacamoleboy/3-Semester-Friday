@@ -30,36 +30,36 @@ public class ApiRouting {
                 // -------------------------------------------------------------------
 
                 get("/{keyId}", AccessValidator.access(
-                        AccessLevelEnum.JWT_AND_API,
-                        apiController::getApiMeta
+                        apiController::getApiMeta,
+                        AccessLevelEnum.JWT_AND_API
                 ));
 
                 // -------------------------------------------------------------------
 
                 post("/create", AccessValidator.access(
-                        AccessLevelEnum.JWT,
-                        apiController::createApiKey
+                        apiController::createApiKey,
+                        AccessLevelEnum.JWT
                 ));
 
                 // -------------------------------------------------------------------
 
                 post("/validate", AccessValidator.access(
-                        AccessLevelEnum.JWT,
-                        apiController::validateApiKey
+                        apiController::validateApiKey,
+                        AccessLevelEnum.JWT
                 ));
 
                 // -------------------------------------------------------------------
 
                 post("/refresh", AccessValidator.access(
-                        AccessLevelEnum.JWT_AND_API,
-                        apiController::refreshApiKey
+                        apiController::refreshApiKey,
+                        AccessLevelEnum.JWT_AND_API
                 ));
 
                 // -------------------------------------------------------------------
 
                 delete("/delete", AccessValidator.access(
-                        AccessLevelEnum.JWT_AND_API,
-                        apiController::deleteApiKey
+                        apiController::deleteApiKey,
+                        AccessLevelEnum.JWT_AND_API
                 ));
 
 

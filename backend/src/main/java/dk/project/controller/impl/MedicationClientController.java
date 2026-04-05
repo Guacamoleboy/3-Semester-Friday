@@ -1,6 +1,7 @@
 package dk.project.controller.impl;
 
 import dk.project.entity.MedicationClient;
+import dk.project.mapper.response.MedicationClientResponseMapper;
 import dk.project.service.internal.EntityManagerService;
 
 public class MedicationClientController extends CRUDController<MedicationClient> {

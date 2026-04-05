@@ -48,6 +48,18 @@ public abstract class CRUDController <T> {
 
     // _________________________________________________________________________________________________________________
 
+    public void updateById(Context ctx) {
+        String idStr = ctx.pathParam("id");
+        T entity = ContextHelper.notNull(
+                classService.getById(idStr),
+                classSpecific.getSimpleName()
+        );
+        T updated = classService.update(entity);
+        ctx.json(classMapper.apply(updated));
+    }
+
+    // _________________________________________________________________________________________________________________
+
     public void getById(Context ctx) {
         String idStr = ctx.pathParam("id");
         UUID uuid = UUID.fromString(idStr);
