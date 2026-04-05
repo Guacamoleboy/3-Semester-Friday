@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "medication_client",
+@Table(name = "medication_clients",
 uniqueConstraints = @UniqueConstraint(columnNames = {"client_id", "medication_id", "timeline"}))
 public class MedicationClient {
 

@@ -1,0 +1,198 @@
+/* 
+
+  Author: Jonas Meinert Larsen / Guacamoleboy / CPH-JL325
+  Last edited: 05/04-2026
+
+  ______________________
+
+  JPA Relations / ER Diagram
+  Follows 3NF.
+
+*/
+
+/* ###################################################### */
+/*                Tables from JPA Entities                */
+/* ###################################################### */
+
+Table users {
+  id uuid [pk]
+  username varchar [not null, unique]
+  email_hash varchar [not null, unique]
+  password_hash varchar [not null]
+  role_id uuid
+  created_at timestamp
+  last_login timestamp
+}
+
+Table roles {
+  id uuid [pk]
+  name varchar [not null, unique]
+  description varchar
+}
+
+Table clients {
+  id_hash varchar [pk]
+  id_ending int [not null]
+  created_at timestamp
+  last_login timestamp
+}
+
+Table diagnoses {
+  id int [pk]
+  name varchar [not null, unique]
+  description varchar
+  diagnose_type_id int
+}
+
+Table diagnose_types {
+  id int [pk]
+  name varchar [not null, unique]
+}
+
+Table medications {
+  id int [pk]
+  name varchar [not null, unique]
+  description varchar
+  medicin_dk_id int [unique]
+}
+
+Table medication_categories {
+  id int [pk]
+  name varchar [not null]
+  description varchar
+  warning_level int [not null]
+}
+
+Table side_effect_medications {
+  id int [pk]
+  name varchar [not null]
+  description varchar
+  header int [not null]
+  medication_category int
+  medicin_dk_id int [not null]
+}
+
+Table side_effects {
+  id int [pk]
+  note varchar [not null]
+}
+
+Table questions {
+  id int [pk]
+  question_title varchar [not null]
+  question_description varchar [not null]
+  value int
+  diagnosis_id int
+  medication_id int
+}
+
+Table baselines {
+  id int [pk]
+  client_id varchar [not null]
+  diagnose_id int [not null]
+  created_at timestamp
+  end_date timestamp
+  last_updated timestamp
+}
+
+Table baseline_individuals {
+  id int [pk]
+  baseline_id int [not null]
+  question_id int [not null]
+  value int
+  notes varchar
+  created_at date
+}
+
+Table medication_clients {
+  id int [pk]
+  medication_id int [not null]
+  client_id varchar [not null]
+  amount int [not null]
+  timeline varchar [not null]
+  created_at timestamp
+  last_updated timestamp
+}
+
+Table diagnose_clients {
+  id int [pk]
+  diagnose_id int [not null]
+  client_id varchar [not null]
+  created_at timestamp
+  last_updated timestamp
+}
+
+Table apis {
+  id uuid [pk]
+  name varchar [not null, unique]
+  key_hash varchar [not null, unique]
+  key_id varchar [not null, unique]
+  active boolean
+  created_at timestamp
+  last_used timestamp
+}
+
+/* ###################################################### */
+/*            Joint Tables from JPA Entities              */
+/*               Indexes -> PK Relation                   */
+/* ###################################################### */
+
+Table baseline_individual_side_effects {
+  baseline_individual_id int [not null]
+  side_effect_id int [not null]
+  Indexes {
+    (baseline_individual_id, side_effect_id) [pk]
+  }
+}
+
+/* ###################################################### */
+/*             Relations Between JPA Entities             */
+/* ###################################################### */
+
+// users -> roles
+Ref: users.role_id > roles.id
+
+// side_effect_medications -> medication_categories
+Ref: side_effect_medications.medication_category > medication_categories.id
+
+// side_effect_medications -> medications
+Ref: side_effect_medications.medicin_dk_id > medications.medicin_dk_id
+
+// questions -> diagnoses
+Ref: questions.diagnosis_id > diagnoses.id
+
+// questions -> medications
+Ref: questions.medication_id > medications.id
+
+// baselines -> clients
+Ref: baselines.client_id > clients.id_hash
+
+// baselines -> diagnoses
+Ref: baselines.diagnose_id > diagnoses.id
+
+// baseline_individuals -> baselines
+Ref: baseline_individuals.baseline_id > baselines.id
+
+// baseline_individuals -> questions
+Ref: baseline_individuals.question_id > questions.id
+
+// medication_clients -> medications
+Ref: medication_clients.medication_id > medications.id
+
+// medication_clients -> clients
+Ref: medication_clients.client_id > clients.id_hash
+
+// diagnose_clients -> diagnoses
+Ref: diagnose_clients.diagnose_id > diagnoses.id
+
+// diagnose_clients -> clients
+Ref: diagnose_clients.client_id > clients.id_hash
+
+// baseline_individual_side_effects -> baseline_individuals
+Ref: baseline_individual_side_effects.baseline_individual_id > baseline_individuals.id
+
+// baseline_individual_side_effects -> side_effects
+Ref: baseline_individual_side_effects.side_effect_id > side_effects.id
+
+// diagnoses -> diagnose_types
+Ref: diagnoses.diagnose_type_id > diagnose_types.id

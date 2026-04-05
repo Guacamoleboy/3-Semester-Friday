@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "medication")
+@Table(name = "medications")
 public class Medication {
 
 

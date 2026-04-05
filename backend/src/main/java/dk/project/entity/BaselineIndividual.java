@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "baseline_individual",
+@Table(name = "baseline_individuals",
 uniqueConstraints = @UniqueConstraint(columnNames = {"baseline_id", "question_id"}))
 public class BaselineIndividual {
 

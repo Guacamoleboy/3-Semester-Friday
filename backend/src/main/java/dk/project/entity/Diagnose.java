@@ -20,11 +20,11 @@ public class Diagnose {
     //
     //              PgAmin
     //              _______
-    //              id | name | description
+    //              id | name | description | diagnose_type_id
     //
     // __________________
     // Tested: YES
-    // Date: 24/03-2026
+    // Date: 05/04-2026
 
     // _________________________________________________________________________________________________________________
 
@@ -39,6 +39,12 @@ public class Diagnose {
     private String name;
     @Column(name = "description")
     private String description;
+
+    // ______ | RELATIONS | ____________________________________________________________________________________________
+
+    @ManyToOne
+    @JoinColumn(name = "diagnose_type_id")
+    private DiagnoseType diagnoseType;
 
     // ______ | NESTED COLUMNS | _______________________________________________________________________________________
 

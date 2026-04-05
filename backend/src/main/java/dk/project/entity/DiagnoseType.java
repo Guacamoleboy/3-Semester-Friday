@@ -2,6 +2,8 @@ package dk.project.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,7 +26,7 @@ public class DiagnoseType {
     //
     // __________________
     // Tested: YES
-    // Date: 24/03-2026
+    // Date: 05/04-2026
 
     // _________________________________________________________________________________________________________________
 
@@ -36,6 +38,11 @@ public class DiagnoseType {
     private int id;
     @Column(nullable = false, unique = true)
     private String name;
+
+    // ______ | RELATIONS | ____________________________________________________________________________________________
+
+    @OneToMany(mappedBy = "diagnoseType")
+    private List<Diagnose> diagnoses = new ArrayList<>();
 
     // ______ | NESTED COLUMNS | _______________________________________________________________________________________
 
