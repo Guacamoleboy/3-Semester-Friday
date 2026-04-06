@@ -34,5 +34,5 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          docker compose build api
-          docker compose push api
+          docker build -t guacamoleboy/moodmap-api:latest ./backend
+          docker push guacamoleboy/moodmap-api:latest
