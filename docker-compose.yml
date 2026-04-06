@@ -67,10 +67,14 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=${DB_HOST}
+      - SERVER_PORT=${SERVER_PORT}
+      - API_BASE_PATH=${API_BASE_PATH}
+      - URL_PATHING=${URL_PATHING}
+      - ROUTE_ENDPOINT_FOLDER=${ROUTE_ENDPOINT_FOLDER}
     depends_on:
       - db
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:7070"]
+      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT}${API_BASE_PATH}/health"]
       interval: 30s
       timeout: 10s
       retries: 3

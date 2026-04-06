@@ -14,6 +14,7 @@ public class DotEnv {
     private static final Dotenv dotenv;
     private static final String environment = "development";
     private static final String fileName;
+    private static final String directoyPath;
 
     // _________________________________________________________________________________________________________________
     // Usage:
@@ -30,22 +31,36 @@ public class DotEnv {
         String environmentLoad = System.getProperty("set.env", environment);
         fileName = ".env." + environmentLoad;
 
+        // Directory Setup
+        directoyPath = "production".equalsIgnoreCase(environmentLoad) ? "./" : "src/main/resources";
+
         // Load (I/O) the .env.development file
         dotenv = Dotenv.configure()
-                .directory("src/main/resources")
+                .directory(directoyPath)
                 .filename(fileName)
                 .ignoreIfMissing()
+                .systemProperties()
                 .load();
     }
 
     // _________________________________________________________________________________________________________________
 
     public static String get(String key) {
-        String returnedKey = dotenv.get(key);
-        if (returnedKey == null || returnedKey.isEmpty()) {
-            throw new ApiException(500, key + " missing in " + fileName);
+
+        // Deployment
+        String value = System.getenv(key);
+
+        // Development
+        if (value == null || value.isEmpty()) {
+            value = dotenv.get(key);
         }
-        return returnedKey;
+
+        // Validation
+        if (value == null || value.isEmpty()) {
+            throw new ApiException(500, key + " missing");
+        }
+
+        return value;
     }
 
     // _________________________________________________________________________________________________________________

@@ -10,8 +10,6 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# --------------------------------------------------------------------------------------------------
-
 # RUN & START Application
 FROM amazoncorretto:17-alpine
 WORKDIR /app
@@ -26,4 +24,4 @@ COPY --from=builder /app/target/MoodMap-REST-API.jar /app/app.jar
 EXPOSE 7070
 
 # Start REST API
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-Dset.env=production", "-jar", "/app/app.jar"]
