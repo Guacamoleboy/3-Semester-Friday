@@ -22,9 +22,7 @@ services:
   db:
     image: postgres:16
     container_name: ${DB_HOST}
-    restart: always
-    ports:
-      - ${DB_EXPOSED_PORTS:-5432}
+    restart: on-failure:3
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -44,7 +42,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: ${PGADMIN_CONTAINER_NAME}
-    restart: always
+    restart: on-failure:3
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
@@ -57,12 +55,21 @@ services:
   # --------------------------------------------------------------------------------------
   # REST API Setup
   api:
+    init: true
     image: guacamoleboy/moodmap-api:latest
     container_name: ${DB_CONTAINER_NAME}
-    restart: always
+    restart: on-failure:3
+    stop_grace_period: 30s
+    pull_policy: always
+    mem_limit: 384m
+    memswap_limit: 512m
+    cpus: 0.80
     ports:
       - ${DB_PORTS}
     environment:
+      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx256m
+      - APP_VERSION=${APP_VERSION}
+      - APP_ENV=${APP_ENV}
       - DB_NAME=${DB_NAME}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -72,14 +79,10 @@ services:
       - URL_PATHING=${URL_PATHING}
       - ROUTE_ENDPOINT_FOLDER=${ROUTE_ENDPOINT_FOLDER}
     depends_on:
-      - db
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
+      db:
+        condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT}${API_BASE_PATH}/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:7070/v1/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -91,16 +94,15 @@ services:
   watchtower:
     image: containrrr/watchtower:latest
     container_name: watchtower
-    restart: always
+    restart: on-failure:3
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_POLL_INTERVAL=300
+      - WATCHTOWER_POLL_INTERVAL=3600
     command: ${DB_CONTAINER_NAME}
     depends_on:
-      api:
-        condition: service_healthy
+      - api
 
 # ________________________________________________________________________________________
 

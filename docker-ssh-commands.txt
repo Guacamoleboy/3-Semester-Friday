@@ -1,0 +1,23 @@
+// ----------------------------------------------------------------------------------------------------
+## In case droplet struggles use this
+
+sudo pkill -9 dockerd
+sudo rm -rf /var/lib/docker/containers/*
+sudo rm -rf /var/lib/docker/tmp/*
+sudo systemctl start docker
+
+// ----------------------------------------------------------------------------------------------------
+## Add more space by adding a swap file
+
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+// ----------------------------------------------------------------------------------------------------
+## Docker compose commands
+
+docker compose --env-file .env.production pull
+docker compose --env-file .env.production up -d
+docker compose --env-file .env.production up -d --force-recreate api

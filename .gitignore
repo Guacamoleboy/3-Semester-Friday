@@ -39,3 +39,7 @@ backend/logs
 
 # === TypeScript ===
 *.tsbuildinfo
+
+# === Sensitive ===
+docker-compose.yml
+**/config.properties
