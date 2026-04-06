@@ -9,7 +9,27 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CityPayloadDTO {
 
-    // Attributes
+
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON
+    // _____________
+    //
+    //      {
+    //          "results": []
+    //          "generationtime_ms": 0.0
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
+    // _________________________________________________________________________________________________________________
+    // JSON Fields
+
     private List<CityDTO> results;
     @JsonProperty("generationtime_ms")
     private Double generationTimeMs;

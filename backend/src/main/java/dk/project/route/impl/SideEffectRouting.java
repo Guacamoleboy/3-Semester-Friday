@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 public class SideEffectRouting extends CRUDRouting<SideEffect> {
 
+    // Attributes
+
     // _________________________________________________________________________________________________________________
 
     public SideEffectRouting(EntityManagerFactory emf) {

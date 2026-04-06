@@ -54,9 +54,9 @@ public class Client {
         lastLogin = new Timestamp(System.currentTimeMillis());
     }
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID_HASH = "id_hash";
         public static final String ID_ENDING = "id_ending";
         public static final String CREATED_AT = "created_at";

@@ -68,9 +68,9 @@ public class Baseline {
         lastUpdated = new Timestamp(System.currentTimeMillis());
     }
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID = "id";
         public static final String CLIENT = "client";
         public static final String DIAGNOSE = "diagnose";

@@ -1,10 +1,8 @@
 package dk.project.controller.health;
 
 import dk.project.service.internal.health.HealthService;
-import dk.project.util.TryCatchHelper;
 import io.javalin.http.Context;
 import jakarta.persistence.EntityManager;
-
 import java.util.Map;
 
 public class HealthController {

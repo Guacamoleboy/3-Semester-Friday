@@ -9,13 +9,32 @@ import java.util.UUID;
 @NoArgsConstructor
 public class RoleDTO {
 
-    // Attributes
+
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON
+    // _____________
+    //
+    //      {
+    //          "role_id": uuid
+    //          "role_name": name
+    //          "role_description": description
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
+    // _________________________________________________________________________________________________________________
+    // JSON Fields
+
     @JsonProperty("role_id")
     private UUID id;
-
     @JsonProperty("role_name")
     private String name;
-
     @JsonProperty("role_description")
     private String description;
 

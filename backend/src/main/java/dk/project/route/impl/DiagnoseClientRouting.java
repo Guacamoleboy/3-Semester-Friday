@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 public class DiagnoseClientRouting extends CRUDRouting<DiagnoseClient> {
 
+    // Attributes
+
     // _________________________________________________________________________________________________________________
 
     public DiagnoseClientRouting(EntityManagerFactory emf) {

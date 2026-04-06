@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 public class MedicationRouting extends CRUDRouting<Medication> {
 
+    // Attributes
+
     // _________________________________________________________________________________________________________________
 
     public MedicationRouting(EntityManagerFactory emf) {

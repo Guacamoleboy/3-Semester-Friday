@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 public class BaselineIndividualRouting extends CRUDRouting<BaselineIndividual> {
 
+    // Attributes
+
     // _________________________________________________________________________________________________________________
 
     public BaselineIndividualRouting(EntityManagerFactory emf) {

@@ -37,7 +37,7 @@ public class MedicinDotDK {
         List<Element> children = webScraper.findChildren(parents, "tr");
 
         // Medication relation setup
-        Medication medication = medicationService.findEntityByColumn(Integer.parseInt(id), Medication.Columns.MEDICIN_DK_ID);
+        Medication medication = medicationService.findEntityByColumn(Integer.parseInt(id), Medication.Fields.MEDICIN_DK_ID);
 
         // Store each
         for (Element child : children) {

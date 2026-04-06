@@ -52,9 +52,9 @@ public class Question {
     @JoinColumn(name = "medication_id")
     private Medication medication;
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID = "id";
         public static final String QUESTION_TITLE = "question_title";
         public static final String QUESTION_DESCRIPTION = "question_description";

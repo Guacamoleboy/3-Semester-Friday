@@ -6,6 +6,7 @@ import dk.project.mapper.response.BaselineIndividualResponseMapper;
 import dk.project.service.internal.BaselineIndividualService;
 import dk.project.service.internal.EntityManagerService;
 import dk.project.util.ContextHelper;
+import dk.project.util.TryCatchHelper;
 import io.javalin.http.Context;
 
 public class BaselineIndividualController extends CRUDController<BaselineIndividual> {
@@ -23,26 +24,30 @@ public class BaselineIndividualController extends CRUDController<BaselineIndivid
     // _________________________________________________________________________________________________________________
 
     public void getSideEffects(Context ctx) {
-        int id = ContextHelper.pathInt(ctx, "id");
-        ctx.json(baselineIndividualService.getSideEffects(id));
+        TryCatchHelper.tryCatchHelper(ctx, () -> {
+            int id = ContextHelper.pathInt(ctx, "id");
+            return baselineIndividualService.getSideEffects(id);
+        }, "Side effects retrieved");
     }
 
     // _________________________________________________________________________________________________________________
 
     public void addSideEffect(Context ctx) {
-        int id = ContextHelper.pathInt(ctx, "id");
-        SideEffect sideEffect = ctx.bodyAsClass(SideEffect.class);
-        baselineIndividualService.addSideEffect(id, sideEffect);
-        ctx.json("SideEffect added");
+        TryCatchHelper.tryCatchHelperVoid(ctx, () -> {
+            int id = ContextHelper.pathInt(ctx, "id");
+            SideEffect sideEffect = ctx.bodyAsClass(SideEffect.class);
+            baselineIndividualService.addSideEffect(id, sideEffect);
+        }, "SideEffect added");
     }
 
     // _________________________________________________________________________________________________________________
 
     public void removeSideEffect(Context ctx) {
-        int id = ContextHelper.pathInt(ctx, "id");
-        SideEffect sideEffect = ctx.bodyAsClass(SideEffect.class);
-        baselineIndividualService.removeSideEffect(id, sideEffect);
-        ctx.json("SideEffect removed");
+        TryCatchHelper.tryCatchHelperVoid(ctx, () -> {
+            int id = ContextHelper.pathInt(ctx, "id");
+            SideEffect sideEffect = ctx.bodyAsClass(SideEffect.class);
+            baselineIndividualService.removeSideEffect(id, sideEffect);
+        }, "SideEffect removed");
     }
 
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 public class QuestionRouting extends CRUDRouting<Question> {
 
+    // Attributes
+
     // _________________________________________________________________________________________________________________
 
     public QuestionRouting(EntityManagerFactory emf) {

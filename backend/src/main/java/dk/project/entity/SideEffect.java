@@ -39,15 +39,14 @@ public class SideEffect{
     @Column(name = "note", nullable = false)
     private String note;
 
-
     // ______ | RELATIONS | ____________________________________________________________________________________________
 
     @ManyToMany(mappedBy = "sideEffects")
     private List<BaselineIndividual> baselineIndividuals = new ArrayList<>();
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID = "id";
         public static final String NOTE = "note";
     }

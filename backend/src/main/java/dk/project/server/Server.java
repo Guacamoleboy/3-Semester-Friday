@@ -7,7 +7,6 @@ import dk.project.exception.ApiException;
 import dk.project.exception.DatabaseException;
 import dk.project.exception.ResourceNotFoundException;
 import dk.project.route.Routes;
-import dk.project.security.access.AccessValidator;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.HttpStatus;

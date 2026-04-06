@@ -9,16 +9,35 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class ClientDTO {
 
-    // Attributes
+
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON
+    // _____________
+    //
+    //      {
+    //          "client_id": clientId
+    //          "client_id_ending": 0
+    //          "client_created_at": timestamp
+    //          "client_last_login": timestamp
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
+    // _________________________________________________________________________________________________________________
+    // JSON Fields
+
     @JsonProperty("client_id")
     private String id;
-
     @JsonProperty("client_id_ending")
     private int idEnding;
-
     @JsonProperty("client_created_at")
     private Timestamp createdAt;
-
     @JsonProperty("client_last_login")
     private Timestamp lastLogin;
 

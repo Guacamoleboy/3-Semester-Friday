@@ -1,7 +1,6 @@
 package dk.project.dao.impl;
 
 import dk.project.dao.IDAO;
-import dk.project.util.ContextHelper;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.UUID;

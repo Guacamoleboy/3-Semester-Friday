@@ -9,7 +9,33 @@ import lombok.Data;
 @Data
 public class WeatherDTO {
 
-    // Attributes
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON
+    // _____________
+    //
+    //      {
+    //          "timezone": timezone
+    //          "current": {
+    //              "temperature_2m": 0.0
+    //              "wind_speed_10m": 0.0
+    //          }
+    //          "current_units": {
+    //              "temperature_2m": unit
+    //              "wind_speed_10m": unit
+    //          }
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
+    // _________________________________________________________________________________________________________________
+    // JSON Fields
+
     private String timezone;
     private CurrentDTO current;
     @JsonProperty("current_units")

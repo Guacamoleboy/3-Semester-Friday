@@ -46,9 +46,9 @@ public class Diagnose {
     @JoinColumn(name = "diagnose_type_id")
     private DiagnoseType diagnoseType;
 
-    // ______ | NESTED COLUMNS | _______________________________________________________________________________________
+    // ______ | NESTED FIELDS | ________________________________________________________________________________________
 
-    public static class Columns {
+    public static class Fields {
         public static final String ID = "id";
         public static final String NAME = "name";
         public static final String DESCRIPTION = "description";

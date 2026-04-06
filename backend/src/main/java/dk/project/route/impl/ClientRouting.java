@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 public class ClientRouting extends CRUDRouting<Client> {
 
+    // Attributes
+
     // _________________________________________________________________________________________________________________
 
     public ClientRouting(EntityManagerFactory emf) {

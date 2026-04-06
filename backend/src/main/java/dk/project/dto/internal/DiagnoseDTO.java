@@ -8,13 +8,32 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DiagnoseDTO {
 
-    // Attributes
+
+    // _________________________________________________________________________________________________________________
+
+    // Expected JSON
+    // _____________
+    //
+    //      {
+    //          "diagnose_id": 0
+    //          "diagnose_name": name
+    //          "diagnose_description": description
+    //      }
+    //
+    // ____________________
+    // Tested: NO
+    // Last Tested: N/A
+
+    // _________________________________________________________________________________________________________________
+
+
+    // _________________________________________________________________________________________________________________
+    // JSON Fields
+
     @JsonProperty("diagnose_id")
     private int id;
-
     @JsonProperty("diagnose_name")
     private String name;
-
     @JsonProperty("diagnose_description")
     private String description;
 
