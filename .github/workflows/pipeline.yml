@@ -34,5 +34,5 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          docker-compose build api
-          docker-compose push api
+          docker compose build api
+          docker compose push api
