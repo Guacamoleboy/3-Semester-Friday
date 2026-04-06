@@ -16,6 +16,9 @@ RUN mvn clean package -DskipTests
 FROM amazoncorretto:17-alpine
 WORKDIR /app
 
+# CURL
+RUN apk add --no-cache curl
+
 # Copy original as app.jar for start
 COPY --from=builder /app/target/MoodMap-REST-API.jar /app/app.jar
 
