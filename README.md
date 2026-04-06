@@ -24,24 +24,19 @@ Providing data directly to your clinician and yourself to show **real-time progr
 
 ### Links
 
-> Devlog / Portfolio Website:
-> 
+**Devlog / Portfolio Website:**
 > moodmap.guacamoleboy.dk/dev-log
 
-> Project overview video:
->
+Project overview video:**
 > Added 07/04-2026
 
-> Deployed application:
->
+**Deployed application**
 > api.guacamoleboy.dk/v1
 
-> Source code repository:
->
+**Source code repository:**
 > github.com/Guacamoleboy/3-Semester-Friday
 
-> ER-Diagram
->
+**ER-Diagram**
 > dbdocs.io/cph-jl325/MoodMap-ER-Diagram?view=relationships
 
 ---
@@ -55,8 +50,9 @@ Providing data directly to your clinician and yourself to show **real-time progr
 5. **The Error:** The client, relying on memory, says *"It's been alright"*, forgetting side effects or "lows" that occurred weeks ago.
 6. **Result:** The clinician extends the prescription based on incomplete information, even though the client might still be clinically depressed or suffering side effects.
 
-> Link to User Stories
->
+_
+
+**Link to User Stories**
 > github.com/Guacamoleboy/3-Semester-Friday/wiki/Backend-User-Stories
 
 ---
@@ -106,7 +102,7 @@ _
 I wanted to add better and more efficient ways of handeling access to specific endpoints but I ran out of time.
 For example the get/{id} endpoint should not allow anyone to simply call any ID. Specificly. If a JWT token holder calls the endpoint on an ID that isn't theirs..
 
-That is breach of security and personal data, but as I said - I ran out of time. I am fully aware of the issue.
+That is breach of security and personal data, but - I ran out of time. I am fully aware of the issue.
 
 ---
 
@@ -145,7 +141,7 @@ Authorization: Bearer {{ACCESS_TOKEN}}
 Content-Type: {{contentType}}
 
 {
-    "api_name": "Testing 31"
+    "api_name": "name"
 }
 ```
 
@@ -173,14 +169,15 @@ POST {{baseUrl}}/scrape/medicin/{{MEDICATION_ID}}
 Content-Type: {{contentType}}
 ```
 
+_
+
 Variables have not been included.
 
 ---
 
 # User Stories
 
-> Visit this link for User Stories or go to "Wiki" under this repo
->
+**Visit this link for User Stories or go to "Wiki" under this repo**
 > github.com/Guacamoleboy/3-Semester-Friday/wiki/Backend-User-Stories
 
 ---
