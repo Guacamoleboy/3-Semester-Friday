@@ -3,6 +3,10 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+// ## IMPORTANT ##
+
+// Placeholder till REST API has been added
+
 export default function HomePage() {
   const router = useRouter();
 

@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Notification from "@/components/ui/Notification";
 
+// ## IMPORTANT ##
+
+// Placeholder till REST API has been added
+
 export default function Login() {
 
   // Disables scroll

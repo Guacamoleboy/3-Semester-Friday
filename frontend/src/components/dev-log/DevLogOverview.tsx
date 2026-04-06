@@ -12,7 +12,6 @@ export default function DevLogOverview({ loaders }: DevLogOverviewProps) {
   return (
     <div className="dev-log-overview-wrapper">
       {loaders.map(loader => (
-        // Motion on <div>. Can be used as motion.a for example aswell!
         <motion.div
           key={loader.slug}
           layoutId={loader.slug}

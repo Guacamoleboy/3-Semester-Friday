@@ -5,6 +5,10 @@ import IntroBar from "@/components/ui/IntroBar";
 import GraphStock from "@/components/ui/GraphStock";
 import { generateFakeGraphData } from "@/libs/ui/GraphStockLibs";
 
+// ## IMPORTANT ##
+
+// Placeholder till REST API has been added
+
 export default function ClientPage() {
 
   // Role validation
@@ -14,14 +18,5 @@ export default function ClientPage() {
     
     <IntroBar />
 
-    /*
-    // Graph Stock
-    <div className="graph-container">
-      <h1 className="graph-container-title">Humør</h1>
-      <div className="graph-stock-wrapper">
-        <GraphStock />
-      </div>
-    </div>
-    */
   );
 }
