@@ -10,7 +10,9 @@ import java.util.stream.Collectors;
 
 public abstract class CRUDController <T> {
 
+    // _________________________________________________________________________________________________________________
     // Attributes
+
     protected final EntityManagerService<T> classService;
     protected final Class<T> classSpecific;
     private final Function<T, Object> classMapper;

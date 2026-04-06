@@ -72,6 +72,23 @@ services:
       db:
         condition: service_healthy
 
+    # --------------------------------------------------------------------------------------
+    # Watchtower
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=300 
+    command: ${DB_CONTAINER_NAME}
+    depends_on:
+      api:
+        condition: service_healthy  
+
 # ________________________________________________________________________________________
 
 volumes:

@@ -2,10 +2,7 @@ package dk.project.route;
 
 import dk.project.route.data.PopulateRouting;
 import dk.project.route.health.HealthRouting;
-import dk.project.route.impl.ApiRouting;
-import dk.project.route.impl.AuthRouting;
-import dk.project.route.impl.RoleRouting;
-import dk.project.route.impl.UserRouting;
+import dk.project.route.impl.*;
 import dk.project.route.scrape.MedicinScraperRouting;
 import dk.project.route.status.StatusRouting;
 import io.javalin.apibuilder.EndpointGroup;
@@ -28,6 +25,14 @@ public class Routes {
         StatusRouting statusRouting = new StatusRouting(emf);
         HealthRouting healthRouting = new HealthRouting(emf);
         RoleRouting roleRouting = new RoleRouting(emf);
+        BaselineRouting baselineRouting = new BaselineRouting(emf);
+        BaselineIndividualRouting baselineIndividualRouting = new BaselineIndividualRouting(emf);
+        BaselineIndividualSideEffectRouting baselineIndividualSideEffectRouting = new BaselineIndividualSideEffectRouting(emf);
+        DiagnoseRouting diagnoseRouting = new DiagnoseRouting(emf);
+        DiagnoseClientRouting diagnoseClientRouting = new DiagnoseClientRouting(emf);
+        DiagnoseTypeRouting diagnoseTypeRouting = new DiagnoseTypeRouting(emf);
+        MedicationClientRouting medicationClientRouting = new MedicationClientRouting(emf);
+        MedicationRouting medicationRouting = new MedicationRouting(emf);
 
         // EndpointGroup Return to server
         return () -> {
@@ -39,6 +44,14 @@ public class Routes {
             statusRouting.routes().addEndpoints();
             healthRouting.routes().addEndpoints();
             roleRouting.routes().addEndpoints();
+            baselineRouting.routes().addEndpoints();
+            baselineIndividualRouting.routes().addEndpoints();
+            baselineIndividualSideEffectRouting.routes().addEndpoints();
+            diagnoseRouting.routes().addEndpoints();
+            diagnoseClientRouting.routes().addEndpoints();
+            diagnoseTypeRouting.routes().addEndpoints();
+            medicationRouting.routes().addEndpoints();
+            medicationClientRouting.routes().addEndpoints();
         };
 
     }

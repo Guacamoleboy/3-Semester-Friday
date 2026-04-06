@@ -29,7 +29,7 @@ public abstract class JwtUtil {
 
     // _________________________________________________________________________________________________________________
 
-    protected static Claims getClaims(String token) {
+    public static Claims getClaims(String token) {
         return Jwts.parser()
                 .verifyWith(KEY)
                 .build()

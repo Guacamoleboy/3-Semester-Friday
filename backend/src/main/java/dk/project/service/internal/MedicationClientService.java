@@ -31,6 +31,12 @@ public class MedicationClientService extends EntityManagerService<MedicationClie
 
     // _________________________________________________________________________________________________________________
 
+    public boolean existsByClientId(String clientId, int id) {
+        return medicationClientDAO.existByClientId(clientId, id);
+    }
+
+    // _________________________________________________________________________________________________________________
+
     public void updateAmount(MedicationClient medicationClient, int amount) {
         medicationClient.setAmount(amount);
         update(medicationClient);

@@ -16,12 +16,25 @@ public class MedicationClientDAO extends EntityManagerDAO<MedicationClient> {
 
     // _________________________________________________________________________________________________________________
 
-    public List<MedicationClient> findByClientId(String clientId){
+    public List<MedicationClient> findByClientId(String clientId) {
         return executeQuery(() -> {
             String JPQL = "SELECT x FROM MedicationClient x WHERE x.client.id = :clientId";
             return em.createQuery(JPQL, MedicationClient.class)
             .setParameter("clientId", clientId)
             .getResultList();
+        });
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    public boolean existByClientId(String clientId, int id) {
+        return executeQuery(() -> {
+            String JPQL = "SELECT COUNT(x) FROM MedicationClient x " + "WHERE x.client.id = :clientId AND x.id = :id";
+            Long count = em.createQuery(JPQL, Long.class)
+            .setParameter("clientId", clientId)
+            .setParameter("id", id)
+            .getSingleResult();
+            return count > 0;
         });
     }
 
