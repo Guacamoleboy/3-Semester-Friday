@@ -28,7 +28,7 @@ Providing data directly to your clinician and yourself to show **real-time progr
 > moodmap.guacamoleboy.dk/dev-log
 
 **Project overview video**
-> https://www.youtube.com/watch?v=jj4iZp51XEA
+> youtube.com/watch?v=jj4iZp51XEA
 
 **Deployed application**
 > api.guacamoleboy.dk/v1
