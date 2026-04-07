@@ -1,0 +1,180 @@
+{
+  "date": "30/03-2026",
+  "title": "Debug, debug...... DEBUG",
+  "description": "Debug. Yea. I've been debugging today. Wow. Honestly a bit annoying but yea.",
+  "overviewPhoto": "/images/devlog/day11/2.png",
+  "badges": ["Debug", "Debug", "Debug", "Debug"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Debug ift sidste gang.."
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg havde sidst jeg lavede på mit projekt sat API op samt <moodmap-highlight>Api entity<moodmap-stop>, <moodmap-highlight>routing<moodmap-stop> osv heraf. Dette fungerede fint for alle metoderne... Bare ikke <moodmap-highlight>refresh<moodmap-stop> og <moodmap-highlight>delete<moodmap-stop>."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day11/2.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 1 • Dag 11 • Debug af routes"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg kunne simpelthen ikke forstå hvad der gik galt, og hvad jeg gjorde forkert. Jeg synes umiddelbart ikke jeg havde lavet nogle fejl..."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Hermed startede <moodmap-highlight>debug nightmare<moodmap-stop>. Ja.. Nightmare. Jeg føler tit, at når simple ting fejler - så bliver debug næsten umuligt. Vil hellere have én stor fejl end én lille fejl. Den er umulig at finde."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Anyways. Jeg gik i gang med at debug min kode, fordi det var tydeligt at der var noget galt - men <moodmap-highlight>hvor?<moodmap-stop>"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Mine endpoints fungerede. Mine metoder fungerede. Min EntityManagerDAO og dens Unit Tests fungerede. Så hvad gik galt? Jeg havde også DTOs korrekt sat op.."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day11/3.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 2 • Dag 11 • Debug i console i controlleren"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Efter flere <moodmap-highlight>TIMER<moodmap-stop>. Jeg tror jeg brugte 3 timer - fandt jeg endelig frem til problemet. Et lille problem. Næsten umuligt at finde. Jeg havde også spurgt <moodmap-highlight>Google AI<moodmap-stop> om hjælp. Dén kunne heller ikke. Skørt."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Eller... Jeg fandt ikke problemet. Jeg løj. <moodmap-highlight>:(<moodmap-stop>"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Problemet løste sig selv ved at jeg tilføjede <moodmap-highlight>keyId<moodmap-stop> til min Api entity, og dermed lavede <moodmap-highlight>getKeyId()<moodmap-stop> kald som på en eller anden magisk måde løste hele problematiken omkring refresh og delete."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day11/7.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 3 • Dag 11 • keyId addition"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Eftersom jeg nu havde key_id kunne jeg bare bruge denne til at delete og refresh, og dermed <moodmap-highlight>fungerede alt<moodmap-stop> som det skulle."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day11/4.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 4 • Dag 11 • Refresh works - yay!"
+    },
+    {
+      "type": "h3",
+      "text": "Nyt setup - nye problemer"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Vi kender det alle. Det fungerede så fint. Tilføjer et par metoder og... BOOM. <moodmap-highlight>100<moodmap-stop> new issues. Det er lidt det som skete her."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Eftersom vi nu har getKeyId() - og bruger den meget. Så skal jeg opdatere den måde jeg håndterer kaldet hertil getKeyId() på da vi ellers laver <moodmap-highlight>O(n)<moodmap-stop> over alle entries."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Det er <moodmap-highlight>dyrt<moodmap-stop>, <moodmap-highlight>langsomt<moodmap-stop> og <moodmap-highlight>inefficient<moodmap-stop>. Jeg satte mig derfor for at omskrive og løse problemet heraf."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Ved at oprette et access giving ID som key_id til client i en DTO har vi mulighed for, at når en bruger skal validate, refresh, delete eller lign på deres API key.. Så søger vi bare på key_id fremfor at søge efter UUID, navn eller lign."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Vi har allerede <moodmap-highlight>EntityManagerDAO<moodmap-stop> som har IDAO som har <moodmap-highlight>getColumnById()<moodmap-stop>. Det gør det super nemt at håndtere opslag, da vi søger specifikt fremfor at søge på hele rækker."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Final adjustments"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Som det sidste sluttede jeg af med at omskrive diverse <moodmap-highlight>Type Cast<moodmap-stop> metoder som <moodmap-highlight>generateUUID()<moodmap-stop> til 2 metoder fremfor én med Type Cast, da jeg stødte på problemer heraf."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg sætter key_id til nullable false, da Api altid skal have et key_id som genereres af backend selv fra min Util klasse. ",
+        "Herefter var det bare at sikre at alt fungerede, og så commit til <moodmap-highlight>github.com<moodmap-stop>."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day11/10.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 5 • Dag 11 • DB overview + Nullable på key_id"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Da jeg havde nogle <moodmap-highlight>Hibernate<moodmap-stop> problemer skulle jeg selvfølgelig også lige debug det. Det viser sig, at Hibernate ikke kan oprette nye columns hvis nullable = false er sat på efterfølgende. Derfor satte jeg den til nullable først, og så nullable = false igen herefter for at bypass dét problem."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dagen afsluttes."
+      ]
+    }
+  ]
+}

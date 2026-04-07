@@ -1,0 +1,129 @@
+{
+  "date": "03/04-2026",
+  "title": "JWT Deep Learning",
+  "description": "Dedicated day to learning JWT the best I possibly can",
+  "overviewPhoto": "/images/devlog/day14/4.png",
+  "badges": ["JWY", "Learning", "Java", "Setup"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Dagen i dag"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg har sat dagen af i dag af til at <moodmap-highlight>lære om JWT<moodmap-stop> og hvordan JWT fungerer samt hvilke funktioner JWT kommer med - indbygget."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Eftersom jeg godt forstår hvad og hvordan JWT fungerer - men personligt har behov for at få 100% styr på hvad der sker og hvilke funktioner der gør hvad - har jeg lavet en .md fil hvor jeg skriver noter og ting ned."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day14/4.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 1 • Dag 14 • Jwt Learning"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Denne kan findes i mit repo under <moodmap-highlight>security/<moodmap-stop>."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg har snakket med de andre elever i klassen hvor de forklarer mig, at de ikke har tænkt over eller taget stilling til diverse omkring JWT men bare nappet vores lærers kode. Det synes jeg <moodmap-highlight>ikke er optimalt<moodmap-stop> eller noget nogen lærer noget af."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Mit JWT setup var allerede hjemmelavet, da jeg ikke synes mine lærers kode passer til mit setup generelt. Derfor laver jeg generelt alle mine klasser selv fremfor at bruge nogen af deres."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Men.. Eftersom jeg lavede JWT da jeg var lidt presset mentalt og <moodmap-highlight>umotiveret<moodmap-stop> havde jeg ikke sat mig ind i hvad de forskellige ting gjorde eller hvordan JWT fungerer som helhed - men blot sat det op så det fungerede."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Derfor brugte jeg meget tid til at starte med til at rename, refactor og skrive noter til mig selv omkring hvad der skete og hvorfor det skete."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day14/2.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 2 • Dag 14 • Jwt renaming"
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day14/6.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 3 • Dag 14 • JwtService"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg satte det op via <moodmap-highlight>Type Safety<moodmap-stop> ifm tidligere dev log hvor jeg fandt ud af, at hvis jeg ikke gjorde dét, så var det besværligt senere. Det kunne godt have været lavet som Enum, men ja.."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Da jeg havde styr på alt og alt var implementeret som ønsket manglede jeg bare at lave en unit test for JWT for at sikre, at det gjorde hvad det skulle.."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day14/3.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 4 • Dag 14 • JWT Unit Test"
+    },
+    {
+      "type": "h3",
+      "text": "JWT Afslutning"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Det virker som lidt når jeg skriver den her Dev Log, men fakta er, at jeg har brugt underlig lang tid på det. Primært fordi jeg har set utrolig mange videoer omkring JWT samt hvordan det fungerer."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg synes selv jeg nu er 100% <moodmap-highlight>up-to-date med JWT<moodmap-stop> og hvordan den bruges og kan implementeres i en REST API."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dagen afsluttes."
+      ]
+    }
+  ]
+}

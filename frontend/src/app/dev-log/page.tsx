@@ -14,6 +14,17 @@ import day3Json from "@/data/devlog/day3.json";
 import day4Json from "@/data/devlog/day4.json";
 import day5Json from "@/data/devlog/day5.json";
 import day6Json from "@/data/devlog/day6.json";
+import day7Json from "@/data/devlog/day7.json";
+import day8Json from "@/data/devlog/day8.json";
+import day9Json from "@/data/devlog/day9.json";
+import day10Json from "@/data/devlog/day10.json";
+import day11Json from "@/data/devlog/day11.json";
+import day12Json from "@/data/devlog/day12.json";
+import day13Json from "@/data/devlog/day13.json";
+import day14Json from "@/data/devlog/day14.json";
+import day15Json from "@/data/devlog/day15.json";
+import day16Json from "@/data/devlog/day16.json";
+import day17Json from "@/data/devlog/day17.json";
 
 export default function DevLogPage() {
   
@@ -45,6 +56,17 @@ export default function DevLogPage() {
 
   // Original loaders
   const loaders = [
+    new DevLogLoader("day17", day17Json).toProps(),
+    new DevLogLoader("day16", day16Json).toProps(),
+    new DevLogLoader("day15", day15Json).toProps(),
+    new DevLogLoader("day14", day14Json).toProps(),
+    new DevLogLoader("day13", day13Json).toProps(),
+    new DevLogLoader("day12", day12Json).toProps(),
+    new DevLogLoader("day11", day11Json).toProps(),
+    new DevLogLoader("day10", day10Json).toProps(),
+    new DevLogLoader("day9", day9Json).toProps(),
+    new DevLogLoader("day8", day8Json).toProps(),
+    new DevLogLoader("day7", day7Json).toProps(),
     new DevLogLoader("day6", day6Json).toProps(),
     new DevLogLoader("day5", day5Json).toProps(),
     new DevLogLoader("day4", day4Json).toProps(),

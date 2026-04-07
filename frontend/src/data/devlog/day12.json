@@ -1,0 +1,197 @@
+{
+  "date": "01/04-2026",
+  "title": "Scraping",
+  "description": "The day has come. Scraping. Scraping shall be implemented. Wow. Let's get it.",
+  "overviewPhoto": "/images/devlog/day12/8.png",
+  "badges": ["Scraping", "Bypass", "Http", "Java", "Debug"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Okay. Nu sker det. Det er tid."
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg har vidst jeg skulle gøre det. Jeg har vidst jeg skulle implement det. Men <moodmap-highlight>hvordan i Java?<moodmap-stop> Jeg har før brugt det - men ikke i Java. Tid til at lære noget nyt!"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg startede med at bruge <moodmap-highlight>1-2 timer<moodmap-stop> på at søge info på nettet omkring Java Scraping, se <moodmap-highlight>YouTube<moodmap-stop> video samt <moodmap-highlight>StackOverflow<moodmap-stop> heraf. Jeg lavede en lille .md fil under <moodmap-highlight>docs/<moodmap-stop> med relevant information - til mig selv."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day12/7.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 1 • Dag 12 • Brainstorming over scraping data håndtering"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Eftersom at jeg har svært ved bare at løse opgaver uden at tænke yderligt og for langt - lavede jeg <moodmap-highlight>selvfølgelig<moodmap-stop> yderligere som altid."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Det resulterede i, at jeg først tænkte over hvordan strukturen skulle se ud for selve data håndteringen samt hvordan jeg ville håndtere dataen, og hvor den skulle gemmes efter scraping."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg lavede derefter en <moodmap-highlight>generisk<moodmap-stop> klasse som kan bruges på alle URLs. Man skal bare kende <moodmap-highlight>section<moodmap-stop>, <moodmap-highlight>parent<moodmap-stop> og <moodmap-highlight>children<moodmap-stop>. Så kan du scrape alle hjemmesider. Derfor lavede jeg en ny package hvor jeg lavede hhv <moodmap-highlight>engine/<moodmap-stop> og <moodmap-highlight>impl/<moodmap-stop> hvor impl bruger engine. Herunder pro.medicin.dk som jeg scraper fra."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Som det fremgår på <moodmap-highlight>Figur 1<moodmap-stop> kan der ses hvordan jeg tænker over håndtering af data, og hvilken rækkefølge det bør håndteres i."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg kiggede meget på selve <moodmap-highlight>pro.medicin.dk<moodmap-stop> setup, access, bypass, API, backend osv for at se om jeg kunne komme udenom at skulle scrape. Men nej. De har lavet det effektivt nok til jeg ikke gider bruge tid på at hacke mig ind i det yderligere."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day12/14.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 2 • Dag 12 • Generisk scraper"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg satte derfor min scraper generiskt op, og så oprettede jeg diverse filer jeg skulle bruge for at kunne håndtere dataen herfra. <moodmap-highlight>Herunder<moodmap-stop> kan ses nogen af dem."
+      ]
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day12/12.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 3 • Dag 12 • SoC ift scraper"
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day12/5.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 4 • Dag 12 • Routing af populatoren samt impl"
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day12/4.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 5 • Dag 12 • Service + addition til PopulatorDB"
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day12/2.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 6 • Dag 12 • Nye entities + enum"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg skulle derefter bare sætte min <moodmap-highlight>MedicinDotDK<moodmap-stop> klasse op - som bruger min scraper engine - og dermed kan jeg gøre brug af min routing hertil på hvilket som helst medicin id. Super nemt!"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Ikke helt stolt af det navn til klassen, men jeg gider heller ikke bruge tid på at tænke i 30min over et bedre."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Men......... Først skulle jeg selvfølgelig lige <moodmap-highlight>undersøge<moodmap-stop> pro.medicin.dk setup og css klasser samt hvordan deres frontend loades."
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day12/8.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 7 • Dag 12 • pro.medicin.dk"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg kom frem til, at deres frontend ikke loader random <moodmap-highlight>key_hash<moodmap-stop> eller lign på deres klasser, så jeg kan bare bruge de values som er highlightet i <moodmap-highlight>figur 7<moodmap-stop>, og så kan jeg scrape!"
+      ]
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day12/10.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 8 • Dag 12 • scraper .http"
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day12/11.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 9 • Dag 12 • db overview"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Til sidst fixede jeg det jeg manglede for at komme i mål. Blandt andet noget med at rykke data ud af engine i egne klasser for <moodmap-highlight>OOP<moodmap-stop> skyld og for ikke at få for store klasser men holde dem til hver deres ansvar! <moodmap-highlight>SoC<moodmap-stop>."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": "Scraping all day"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Ja, jeg lavede faktisk ikke andet end at scrape denne dag. Det var ret stort projekt. Ikke fordi det var svært, men fordi der var <moodmap-highlight>utrolig meget tænkning<moodmap-stop>, arbejde og så kommer mit personlige liv også som også gerne skulle leves. Tænker jeg. Måske."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dagen afsluttes."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "date": "24/03-2026",
+  "title": "Type Safety + CRUD",
+  "description": "Dedicated to fixing boilerplate and Type Safety improvements",
+  "overviewPhoto": "/images/devlog/day8/6.png",
+  "badges": ["Java", "Type Safety", "Setup", "Refactor"],
+  "content": [
+    {
+      "type": "h3",
+      "text": "Hvad er på whiteboardet?"
+    },
+    {
+      "type": "p",
+      "text": [
+        "I dag har jeg planlagt at jeg skal <moodmap-highlight>sætte controllers op<moodmap-stop> på en måde så jeg undgår at jeg skal skrive samme kode eller tilsvarende kode i samtlige controllers."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Ved at lave en <moodmap-highlight>IController<moodmap-stop> ligesom <moodmap-highlight>IDAO<moodmap-stop> har jeg mulighed for at define de metoder som alle controllers gør brug af. Er det optimalt? Måske ikke den bedste løsning, ",
+        "men lige nu tester jeg, og så prøver jeg senere at finde en mere optimal løsning. Jeg tænker faktisk en <moodmap-highlight>abstract<moodmap-stop> gør sig mere gældende, men vi starter med IController."
+      ]
+    },
+    {
+      "type": "img small",
+      "src": "/images/devlog/day8/8.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 1 • Dag 8 • IController"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Ifm dette fandt jeg ud af, at min gamle metode fra IDAO <moodmap-highlight>void deleteAll()<moodmap-stop> bør omskrives til <moodmap-highlight>int deleteAll()<moodmap-stop>. Derfor startede jeg med det og testede det af ",
+        "for at sikre mig, at min refactor stadig fungerede som den skulle i mine tests."
+      ]
+    },
+    {
+      "type": "img tiny",
+      "src": "/images/devlog/day8/7.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 2 • Dag 8 • Omskriving af metode i interface"
+    },
+    {
+      "type": "img",
+      "src": "/images/devlog/day8/9.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 3 • Dag 8 • Refactor unit test reassurance"
+    },
+    {
+      "type": "h3",
+      "text": "Nested Columns i Entity klasserne... Yay ? Nay ?"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg har tidligere haft lidt tanker omkring at jeg gentager mig selv, og ofte skaber ting som kan fejle. Derfor kiggede jeg på <moodmap-highlight>Type Safety<moodmap-stop> ifm CRUD operations i DAOs og tilsvarende."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day8/13.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 4 • Dag 8 • Old way of doing it"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dette er ikke optimalt, da jeg hardcoder en column. Når jeg så <moodmap-highlight>ændrer column<moodmap-stop> i DB, så skal jeg finde alle steder hvor jeg har skrevet det. Derfor søgte jeg efter alternativer og kom frem til en jeg synes var optimal."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "<moodmap-highlight>Nested Columns<moodmap-stop> i Entity klasserne."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dette gør, at når jeg skal bruge deres columns, så bruger jeg bare de nested columns / fields som jeg har direkte fra entitien. Super smart."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day8/12.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 5 • Dag 8 • Nested Columns"
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day8/14.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 6 • Dag 8 • Implementation of Nested Columns"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dette gøres så for <moodmap-highlight>resten af mine entities<moodmap-stop>, og så implementeres det i deres DAOs herefter."
+      ]
+    },
+    {
+      "type": "img medium",
+      "src": "/images/devlog/day8/16.png",
+      "alt": "empty"
+    },
+    {
+      "type": "p",
+      "class": "dev-log-picture-text",
+      "text": "Figur 7 • Dag 8 • All other entities implemented too"
+    },
+    {
+      "type": "h3",
+      "text": "Afslutning"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Jeg synes jeg fik lavet nogle væsentlige ting. <moodmap-highlight>Motivationen<moodmap-stop> var lav hvorfor jeg har lavet minimalt. Jeg har dog lavet nogle ting som skal sikre, at det bliver nemmere og mere optimalt i fremtiden."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Meget af tiden i dag er gået på research og at finde frem til hvordan alternativer og store virksomheder håndterer deres data. Var det unødvendigt? Det synes jeg ikke. ",
+        "Jeg lærer meget ved research. Det er ofte dér jeg lærer mest. <moodmap-highlight>research<moodmap-stop> -> <moodmap-highlight>Forståelse<moodmap-stop> -><moodmap-highlight>Implementering<moodmap-stop>."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Dagen afsluttes."
+      ]
+    }
+
+  ]
+}
