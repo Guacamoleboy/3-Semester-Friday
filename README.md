@@ -24,11 +24,11 @@ Providing data directly to your clinician and yourself to show **real-time progr
 
 ### Links
 
-**Devlog / Portfolio Website:**
+**Devlog / Portfolio Website**
 > moodmap.guacamoleboy.dk/dev-log
 
-Project overview video:**
-> Added 07/04-2026
+**Project overview video**
+> https://www.youtube.com/watch?v=jj4iZp51XEA
 
 **Deployed application**
 > api.guacamoleboy.dk/v1
