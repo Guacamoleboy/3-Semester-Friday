@@ -53,8 +53,20 @@ public class Server {
             configureRouting(config);
             configurePlugins(config);
             configureExceptionHandling(config);
+            configureCors(config);
         }).start(port);
 
+    }
+
+    // _________________________________________________________________________________________________________________
+
+    private void configureCors(JavalinConfig config) {
+        config.bundledPlugins.enableCors(cors ->
+                cors.addRule(rule -> {
+                    rule.anyHost();
+                })
+        );
+        config.bundledPlugins.enableHttpAllowedMethodsOnRoutes();
     }
 
     // _________________________________________________________________________________________________________________
