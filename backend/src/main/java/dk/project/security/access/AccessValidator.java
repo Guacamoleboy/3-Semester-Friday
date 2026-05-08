@@ -52,16 +52,25 @@ public class AccessValidator {
 
     public static Handler access(Handler handler, AccessLevelEnum... accessLevelEnums) {
         return ctx -> {
+
+            // CORS FIX
+            if (ctx.method().equals("OPTIONS")) {
+                handler.handle(ctx);
+                return;
+            }
+
             boolean authorized = false;
+
             for (AccessLevelEnum level : accessLevelEnums) {
                 try {
                     handle(ctx, level);
                     authorized = true;
                     break;
-                } catch (ApiException e) {
-                    e.getStackTrace();
+                } catch (ApiException ignored) {
+
                 }
             }
+
             if (!authorized) {
                 throw new ApiException(403, "Access denied");
             }

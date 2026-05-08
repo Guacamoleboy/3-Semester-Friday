@@ -50,10 +50,10 @@ public class Server {
 
         // Javalin setup
         app = Javalin.create(config -> {
+            configureCors(config);
             configureRouting(config);
             configurePlugins(config);
             configureExceptionHandling(config);
-            configureCors(config);
         }).start(port);
 
     }
