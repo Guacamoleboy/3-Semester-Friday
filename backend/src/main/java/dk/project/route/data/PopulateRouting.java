@@ -32,7 +32,7 @@ public class PopulateRouting {
 
                 post("", AccessValidator.access(
                         populateController::populate,
-                        AccessLevelEnum.ADMIN
+                        AccessLevelEnum.PUBLIC
                 ));
 
             });
