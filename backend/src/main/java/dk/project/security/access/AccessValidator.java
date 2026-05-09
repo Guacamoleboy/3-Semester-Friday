@@ -54,8 +54,8 @@ public class AccessValidator {
         return ctx -> {
 
             // CORS FIX
-            if (ctx.method().equals("OPTIONS")) {
-                handler.handle(ctx);
+            if (ctx.method().toString().equals("OPTIONS")) {
+                ctx.status(204);
                 return;
             }
 

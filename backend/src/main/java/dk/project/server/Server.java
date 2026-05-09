@@ -64,6 +64,8 @@ public class Server {
         config.bundledPlugins.enableCors(cors ->
                 cors.addRule(rule -> {
                     rule.anyHost();
+                    rule.allowCredentials = true;
+                    rule.exposeHeader("Authorization");
                 })
         );
         config.bundledPlugins.enableHttpAllowedMethodsOnRoutes();
